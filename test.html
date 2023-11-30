@@ -67,7 +67,6 @@
 
     let num = 0
     current = location.href;
-    setTimeout('reload()', 100);
     var iframe
     function reload() {
         num += 1
@@ -81,16 +80,16 @@
         iframe.addEventListener('load', function () {
             const iframeElement = iframe.contentWindow.document.querySelector('.confirm-btn');
             console.log(iframeElement);
-            if (iframeElement && iframeElement.textContent == '确定') {
-                iframeElement.click()
-                // iframe.src = 'https://6566d890783b53000119b89d.caiyicloud.com/reserve/reserve-detail/personinfo'
+            if ((iframeElement && iframeElement.textContent == '确定') || num == 5) {
+                // iframeElement.click()
+                iframe.src = 'https://6566d890783b53000119b89d.caiyicloud.com/reserve/reserve-detail/personinfo'
             } else {
                 setTimeout('reload()', 100);
             }
             // 监听加载完毕 如果到了填写页面
             if (iframe.contentWindow.document.querySelector('.add-person')) {
-                iframe.contentWindow.document.getElementsByClassName('add-person')[0].click()
 
+                iframe.contentWindow.document.getElementsByClassName('add-person')[0].click()
                 setTimeout(() => {
                     let evt = iframe.contentWindow.document.createEvent('HTMLEvents');
                     evt.initEvent('input', true, true);
