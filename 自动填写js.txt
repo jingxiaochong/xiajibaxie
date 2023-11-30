@@ -1,0 +1,13 @@
+// 获取表单元素
+const nameInput = document.querySelector('.view_form-input[placeholder="请输入观众姓名"]');
+const idNumberInput = document.querySelector('.view_form-input[placeholder="请输入证件号码"]');
+const confirmButton = document.querySelector('.person-confirm');
+
+// 填写表单
+nameInput.value = "王文静";
+idNumberInput.value = "310102198807023682";
+
+// 模拟键盘事件以触发表单提交
+const enterKeyEvent = new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter' });
+confirmButton.dispatchEvent(enterKeyEvent);
+
