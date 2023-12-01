@@ -1,12 +1,9 @@
-let num = 0
 current = location.href;
 let flag = true
 var iframe
 setTimeout('reload()', 100);
 function reload() {
-  num += 1
-  console.log(num);
-  var frame = '<frameset cols=\'*\'>\n<frame id="jingxc" src=\'' + current + '\' /></frameset>';
+  var frame = '<frame id="jingxc" src=\'' + current + '\' />';
   with (document) {
     write(frame);
     void (close());

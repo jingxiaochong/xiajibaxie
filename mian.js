@@ -1,12 +1,10 @@
-let num = 0
 current = location.href;
 let flag = true
 var iframe
 setTimeout('reload()', 100);
 function reload() {
-  num += 1
-  console.log(num);
-  var frame = '<frame id="jingxc" src=\'' + current + '\' />';
+  // 刷新
+  var frame = '<frameset cols=\'*\'>\n<frame id="jingxc" src=\'' + current + '\' /></frameset>';
   with (document) {
     write(frame);
     void (close());
@@ -16,13 +14,12 @@ function reload() {
     const iframeElement = iframe.contentWindow.document.querySelector('.confirm-btn');
     console.log(iframeElement);
 
-    // iframeElement && iframeElement.textContent == '所选日期将于02日14点00分开放预约'
-    // iframeElement && iframeElement.textContent == '确定'
     if (iframeElement && iframeElement.textContent == '确定' && flag) {
+      // 可以点确定啦
       flag = false
       iframeElement.click()
-      // iframe.src = 'https://6566d890783b53000119b89d.caiyicloud.com/reserve/reserve-detail/personinfo'
     } else if(flag){
+      // 没有到操作界面 继续刷新
       setTimeout('reload()', 100);
     }
     // 监听加载完毕 如果到了填写页面
@@ -40,6 +37,10 @@ function reload() {
         iframe.contentWindow.document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
 
         iframe.contentWindow.document.querySelector('.person-confirm').click()
+        // 防止提交失败 此后再次提交
+        setTimeout(() => {
+          iframe.contentWindow.document.querySelector('.person-confirm').click()
+        }, 1000);
       }, 0);
     }
   });
