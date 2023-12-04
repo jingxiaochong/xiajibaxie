@@ -8,7 +8,7 @@ exports.Referer = 'https://6566d890783b53000119b89d.caiyicloud.com/reserve/reser
 //reservationConfigId 在local的 reserveId
 exports.reservationConfigId = '656837b0a70d2d00015d27f1'
 // 时间信息
-exports.saveTime = '2023-12-2 19:30-21:30'
+exports.saveTime = '2023-12-9 19:30-21:30'
 
 
 exports.putUrl = 'https://6566d890783b53000119b89d.caiyicloud.com/cyy_gatewayapi/user/buyer/v3/identities/batch_auth?channelId=&terminalSrc=H5'

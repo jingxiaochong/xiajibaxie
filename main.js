@@ -2,16 +2,33 @@ const axios = require('axios')
 const info = require('./info.js')
 
 
-let datesss = new Date()
 
-console.log(datesss.getDate());
-console.log(datesss.getSeconds());
 function start() {
-  // putFunction()
-  // postFunction()
-}
-return
 
+  let date = new Date()
+  if (date.getHours() == 23 && date.getMinutes() == 43 && date.getSeconds() == 0) {
+    postData()
+    return
+  } else {
+    setTimeout(() => {
+      start()
+    }, 1);
+  }
+
+}
+start()
+function postData() {
+  let date = new Date()
+  if (date.getHours() == 23 && date.getMinutes() == 44) {
+    return
+  } else {
+    setTimeout(() => {
+      putFunction()
+      postFunction()
+      postData()
+    }, 1);
+  }
+}
 
 
 // 第一段请求
