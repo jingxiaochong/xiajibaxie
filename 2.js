@@ -47,7 +47,6 @@ axios.put(url, data, {
 
 return
   //reservationConfigId 在local的 reserveId
-  //reservationDate
 let url1 = 'https://6506966fb2800f0001e2285e.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5'
 let data1 = {
   "reservationConfigId": "656c1d4563ccf80001ee9a6d",
