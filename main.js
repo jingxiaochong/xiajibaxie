@@ -2,7 +2,7 @@ const axios = require('axios')
 const info = require('./info.js')
 
 
-
+// 计算时间
 function start() {
 
   let date = new Date()
@@ -16,7 +16,10 @@ function start() {
   }
 
 }
+// 开始计时
 start()
+
+// 往死里递归
 function postData() {
   let date = new Date()
   if (date.getHours() == 23 && date.getMinutes() == 44) {
