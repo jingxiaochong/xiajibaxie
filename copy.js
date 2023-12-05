@@ -27,7 +27,6 @@ function postData() {
   } else {
     setTimeout(() => {
       putFunction()
-      postFunction()
       postData()
     }, 1);
   }
@@ -58,6 +57,7 @@ function putFunction() {
   })
     .then(response => {
       console.log(response.data);
+      postFunction()
     })
     .catch(error => {
       console.log(err);
