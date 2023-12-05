@@ -6,7 +6,7 @@ const info = require('./info.js')
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 20 && date.getMinutes() == 40 && date.getSeconds() == 50) {
     postData()
     return
   } else {
@@ -22,7 +22,7 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 12 && date.getMinutes() == 1) {
+  if (date.getHours() == 20 && date.getMinutes() == 41) {
     return
   } else {
     setTimeout(() => {
