@@ -1,8 +1,6 @@
 const axios = require('axios')
 const info = require('./info.js')
 
-putFunction()
-
 // 计算时间
 function start() {
 
@@ -27,7 +25,6 @@ function postData() {
     return
   } else {
     setTimeout(() => {
-      putFunction()
       postFunction()
       postData()
     }, 1);
