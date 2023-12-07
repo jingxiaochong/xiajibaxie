@@ -21,8 +21,8 @@ exports.putData = {
         {
             "idType": "ID_CARD",
             "idTypeName": "身份证",
-            "idNo": "411121199808210015",
-            "name": "井晓冲"
+            "idNo": "41112119980912651X",
+            "name": "李一帆"
         }
     ],
     "src": "H5"
@@ -32,9 +32,9 @@ exports.putData = {
 exports.postUrl = `https://${urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5`
 exports.postData = {
     "audienceCellphone": null,
-    "audienceIdentityNumber": "411121199808210015",
+    "audienceIdentityNumber": "41112119980912651X",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "井晓冲",
+    "audienceName": "李一帆",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }
