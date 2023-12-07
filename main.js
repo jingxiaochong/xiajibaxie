@@ -12,7 +12,7 @@ function start() {
   } else {
     setTimeout(() => {
       start()
-    }, 1);
+    }, 100);
   }
 
 }
