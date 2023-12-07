@@ -1,5 +1,5 @@
 const axios = require('axios')
-const info = require('./info.js')
+const info = require('./infoCopy.js')
 let flag = false
 
 // 计算时间
