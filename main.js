@@ -1,6 +1,5 @@
 const axios = require('axios')
 const info = require('./infoCopy.js')
-let flag = false
 
 // 计算时间
 function start() {
@@ -22,7 +21,8 @@ start()
 
 // 往死里递归
 function postData() {
-  if (flag) {
+  let date = new Date()
+  if (date.getHours() == 14 && date.getMinutes() != 0) {
     return
   } else {
     setTimeout(() => {
@@ -103,9 +103,6 @@ function postFunction() {
       }
     }).then((res) => {
       console.log(res.data);
-      if (res.data.statusCode == 200 || res.data.comments == '成功') {
-        flag = true
-      }
     }).catch((err) => {
       console.log('预约失败');
     });
