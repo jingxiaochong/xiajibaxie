@@ -1,11 +1,11 @@
 const axios = require('axios')
-const info = require('./infoCopy.js')
+const info = require('./info.js')
 
 // 计算时间
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 15 && date.getMinutes() == 31 && date.getSeconds() == 50) {
     postData()
     return
   } else {
@@ -22,7 +22,7 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() != 0) {
+  if (date.getHours() == 15 && date.getMinutes() == 33) {
     return
   } else {
     setTimeout(() => {
