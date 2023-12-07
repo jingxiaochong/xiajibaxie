@@ -1,34 +1,34 @@
 const axios = require('axios')
 const info = require('./info.js')
-
+let flag = false
 
 // 计算时间
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
     return
   } else {
     setTimeout(() => {
       start()
-    }, 1);
+    }, 100);
   }
 
 }
+
 // 开始计时
 start()
 
 // 往死里递归
 function postData() {
-  let date = new Date()
-  if (date.getHours() == 12 && date.getMinutes() == 1) {
+  if (flag) {
     return
   } else {
     setTimeout(() => {
-      putFunction()
+      postFunction()
       postData()
-    }, 1);
+    }, 100);
   }
 }
 
@@ -57,7 +57,6 @@ function putFunction() {
   })
     .then(response => {
       console.log(response.data);
-      postFunction()
     })
     .catch(error => {
       console.log(err);
@@ -104,6 +103,9 @@ function postFunction() {
       }
     }).then((res) => {
       console.log(res.data);
+      if (res.data.statusCode == 200 || res.data.comments == '成功') {
+        flag = true
+      }
     }).catch((err) => {
       console.log('预约失败');
     });
