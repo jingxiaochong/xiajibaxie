@@ -1,22 +1,13 @@
 const axios = require('axios')
 const info = require('./info1.js')
-
-axios.interceptors.request.use(
-  config => {
-      config.headers['request-startTime'] = new Date().getTime()
-      return config
-  },
-  error => {
-      return Promise.reject(error)
-  }
-)
+const public = require('./public.js')
 postFunction()
 
 // 计算时间
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 31 && date.getSeconds() == 50) {
+  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
     return
   } else {
@@ -33,7 +24,7 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 33) {
+  if (date.getHours() == 12 && date.getMinutes() == 1) {
     return
   } else {
     setTimeout(() => {
@@ -76,13 +67,13 @@ function putFunction() {
 
 
 function postFunction() {
-  let time = info.saveTime.split(" ")
+  let time = public.saveTime.split(" ")
   t = time[0].replace(new RegExp(/-/gm), "/")
   n = new Date(t).getTime()
   let times = time[1].split('-')
 
   let data = {
-    "reservationConfigId": info.reservationConfigId,
+    "reservationConfigId": public.reservationConfigId,
     "reservationDate": n,
     "startTime": times[0],
     "endTime": times[1],
@@ -114,16 +105,7 @@ function postFunction() {
       }
     }).then((res) => {
       console.log(res.data);
-
-      const start1 = res.config.headers['request-startTime']
-      const currentTime = new Date().getTime()
-      const requestDuration = ((currentTime - start1)/1000).toFixed(2)
-      console.log(requestDuration);
-
     }).catch((err) => {
       console.log('预约失败');
     });
 }
-
-
-

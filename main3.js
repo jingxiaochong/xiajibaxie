@@ -1,5 +1,7 @@
 const axios = require('axios')
 const info = require('./info3.js')
+const public = require('./public.js')
+postFunction()
 
 // 计算时间
 function start() {
@@ -65,13 +67,13 @@ function putFunction() {
 
 
 function postFunction() {
-  let time = info.saveTime.split(" ")
+  let time = public.saveTime.split(" ")
   t = time[0].replace(new RegExp(/-/gm), "/")
   n = new Date(t).getTime()
   let times = time[1].split('-')
 
   let data = {
-    "reservationConfigId": info.reservationConfigId,
+    "reservationConfigId": public.reservationConfigId,
     "reservationDate": n,
     "startTime": times[0],
     "endTime": times[1],
@@ -107,6 +109,3 @@ function postFunction() {
       console.log('预约失败');
     });
 }
-
-
-
