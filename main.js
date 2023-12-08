@@ -22,7 +22,7 @@ function start() {
   } else {
     setTimeout(() => {
       start()
-    }, 100);
+    }, 10);
   }
 
 }
@@ -39,7 +39,7 @@ function postData() {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 100);
+    }, 10);
   }
 }
 
