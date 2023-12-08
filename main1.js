@@ -7,7 +7,6 @@ postFunction()
 function start() {
 
   let date = new Date()
-  console.log(date.getHours(),date.getMinutes(),date.getSeconds());
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
     return
@@ -31,37 +30,6 @@ function postData() {
       postData()
     }, 1);
   }
-}
-
-
-// 第一段请求
-function putFunction() {
-  axios.put(info.putUrl, info.putData, {
-    "headers": {
-      "accept": "application/json, text/plain, */*",
-      "accept-language": "zh-CN,zh;q=0.9",
-      "access-token": info.AccessToken,
-      "cache-control": "no-cache",
-      "channel-id": "",
-      "content-type": "application/json;charset=UTF-8",
-      "pragma": "no-cache",
-      "putparamstoobject": "true",
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-origin",
-      "terminal-src": "H5",
-      "x-requested-with": "XMLHttpRequest",
-      "cookie": info.Cookie,
-      "Referer": info.Referer,
-      "Referrer-Policy": "strict-origin-when-cross-origin"
-    }
-  })
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(err);
-    });
 }
 
 

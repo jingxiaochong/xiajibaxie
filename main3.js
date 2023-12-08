@@ -7,15 +7,13 @@ postFunction()
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
     return
-  } else {
-    setTimeout(() => {
-      start()
-    }, 10);
   }
-
+  setTimeout(() => {
+    start()
+  }, 1);
 }
 
 // 开始计时
@@ -24,45 +22,14 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 12 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 10);
+    }, 1);
   }
-}
-
-
-// 第一段请求
-function putFunction() {
-  axios.put(info.putUrl, info.putData, {
-    "headers": {
-      "accept": "application/json, text/plain, */*",
-      "accept-language": "zh-CN,zh;q=0.9",
-      "access-token": info.AccessToken,
-      "cache-control": "no-cache",
-      "channel-id": "",
-      "content-type": "application/json;charset=UTF-8",
-      "pragma": "no-cache",
-      "putparamstoobject": "true",
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-origin",
-      "terminal-src": "H5",
-      "x-requested-with": "XMLHttpRequest",
-      "cookie": info.Cookie,
-      "Referer": info.Referer,
-      "Referrer-Policy": "strict-origin-when-cross-origin"
-    }
-  })
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.log(err);
-    });
 }
 
 
