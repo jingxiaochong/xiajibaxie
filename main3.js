@@ -5,7 +5,6 @@ postFunction()
 
 // 计算时间
 function start() {
-
   let date = new Date()
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
