@@ -7,15 +7,14 @@ postFunction()
 function start() {
 
   let date = new Date()
-  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  console.log(date.getHours(),date.getMinutes(),date.getSeconds());
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
     return
-  } else {
-    setTimeout(() => {
-      start()
-    }, 10);
   }
-
+  setTimeout(() => {
+    start()
+  }, 1);
 }
 
 // 开始计时
@@ -24,13 +23,13 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 12 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 10);
+    }, 1);
   }
 }
 
