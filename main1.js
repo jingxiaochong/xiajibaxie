@@ -1,5 +1,16 @@
 const axios = require('axios')
-const info = require('./infoCopy.js')
+const info = require('./info1.js')
+
+axios.interceptors.request.use(
+  config => {
+      config.headers['request-startTime'] = new Date().getTime()
+      return config
+  },
+  error => {
+      return Promise.reject(error)
+  }
+)
+
 
 // 计算时间
 function start() {
@@ -103,6 +114,12 @@ function postFunction() {
       }
     }).then((res) => {
       console.log(res.data);
+
+      const start1 = res.config.headers['request-startTime']
+      const currentTime = new Date().getTime()
+      const requestDuration = ((currentTime - start1)/1000).toFixed(2)
+      console.log(requestDuration);
+
     }).catch((err) => {
       console.log('预约失败');
     });
