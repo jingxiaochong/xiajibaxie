@@ -10,7 +10,7 @@ axios.interceptors.request.use(
       return Promise.reject(error)
   }
 )
-
+postFunction()
 
 // 计算时间
 function start() {
