@@ -24,7 +24,7 @@ start()
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 12 && date.getMinutes() == 1) {
+  if (date.getHours() == 12 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {
