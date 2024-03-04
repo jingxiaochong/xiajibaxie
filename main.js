@@ -4,10 +4,14 @@ const public = require('./public.js')
 
 start()
 function start() {
-  setTimeout(() => {
+  let date = new Date()
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     search()
-    start()
-  }, 1);
+   }else{
+    setTimeout(() => {
+      start()
+    }, 1);
+   }
 }
 function search() {
   axios.get(info.searchURl, {
@@ -31,6 +35,9 @@ function search() {
   }).then(res=>{
     // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
     console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0]);
+    if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
+      postData()
+    }
   })
 }
 
@@ -45,7 +52,7 @@ function postData() {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 0);
+    }, 10);
   }
 }
 
