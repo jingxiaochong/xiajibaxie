@@ -2,19 +2,32 @@ const axios = require('axios')
 const info = require('./info.js')
 const public = require('./public.js')
 
+var obj = {}
+let flag = true
+
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
-    search()
-   }else{
+  if (date.getHours() == 17 && date.getMinutes() == 44 && date.getSeconds() == 40) {
+    searchData()
+  } else {
     setTimeout(() => {
       start()
     }, 1);
-   }
+  }
+}
+
+
+function searchData() {
+  if (flag) {
+    setTimeout(() => {
+      search()
+      searchData()
+    }, 1);
+  }
 }
 function search() {
-  axios.get(info.searchURl, {
+  axios.get(public.searchURl, {
     "headers": {
       "accept": "application/json, text/plain, */*",
       "accept-language": "zh-CN,zh;q=0.9",
@@ -29,15 +42,24 @@ function search() {
       "terminal-src": "H5",
       "x-requested-with": "XMLHttpRequest",
       "cookie": info.Cookie,
-      "Referer": info.Referer,
+      "Referer": public.Referer,
       "Referrer-Policy": "strict-origin-when-cross-origin"
     }
-  }).then(res=>{
-    // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
-    console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0]);
+  }).then(res => {
+    console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0]);
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
+      flag = false
+      obj = {
+        reservationDate: res.data.data.reservationDates[0].reservationDate,
+        startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
+        endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime
+      }
       postData()
     }
+  })
+  .catch(res=>{
+    console.log('查询失败');
   })
 }
 
@@ -58,16 +80,11 @@ function postData() {
 
 
 function postFunction() {
-  let time = public.saveTime.split(" ")
-  t = time[0].replace(new RegExp(/-/gm), "/")
-  n = new Date(t).getTime()
-  let times = time[1].split('-')
-
   let data = {
     "reservationConfigId": public.reservationConfigId,
-    "reservationDate": n,
-    "startTime": times[0],
-    "endTime": times[1],
+    "reservationDate": obj.reservationDate,
+    "startTime": obj.startTime,
+    "endTime": obj.startTime,
     "showOrderId": "",
     "showSessionId": "",
     "reservationAudienceParams": [
@@ -75,7 +92,7 @@ function postFunction() {
     ],
     "src": "H5"
   }
-  axios.post(info.postUrl, data,
+  axios.post(public.postUrl, data,
     {
       "headers": {
         "accept": "application/json, text/plain, */*",
@@ -91,7 +108,7 @@ function postFunction() {
         "terminal-src": "H5",
         "x-requested-with": "XMLHttpRequest",
         "cookie": info.Cookie,
-        "Referer": info.Referer,
+        "Referer": public.Referer,
         "Referrer-Policy": "strict-origin-when-cross-origin"
       }
     }).then((res) => {

@@ -7,9 +7,9 @@ exports.Cookie = 'Hm_lvt_e2e961d5194c236ca2269b84361558fc=1709535327; shopPriceC
 
 exports.postData = {
     "audienceCellphone": null,
-    "audienceIdentityNumber": "411121199808210015",
+    "audienceIdentityNumber": "41112119980912651X",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "井晓冲",
+    "audienceName": "李一帆",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }
