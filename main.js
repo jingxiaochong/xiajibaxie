@@ -1,22 +1,40 @@
 const axios = require('axios')
 const info = require('./info.js')
 const public = require('./public.js')
-postData()
 
-// 计算时间
+start()
 function start() {
-  let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
-    postData()
-    return
-  }
   setTimeout(() => {
+    search()
     start()
   }, 1);
 }
+function search() {
+  axios.get(info.searchURl, {
+    "headers": {
+      "accept": "application/json, text/plain, */*",
+      "accept-language": "zh-CN,zh;q=0.9",
+      "access-token": info.AccessToken,
+      "cache-control": "no-cache",
+      "channel-id": "",
+      "content-type": "application/json;charset=UTF-8",
+      "pragma": "no-cache",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "same-origin",
+      "terminal-src": "H5",
+      "x-requested-with": "XMLHttpRequest",
+      "cookie": info.Cookie,
+      "Referer": info.Referer,
+      "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+  }).then(res=>{
+    // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0]);
+  })
+}
 
-// 开始计时
-start()
+
 
 // 往死里递归
 function postData() {
@@ -27,7 +45,7 @@ function postData() {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 1);
+    }, 0);
   }
 }
 

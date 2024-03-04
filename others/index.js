@@ -1,7 +1,7 @@
 const { Worker, isMainThread, workerData } = require('worker_threads');
 const axios = require('axios')
 const info = require('./info1.js')
-const public = require('./public.js')
+const public = require('../public.js')
 
 // 计算时间
 function start() {

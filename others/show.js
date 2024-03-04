@@ -8,10 +8,11 @@ function confirm() {
 
 const start = () => {
   let date = new Date();
-  if (date.getMinutes() == 30) {
+  if (date.getHours() == 18) {
     confirm()
   } else {
-    console.log(date.getMinutes());
+    console.log(date.getSeconds());
+    // date.getMinutes()
     setTimeout(() => {
       start()
     }, 1);
@@ -20,5 +21,3 @@ const start = () => {
 start()
 
 
-
-// getMinutes()

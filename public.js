@@ -1,6 +1,6 @@
 //活动域名前缀
-exports.urlBase = '6566d890783b53000119b89d'
+exports.urlBase = '6437cab4291ee50001318391'
 // 时间信息
-exports.saveTime = '2023-12-09 19:30-21:30'
+exports.saveTime = '2024-03-06 12:00-20:00'
 //reservationConfigId 在local的 reserveId
-exports.reservationConfigId = '6570238d63ccf80001f26677'
+exports.reservationConfigId = '65dc34cc5453020001dfb37a'
