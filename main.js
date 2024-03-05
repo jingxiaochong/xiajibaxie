@@ -57,8 +57,7 @@ function search() {
       }
       postData()
     }
-  })
-  .catch(res=>{
+  }).catch(res => {
     console.log('查询失败');
   })
 }
@@ -74,7 +73,7 @@ function postData() {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 10);
+    }, 1);
   }
 }
 

@@ -9,7 +9,6 @@ function start() {
     postData()
   } else {
     setTimeout(() => {
-      console.log(date.getSeconds());
       start()
     }, 1);
   }
