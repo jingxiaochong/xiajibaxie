@@ -1,11 +1,11 @@
 const axios = require('axios')
-const info = require('./info.js')
+const info = require('./infos.js')
 const public = require('./public.js')
 
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 17 && date.getMinutes() == 49 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
   } else {
     setTimeout(() => {
