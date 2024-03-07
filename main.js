@@ -8,7 +8,7 @@ let flag = true
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     searchData()
   } else {
     setTimeout(() => {
@@ -46,7 +46,8 @@ function search() {
       "Referrer-Policy": "strict-origin-when-cross-origin"
     }
   }).then(res => {
-    console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    // console.log(res.data.data.reservationDates[0]);
     // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0]);
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
@@ -58,7 +59,7 @@ function search() {
       postData()
     }
   }).catch(res => {
-    console.log('查询失败');
+    console.log(res);
   })
 }
 
@@ -67,7 +68,7 @@ function search() {
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 12 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {
