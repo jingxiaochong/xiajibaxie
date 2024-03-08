@@ -33,6 +33,9 @@ function reload() {
         iframe.contentWindow.document.getElementsByClassName('view_form-input')[0].value = '井晓冲';
         iframe.contentWindow.document.getElementsByClassName('view_form-input')[0].dispatchEvent(evt)
 
+        iframe.contentWindow.document.getElementsByClassName('view_form-input')[1].value = '15539502921';
+        iframe.contentWindow.document.getElementsByClassName('view_form-input')[0].dispatchEvent(evt)
+
         iframe.contentWindow.document.getElementsByClassName('view_form-input')[2].value = '411121199808210015';
         iframe.contentWindow.document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
 

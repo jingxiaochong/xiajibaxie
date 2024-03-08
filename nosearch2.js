@@ -18,7 +18,7 @@ function start() {
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
