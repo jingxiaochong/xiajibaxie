@@ -46,6 +46,10 @@ function search() {
       "Referrer-Policy": "strict-origin-when-cross-origin"
     }
   }).then(res => {
+    // console.log(res.data.data.reservationDates[0].reservationDate);
+    // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime)
+    // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime)
+    // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
       obj = {

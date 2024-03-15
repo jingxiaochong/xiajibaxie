@@ -1,5 +1,5 @@
 const axios = require('axios')
-const info = require('./info.js')
+const info = require('./info2.js')
 const public = require('./public.js')
 
 start()
@@ -30,15 +30,12 @@ function postData() {
 
 
 function postFunction() {
-  let time = public.saveTime.split(" ")
-  t = time[0].replace(new RegExp(/-/gm), "/")
-  n = new Date(t).getTime()
-  let times = time[1].split('-')
+  let time = public.saveTime
   let data = {
     "reservationConfigId": public.reservationConfigId,
-    "reservationDate": n,
-    "startTime": times[0],
-    "endTime": times[1],
+    "reservationDate":time.data,
+    "startTime": time.startTime,
+    "endTime": time.endTime,
     "showOrderId": "",
     "showSessionId": "",
     "reservationAudienceParams": [
