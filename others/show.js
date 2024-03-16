@@ -1,18 +1,16 @@
+let btn = document.getElementsByClassName('payBtn')[0];
+
 function confirm() {
-  let btn = document.getElementsByClassName('payBtn')[0];
   btn.click()
-  setTimeout(() => {
-    confirm()
-  }, 1800);
 }
 
 const start = () => {
   let date = new Date();
-  if (date.getHours() == 18) {
-    confirm()
+  if (date.getHours() == 17 && date.getMinutes() == 59 && date.getSeconds() == 59) {
+    setTimeout(() => {
+      confirm()
+    }, 990);
   } else {
-    console.log(date.getSeconds());
-    // date.getMinutes()
     setTimeout(() => {
       start()
     }, 1);
