@@ -58,7 +58,6 @@ function postFunction() {
         "sec-fetch-site": "same-origin",
         "terminal-src": "H5",
         "x-requested-with": "XMLHttpRequest",
-        "cookie": info.Cookie,
         "Referer": public.Referer,
         "Referrer-Policy": "strict-origin-when-cross-origin"
       }

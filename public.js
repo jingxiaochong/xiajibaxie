@@ -13,7 +13,7 @@ exports.reservationConfigId = '65f2d5e0b3b56a0001a5921a'
 exports.Referer = `https://${exports.urlBase}.caiyicloud.com/reserve/reserve-detail/personinfo`
 
 // 查询接口
-exports.searchURl = `https://${exports.urlBase}.caiyicloud.com//cyy_buyerapi/buyer/cyy/v1/reservation_configs/${exports.reservationConfigId}/instance`
+exports.searchURl = `https://${exports.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${exports.reservationConfigId}/instance`
 
 // 请求接口
 exports.postUrl = `https://${exports.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5`
