@@ -17,13 +17,12 @@ function start() {
 
 // 往死里递归
 function postData() {
+  postFunction(info.postData1,info.AccessToken1)
   let date = new Date()
   if (date.getHours() == 18 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
-      postFunction(info.postData1,info.AccessToken1)
-      postFunction(info.postData2,info.AccessToken2)
       postData()
     }, 1);
   }
