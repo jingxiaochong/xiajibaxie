@@ -1,11 +1,11 @@
 const axios = require('axios')
-const info = require('./info2.js')
+const info = require('./info3.js')
 const public = require('./public.js')
 
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 17 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     postData()
   } else {
     setTimeout(() => {
@@ -18,18 +18,18 @@ function start() {
 // 往死里递归
 function postData() {
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
+  if (date.getHours() == 18 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
-      postFunction()
+      postFunction(info.postData1,info.AccessToken1)
       postData()
     }, 1);
   }
 }
 
 
-function postFunction() {
+function postFunction(info,token) {
   let time = public.saveTime
   let data = {
     "reservationConfigId": public.reservationConfigId,
@@ -38,17 +38,17 @@ function postFunction() {
     "endTime": time.endTime,
     "showOrderId": "",
     "showSessionId": "",
-    "reservationAudienceParams": info.postData,
+    "reservationAudienceParams": info,
     "src": "H5"
   }
   axios.post(public.postUrl, data,
     {
       "headers": {
-        "access-token": info.AccessToken,
+        "access-token": token,
       }
     }).then((res) => {
       console.log(res.data);
     }).catch((err) => {
-      console.log('预约失败');
+      console.log(err);
     });
 }
