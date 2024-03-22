@@ -1,8 +1,8 @@
 // access-token 为 consistent_code
-exports.AccessToken = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kM1OwzAQhN9lzzmsG8d2eiwCgQRCquiBE_LPRo2U2JXjIKDqu-NggnriuKP5dnb2DEHP6fjguwBbPw9DBfNEscxnMP3XTXAEW7i7f3x7ggqm2ez-RNEI4VSLUtWmqRGRsdao1mVfJvdhWEy7w-vtPitjsodltfsBO0XEBFc1R7GAcrNpBRbw2mY5t1ZYx51abMZ0kjVwqYA-Tn2kl36k9fBMPp8o6hT-pXkOsZF0-oWZZAxr1iCqps4FP6dEYylY9o4U7VH7dP2knL6SSiJW8E5x6oPPYvmg1-thl28AAAD__w.GOzXVabzE2RrWaX3JFxjgCN9nnlKRtD67RK2F_Y-xssyX_xuFDGOqfjlbx43XPBwF6RPAD_rOcNs8JLdknsIYN0dw8OqaXxkNbwcM-0CgBURavhaWCja0MFmL8GT0uvQc4QWe7GYjdYBiYA52JHcw0GLXSJk3yn4NSFcZMU51HM'
+exports.AccessToken = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kEFPwzAMhf-Lzz3Eadq4Ow4NgQRCmtiBE0pTV6vUJlOaImDafydVGNqJo5_e5-fnM3izxOOj6z1s3DKOBSwzhzyfoR2-73zHsIH7h6f3ZyhgXtrtn1irUlvTKtkgcyWEwBKpbDD5Ern342raHt52-6RM0R7W1d0KVn1LTS1sS6hpBVmSUlUGb21daWstFfWkVltVN6Lv4VIAf56GwK_DxNfDE_ly4mCi_5fmFGIDm_gLo0YUjSLShDIV_JojT7lg3jtxsEfj4u2TUnomUUhBuoAPDvPgXRLzB525Hnb5AQAA__8.cVQUvcvPRajsazcB5dkdQv9Sge2ZeD4BS__LsYJiY6CX0bssG8QaUyuL8AgBK7gF7GoRmnUiQjr5KdjId6i_Vheg1J0i_oYy_QJ7yOqkZilK8zrV9uGxetSLAtWWz6SWaXnW9sif9N7qHdQQGihtMbLk-RFK9n5D4MynsE45330'
 
 
-exports.postData = {
+exports.postData = [{
     "audienceCellphone": null,
     "audienceIdentityNumber": "411121199808210015",
     "audienceIdentityType": "ID_CARD",
@@ -10,6 +10,6 @@ exports.postData = {
     "audienceCellphone":"15539502921",
     "seatInfo": "",
     "showOrderTicketItemId": ""
-}
+}]
 
 

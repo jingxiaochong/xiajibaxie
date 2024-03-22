@@ -8,7 +8,7 @@ let flag = true
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 17 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     searchData()
   } else {
     setTimeout(() => {
@@ -29,20 +29,7 @@ function searchData() {
 function search() {
   axios.get(public.searchURl, {
     "headers": {
-      "accept": "application/json, text/plain, */*",
-      "accept-language": "zh-CN,zh;q=0.9",
       "access-token": info.AccessToken,
-      "cache-control": "no-cache",
-      "channel-id": "",
-      "content-type": "application/json;charset=UTF-8",
-      "pragma": "no-cache",
-      "sec-fetch-dest": "empty",
-      "sec-fetch-mode": "cors",
-      "sec-fetch-site": "same-origin",
-      "terminal-src": "H5",
-      "x-requested-with": "XMLHttpRequest",
-      "Referer": public.Referer,
-      "Referrer-Policy": "strict-origin-when-cross-origin"
     }
   }).then(res => {
     // console.log(res.data.data.reservationDates[0].reservationDate);
@@ -67,14 +54,15 @@ function search() {
 
 // 往死里递归
 function postData() {
+  postData()
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
+  if (date.getHours() == 18 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 1);
+    }, 10);
   }
 }
 
@@ -87,28 +75,14 @@ function postFunction() {
     "endTime": obj.endTime,
     "showOrderId": "",
     "showSessionId": "",
-    "reservationAudienceParams": [
-      info.postData
-    ],
+    "reservationAudienceParams": info.postData,
     "src": "H5"
   }
   axios.post(public.postUrl, data,
     {
       "headers": {
-        "accept": "application/json, text/plain, */*",
-        "accept-language": "zh-CN,zh;q=0.9",
         "access-token": info.AccessToken,
-        "cache-control": "no-cache",
-        "channel-id": "",
-        "content-type": "application/json;charset=UTF-8",
-        "pragma": "no-cache",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin",
-        "terminal-src": "H5",
-        "x-requested-with": "XMLHttpRequest",
         "Referer": public.Referer,
-        "Referrer-Policy": "strict-origin-when-cross-origin"
       }
     }).then((res) => {
       console.log(res.data);

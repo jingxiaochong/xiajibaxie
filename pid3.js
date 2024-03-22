@@ -38,9 +38,7 @@ function postFunction() {
     "endTime": time.endTime,
     "showOrderId": "",
     "showSessionId": "",
-    "reservationAudienceParams": [
-      info.postData
-    ],
+    "reservationAudienceParams": info.postData,
     "src": "H5"
   }
   axios.post(public.postUrl, data,

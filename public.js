@@ -1,13 +1,13 @@
 //活动域名前缀
-exports.urlBase = '6566d890783b53000119b89d'
+exports.urlBase = '6437cab4291ee50001318391'
 // 时间信息
 exports.saveTime = {
-  data:'1710518400000',
-  startTime:'19:30',
-  endTime:'21:30'
+  data:'1711123200000',
+  startTime:'18:00',
+  endTime:'21:00'
 }
 //reservationConfigId 在local的 reserveId
-exports.reservationConfigId = '65f2d5e0b3b56a0001a5921a'
+exports.reservationConfigId = '65fc2b42cc84730001591866'
 
 // 参数
 exports.Referer = `https://${exports.urlBase}.caiyicloud.com/reserve/reserve-detail/personinfo`
