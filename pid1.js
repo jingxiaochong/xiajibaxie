@@ -62,7 +62,7 @@ function postData() {
     setTimeout(() => {
       postFunction()
       postData()
-    }, 10);
+    }, 1);
   }
 }
 
