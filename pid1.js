@@ -8,7 +8,7 @@ let flag = true
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 17 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     searchData()
   } else {
     setTimeout(() => {
@@ -54,13 +54,13 @@ function search() {
 
 // 往死里递归
 function postData() {
-  postData()
+  postFunction()
+  
   let date = new Date()
-  if (date.getHours() == 18 && date.getMinutes() == 0 && date.getSeconds() == 20) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
-      postFunction()
       postData()
     }, 1);
   }
