@@ -1,5 +1,5 @@
 const axios = require('axios')
-const info = require('./info.js')
+const info = require('./info1.js')
 const public = require('./public.js')
 
 var obj = {}
