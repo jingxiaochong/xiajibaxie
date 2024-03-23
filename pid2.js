@@ -18,13 +18,15 @@ function start() {
 // 往死里递归
 function postData() {
   postFunction(info.postData1,info.AccessToken1)
+  postFunction(info.postData2,info.AccessToken2)
+  postFunction(info.postData3,info.AccessToken3)
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     return
   } else {
     setTimeout(() => {
       postData()
-    }, 1);
+    }, 100);
   }
 }
 
