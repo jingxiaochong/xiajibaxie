@@ -6,6 +6,7 @@ var obj = {}
 let flag = true
 
 start()
+// search()
 function start() {
   let date = new Date()
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
@@ -36,6 +37,7 @@ function search() {
     // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime)
     // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime)
     // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    // return
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
       obj = {

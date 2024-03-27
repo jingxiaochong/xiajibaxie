@@ -5,7 +5,7 @@ const public = require('./public.js')
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 11 && date.getMinutes() == 59 && date.getSeconds() == 58) {
     postData()
   } else {
     setTimeout(() => {
@@ -18,15 +18,19 @@ function start() {
 // 往死里递归
 function postData() {
   postFunction(info.postData1,info.AccessToken1)
-  postFunction(info.postData2,info.AccessToken2)
-  postFunction(info.postData3,info.AccessToken3)
+  postFunction(info.postData1,info.AccessToken1)
+  postFunction(info.postData1,info.AccessToken1)
+  postFunction(info.postData1,info.AccessToken1)
+  postFunction(info.postData1,info.AccessToken1)
+  // postFunction(info.postData2,info.AccessToken2)
+  // postFunction(info.postData3,info.AccessToken3)
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
+  if (date.getHours() == 12 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {
       postData()
-    }, 100);
+    }, 10);
   }
 }
 
