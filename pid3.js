@@ -6,7 +6,7 @@ const fs = require('fs');
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 58) {
     postData()
   } else {
     setTimeout(() => {
@@ -20,7 +20,7 @@ function start() {
 function postData() {
   postFunction(info.postData1,info.AccessToken1)
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     return
   } else {
     setTimeout(() => {

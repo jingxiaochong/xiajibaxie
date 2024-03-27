@@ -1,16 +1,100 @@
-exports.AccessToken1 = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNqEkMFuwjAQRP9lzzlksbFjjiCqVmpVCcGBU-XYi4iU2MhxqgLi33HqpuqpHHc0b3dmr-D1EI8v7uBh4Ya2LWDoKeT5CnVzWXlLsICn59ePNyigH-rlryjmQthKlbJi9ZyVZYmo6krZ5EvkxrejabnbrzdJ6aLZjavtN3ggYSqNipHkI8i4sWgy-MhGcCuAvk5NoG3T0RQ8ke8nCjr6f-kxnQmk4w-MEhHlTHKBnKWC5z5SlwvmvR0Fc9Qu_n1Suj6RSnFRwCeFvvEuifmDTk_BbncAAAD__w.DpoEO7Mzc5Fd-H33xFO_dvQx0i6V_FgUjMhvZl6glhwQounp68jEix2053KsdgpqP_fPpdqL8AAumyAHJ1TR0ympZzbgQ_PEUGZ00-6radg36qx9Fg1hZzQnbQM47WOlHpP70L-na9tvbXr88R438JU3tQjX2-XhFeDDdhilVog'
-exports.AccessToken2 = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kEtPwzAQhP_LnnOIEz97LAKBBEKq6IET8mOrRkrsynEQUPW_Y2OCeuK4o_l2Z_YMQS_p-OAPATZ-GccGlhljnc9ghq-b4BA2cHf_-PYEDcyL2f6JnHHupGqF7A3r27YlRBmpXPZlchfGYtruX293WZmS3ZfV7gc0lgollepaZgsokaJjFbyyHZBbo0mnKRXFxiyyHuHSAH6chogvw4Rr8Ew-nzDqFP6lSzobUadfmAhCiOiEoj1nueDnnHCqBeveCaM9ap-un5Svr6RSijbwjnEegs9i_aDXa7DLNwAAAP__.aC8BD1lqVKmvGL0EnVG7wrAuf_ljn5cisUJwhWRH8epjxoQEt9QzxswQTyrGlq51q6Piau8VoK_Sxl6972Hv-VYJBaj_xIT_rmxdh7iEkkXEOkrnPlyTCpl9F_WVF7u0_4BgnV-S7ZV5b4z1MWyrQAlUEZ-0kl_Szs9DB7fQsM0'
-exports.AccessToken3 = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kMtOwzAQRf9l1lnEjuLYXRaBQAIhVXTBCvkxViMlduU4CKj674zlFlixsnznnjuPE0S95sND8BE2YZ2mBtYFU_2fwIxfN9EhbODu_vHtCRpYVrP9EUUvhJOqHWRn-q5tW8aUkcqRj8hdnIppu3-93ZEyZ7sv0a6AnUfLhPHK204W0A9cYFvBX1vvUVjHJOOai2IbOHfo4NwAfhzHhC_jjNfBiXw-YtI5_ktbamIT6nyB2cAYVSS9UtGCn0vGuS5Yc2dM9qBD_nsk6n4hZclt4B3TMsZAYr1g0NfBzt8AAAD__w.UNqfFvuP5ig7sFUcUElCJFkVzCWxlFfmOQKuhaVU_2u6ByB0tm78fdAKcjfK422XTRmwl8W-4qa3EvMNFl0-TtVNkzuEFHIQINdDoGYYKFFR9b0o3qP2pJs4mSyamcqj_1mD2zURY3y5WN7d-scBdIGbO6lnq4JaDJGM_tmrER8'
-exports.AccessToken4 = 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kEtPwzAQhP_LnnPwo371WFQEEgipogdOyI43aqTErhwHAVX_Ow5uUU8cdzTfzs6eINo5Hx5DF2Ed5mFoYJ4w1fkErv--ix5hDfcPT-_P0MA0u82fKIWUXhuiNHeCE0IoNU4bX3yF3MVhMW32b9tdUcbc7pfV_hd0TnHGFBbSL6AW0llewRtbh7JF75nrjFxsXAnPKJwbwM9jn_C1H_F6eCFfjphsjv_SpIS0CW2-wFRRShXTKyEMLwW_poxjLVj3jpjagw359kkl_UJqQlaigQ9MUx9DEesHg70edv4BAAD__w.Z0lOrDEUxiT_w4DJRKgrqm5-GsyrlHaE6aptyIsoi01xTMsSbqaGS0phou_1t6uf01-Ct3VQsPMtZxnu7ZXbfl-2EZxVrf0aUOzcL_ZesIuqDtOoXorK-3GF4flPrgrbA_PKFlz3wb1E6Mbog3o4955jKZVfeCmpjessQzAAphc'
+exports.AccessToken0 = ''
+exports.AccessToken1 = ''
+exports.AccessToken2 = ''
+exports.AccessToken3 = ''
+exports.AccessToken4 = ''
+exports.AccessToken5 = ''
+exports.AccessToken6 = ''
+exports.AccessToken7 = ''
+exports.AccessToken8 = ''
+exports.AccessToken9 = ''
 
-exports.postData1 = [{
-    "audienceCellphone": null,
+
+
+exports.postData0 = [{
     "audienceIdentityNumber": "411121199808210015",
     "audienceIdentityType": "ID_CARD",
     "audienceName": "井晓冲",
-    "audienceCellphone":"15324961009",
+    "audienceCellphone": "18839523550",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
+
+exports.postData1 = [{
+    "audienceIdentityNumber": "41112119980912651X",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "李一帆",
+    "audienceCellphone": "13253717245",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData2 = [{
+    "audienceIdentityNumber": "411121199901097010",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "周省身",
+    "audienceCellphone": "18839523550",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData3 = [{
+    "audienceIdentityNumber": "500103201110056528",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "蒲俊伶",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData4 = [{
+    "audienceIdentityNumber": "500103200502193818",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "毛瑞霖",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData5 = [{
+    "audienceIdentityNumber": "511725200101142626",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "覃香丽",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData6 = [{
+    "audienceIdentityNumber": "130204200411151527",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "于景帆",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData7 = [{
+    "audienceIdentityNumber": "500224200310151426",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "赵丹楠",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData8 = [{
+    "audienceIdentityNumber": "500101200801197285",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "邬科睿",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+exports.postData9 = [{
+    "audienceIdentityNumber": "500101200808101928",
+    "audienceIdentityType": "ID_CARD",
+    "audienceName": "何金宇",
+    "seatInfo": "",
+    "showOrderTicketItemId": ""
+}]
+
+
+
 
 
