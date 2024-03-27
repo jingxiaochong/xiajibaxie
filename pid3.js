@@ -1,6 +1,7 @@
 const axios = require('axios')
 const info = require('./info3.js')
 const public = require('./public.js')
+const fs = require('fs');
 
 start()
 function start() {
@@ -48,6 +49,13 @@ function postFunction(info,token) {
       }
     }).then((res) => {
       console.log(res.data);
+      if (res.data.statusCode == 200 && res.data.data.id) {
+        fs.writeFile('./test.md', res.data.data.id, err => {
+          if (err) {
+            console.error(err);
+          }
+        });
+      }
     }).catch((err) => {
       console.log(err);
     });
