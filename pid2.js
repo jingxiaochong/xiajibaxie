@@ -18,7 +18,8 @@ function start() {
 
 // 往死里递归
 function postData() {
-  postFunction(info.postData1,info.AccessToken1)
+  postFunction(info.postData0,info.AccessToken0)
+  // postFunction(info.postData1,info.AccessToken1)
   // postFunction(info.postData2,info.AccessToken2)
   // postFunction(info.postData3,info.AccessToken3)
   let date = new Date()
