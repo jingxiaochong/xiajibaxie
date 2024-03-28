@@ -2,6 +2,7 @@ const axios = require('axios')
 const info = require('./info2.js')
 const public = require('./public.js')
 const fs = require('fs');
+let ids = []
 
 start()
 function start() {
@@ -53,7 +54,8 @@ function postFunction(info,token) {
     }).then((res) => {
       console.log(res.data);
       if (res.data.statusCode == 200 && res.data.data.id) {
-        fs.writeFile('./test.md', res.data.data.id, err => {
+        ids.push(res.data.data.id)
+        fs.writeFile('./ids2.md', JSON.stringify(ids), err => {
           if (err) {
             console.error(err);
           }
