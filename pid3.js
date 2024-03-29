@@ -34,7 +34,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 10);
+    }, 2);
   }
 }
 
