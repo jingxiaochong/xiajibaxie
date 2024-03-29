@@ -15,7 +15,7 @@ exports.postData0 = [{
     "audienceIdentityNumber": "411121199808210015",
     "audienceIdentityType": "ID_CARD",
     "audienceName": "井晓冲",
-    "audienceCellphone": "15539502921",
+    "audienceCellphone": "15324961009",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
@@ -39,57 +39,57 @@ exports.postData2 = [{
 }]
 
 exports.postData3 = [{
-    "audienceIdentityNumber": "500103201110056528",
+    "audienceIdentityNumber": "34128220040915244X",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "蒲俊伶",
+    "audienceName": "于默涵",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData4 = [{
-    "audienceIdentityNumber": "500103200502193818",
+    "audienceIdentityNumber": "330329199707021830",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "毛瑞霖",
+    "audienceName": "王捷",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData5 = [{
-    "audienceIdentityNumber": "511725200101142626",
+    "audienceIdentityNumber": "34252419950519842X",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "覃香丽",
+    "audienceName": "方思佳",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData6 = [{
-    "audienceIdentityNumber": "130204200411151527",
+    "audienceIdentityNumber": "342422200410091088",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "于景帆",
+    "audienceName": "张洁",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData7 = [{
-    "audienceIdentityNumber": "500224200310151426",
+    "audienceIdentityNumber": "330411200502165424",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "赵丹楠",
+    "audienceName": "水清煜",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData8 = [{
-    "audienceIdentityNumber": "500101200801197285",
+    "audienceIdentityNumber": "140123199807100216",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "邬科睿",
+    "audienceName": "何子皓",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData9 = [{
-    "audienceIdentityNumber": "500101200808101928",
+    "audienceIdentityNumber": "140123200007150624",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "何金宇",
+    "audienceName": "王旭芬",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]

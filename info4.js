@@ -39,57 +39,57 @@ exports.postData2 = [{
 }]
 
 exports.postData3 = [{
-    "audienceIdentityNumber": "500103201110056528",
+    "audienceIdentityNumber": "320681200510140030",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "蒲俊伶",
+    "audienceName": "胡轩玮",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData4 = [{
-    "audienceIdentityNumber": "500103200502193818",
+    "audienceIdentityNumber": "320582200006163621",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "毛瑞霖",
+    "audienceName": "王可欣",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData5 = [{
-    "audienceIdentityNumber": "511725200101142626",
+    "audienceIdentityNumber": "320581200410110445",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "覃香丽",
+    "audienceName": "钱怡楠",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData6 = [{
-    "audienceIdentityNumber": "130204200411151527",
+    "audienceIdentityNumber": "33022519950908002X",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "于景帆",
+    "audienceName": "孙倩滢",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData7 = [{
-    "audienceIdentityNumber": "500224200310151426",
+    "audienceIdentityNumber": "320112200612030828",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "赵丹楠",
+    "audienceName": "汤小萱",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData8 = [{
-    "audienceIdentityNumber": "500101200801197285",
+    "audienceIdentityNumber": "330283199807066019",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "邬科睿",
+    "audienceName": "翁蹿腾",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
 
 exports.postData9 = [{
-    "audienceIdentityNumber": "500101200808101928",
+    "audienceIdentityNumber": "330283199811050060",
     "audienceIdentityType": "ID_CARD",
-    "audienceName": "何金宇",
+    "audienceName": "傅钰涵",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
