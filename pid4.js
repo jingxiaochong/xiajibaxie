@@ -8,7 +8,7 @@ let ids = []
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 59) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 59) {
     setTimeout(() => {
       postData()
     }, 700);
@@ -26,7 +26,7 @@ function postData() {
     postFunction(info['postData'+index],info['AccessToken'+index])
   }
   let date = new Date()
-  if (date.getHours() == 16 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     fs.writeFile('./ids4.md', JSON.stringify(ids), err => {
       if (err) {
         console.error(err);

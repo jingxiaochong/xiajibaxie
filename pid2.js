@@ -5,10 +5,11 @@ const public = require('./public.js')
 const fs = require('fs');
 let ids = []
 
+// postFunction(info.postData0,info.AccessToken0)
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 57) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 57) {
     postData()
   } else {
     setTimeout(() => {
@@ -25,7 +26,7 @@ function postData() {
   }
 
   let date = new Date()
-  if (date.getHours() == 16 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     fs.writeFile('./ids2.md', JSON.stringify(ids), err => {
       if (err) {
         console.error(err);
