@@ -7,7 +7,7 @@ let ids = []
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 59) {
+  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 58) {
     postData()
   } else {
     setTimeout(() => {
