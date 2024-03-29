@@ -15,7 +15,7 @@ exports.postData0 = [{
     "audienceIdentityNumber": "411121199808210015",
     "audienceIdentityType": "ID_CARD",
     "audienceName": "井晓冲",
-    "audienceCellphone": "18839523550",
+    "audienceCellphone": "15539502921",
     "seatInfo": "",
     "showOrderTicketItemId": ""
 }]
