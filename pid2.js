@@ -1,13 +1,19 @@
+// 服务器 0
 const axios = require('axios')
 const info = require('./info2.js')
 const public = require('./public.js')
 const fs = require('fs');
 let ids = []
 
-start()
+fs.writeFile('./ids2.md', 'fasfasfafasfas', err => {
+  if (err) {
+    console.error(err);
+  }
+});
+// start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 59) {
+  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 58) {
     postData()
   } else {
     setTimeout(() => {
@@ -25,11 +31,16 @@ function postData() {
 
   let date = new Date()
   if (date.getHours() == 16 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+    fs.writeFile('./ids2.md', JSON.stringify(ids), err => {
+      if (err) {
+        console.error(err);
+      }
+    });
     return
   } else {
     setTimeout(() => {
       postData()
-    }, 100);
+    }, 300);
   }
 }
 
@@ -55,11 +66,6 @@ function postFunction(info,token) {
       console.log(res.data);
       if (res.data.statusCode == 200 && res.data.data.id) {
         ids.push(res.data.data.id)
-        fs.writeFile('./ids2.md', JSON.stringify(ids), err => {
-          if (err) {
-            console.error(err);
-          }
-        });
       }
     }).catch((err) => {
       console.log(err);

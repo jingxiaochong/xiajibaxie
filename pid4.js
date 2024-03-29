@@ -1,3 +1,4 @@
+//mac 0个
 const axios = require('axios')
 const info = require('./info4.js')
 const public = require('./public.js')
@@ -24,11 +25,16 @@ function postData() {
   }
   let date = new Date()
   if (date.getHours() == 16 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+    fs.writeFile('./ids4.md', JSON.stringify(ids), err => {
+      if (err) {
+        console.error(err);
+      }
+    });
     return
   } else {
     setTimeout(() => {
       postData()
-    }, 100);
+    }, 400);
   }
 }
 
@@ -54,11 +60,6 @@ function postFunction(info,token) {
       console.log(res.data);
       if (res.data.statusCode == 200 && res.data.data.id) {
         ids.push(res.data.data.id)
-        fs.writeFile('./ids4.md', JSON.stringify(ids), err => {
-          if (err) {
-            console.error(err);
-          }
-        });
       }
     }).catch((err) => {
       console.log(err);
