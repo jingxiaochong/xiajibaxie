@@ -5,10 +5,10 @@ const public = require('./public.js')
 const fs = require('fs');
 let ids = []
 
-start()
+postData()
 function start() {
   let date = new Date()
-  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 58) {
+  if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 57) {
     postData()
   } else {
     setTimeout(() => {
@@ -35,7 +35,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 10);
+    }, 1);
   }
 }
 
