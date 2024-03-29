@@ -5,12 +5,7 @@ const public = require('./public.js')
 const fs = require('fs');
 let ids = []
 
-fs.writeFile('./ids2.md', 'fasfasfafasfas', err => {
-  if (err) {
-    console.error(err);
-  }
-});
-// start()
+start()
 function start() {
   let date = new Date()
   if (date.getHours() == 15 && date.getMinutes() == 59 && date.getSeconds() == 58) {
@@ -25,7 +20,7 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (let index = 0; index < 10; index++) {
+  for (let index = 0; index < 3; index++) {
     postFunction(info['postData'+index],info['AccessToken'+index])
   }
 
@@ -40,7 +35,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 300);
+    }, 10);
   }
 }
 
