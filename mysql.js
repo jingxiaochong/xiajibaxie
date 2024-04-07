@@ -18,7 +18,7 @@ connection.connect(function (err) {
 function createTable(params) {
   let createTodos = `create table if not exists tokens(
     id int AUTO_INCREMENT PRIMARY KEY,
-    access_token varchar(21840)
+    access_token varchar(21840) NOT NULL
   );
   `;
 
@@ -45,8 +45,8 @@ function deleteTable() {
     console.log('Table dropped successfully');
   });
 }
-
-// createTable()
+deleteTable()
+createTable()
 
 // connection.query('INSERT INTO tokens (id, access_token) VALUES (1, "token")', function (err, results, fields) {
 //   if (err) {
