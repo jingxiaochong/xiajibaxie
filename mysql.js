@@ -46,7 +46,7 @@ function deleteTable() {
   });
 }
 // deleteTable()
-// createTable()
+createTable()
 
 // connection.query('INSERT INTO tokens (id, access_token) VALUES (1, "token")', function (err, results, fields) {
 //   if (err) {
@@ -57,11 +57,11 @@ function deleteTable() {
 // })
 
 
-// connection.end(function (err) {
-//   if (err) {
-//     return console.log(err.message);
-//   }
-// });
+connection.end(function (err) {
+  if (err) {
+    return console.log(err.message);
+  }
+});
 
 
 
