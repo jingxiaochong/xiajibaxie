@@ -45,8 +45,8 @@ function deleteTable() {
     console.log('Table dropped successfully');
   });
 }
-deleteTable()
-createTable()
+// deleteTable()
+// createTable()
 
 // connection.query('INSERT INTO tokens (id, access_token) VALUES (1, "token")', function (err, results, fields) {
 //   if (err) {
