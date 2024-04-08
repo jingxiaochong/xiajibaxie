@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
 
 app.post('/addToken', (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO tokens (access_token) VALUES (${req.body.token})`, function (err, results, fields) {
+  connection.query(`INSERT INTO tokens (access_token) VALUES ('${req.body.token}')`, function (err, results, fields) {
     if (err) {
       return res.send(err)
     }
