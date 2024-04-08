@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4396
 
 const connection = mysql.createConnection({
-  host: 'localhost',
+  host: '116.62.122.121',
+  port:'3306',
   user: 'root',
   password: 'jxc123456',
   charset: 'utf8',
@@ -19,7 +20,7 @@ app.post('/addToken', (req, res) => {
   console.log(req.body);
   connection.query(`INSERT INTO tokens (access_token) VALUES (${req.body.token})`, function (err, results, fields) {
     if (err) {
-      return res.send('error')
+      return res.send(err)
     }
     res.send('success')
   })
@@ -28,7 +29,7 @@ app.post('/addToken', (req, res) => {
 app.get('/clearToken', (req, res) => {
   connection.query('DELETE FROM tokens', function (err, results, fields) {
     if (err) {
-      return res.send('error')
+      return res.send(err)
     }
     res.send('success')
   })

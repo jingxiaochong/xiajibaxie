@@ -3,6 +3,17 @@ const axios = require('axios')
 const info = require('./info2.js')
 const public = require('./public.js')
 const fs = require('fs');
+
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: '116.62.122.121',
+  port:'3306',
+  user: 'root',
+  password: 'jxc123456',
+  charset: 'utf8',
+  database: 'info'
+})
+
 let ids = []
 
 // postFunction(info.postData0,info.AccessToken0)
