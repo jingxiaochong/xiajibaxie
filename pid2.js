@@ -5,26 +5,41 @@ const fs = require('fs');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: '116.62.122.121',
-  port:'3306',
+  port: '3306',
   user: 'root',
   password: 'jxc123456',
   charset: 'utf8',
   database: 'info'
 })
-
 let list = []
-connection.query(`SELECT * FROM tokens;`,(error, results, fields) => {
-  if (error){
+connection.query(`SELECT * FROM tokens;`, (error, results, fields) => {
+  if (error) {
     console.log(error);
   }
   for (const item of results) {
-    list.push(item.access_token)
+    list.push({
+      token: item.access_token, info: {
+        "audienceIdentityNumber": item.card_id,
+        "audienceIdentityType": "ID_CARD",
+        "audienceName": item.user,
+        "audienceCellphone": item.phone,
+        "seatInfo": "",
+        "showOrderTicketItemId": ""
+      }
+    })
   }
 })
+connection.end(function (err) {
+  if (err) {
+    return console.log(err.message);
+  }
+});
 
-
+setTimeout(() => {
+  console.log(list);
+  // postFunction(list[2].info, list[2].token)
+}, 1000);
 let ids = []
-
 start()
 function start() {
   let date = new Date()
@@ -40,8 +55,8 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (let index = 0; index < 3; index++) {
-    postFunction(info['postData'+index],info['AccessToken'+index])
+  for (const item of list) {
+    postFunction(item.info, item.token)
   }
 
   let date = new Date()
@@ -60,13 +75,12 @@ function postData() {
 }
 
 
-function postFunction(info,token) {
-  let time = public.saveTime
+function postFunction(info, token) {
   let data = {
     "reservationConfigId": public.reservationConfigId,
-    "reservationDate":time.data,
-    "startTime": time.startTime,
-    "endTime": time.endTime,
+    "reservationDate": public.saveTime.data,
+    "startTime": public.saveTime.startTime,
+    "endTime": public.saveTime.endTime,
     "showOrderId": "",
     "showSessionId": "",
     "reservationAudienceParams": info,
