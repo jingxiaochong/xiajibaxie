@@ -9,7 +9,7 @@ const port = 4396
 
 const connection = mysql.createConnection({
   host: '116.62.122.121',
-  port:'3306',
+  port: '3306',
   user: 'root',
   password: 'jxc123456',
   charset: 'utf8',
@@ -18,7 +18,7 @@ const connection = mysql.createConnection({
 
 app.post('/addToken', (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO tokens (access_token) VALUES ('${req.body.token}')`, function (err, results, fields) {
+  connection.query(`INSERT INTO tokens (access_token,user,card_id,phone) VALUES ('${req.body.token}','${req.body.user_name}','${req.body.card_id}','${req.body.phone}')`, function (err, results, fields) {
     if (err) {
       return res.send(err)
     }

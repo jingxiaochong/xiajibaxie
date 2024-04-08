@@ -1,9 +1,7 @@
 // 服务器 0
 const axios = require('axios')
-const info = require('./info2.js')
 const public = require('./public.js')
 const fs = require('fs');
-
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: '116.62.122.121',
@@ -14,9 +12,19 @@ const connection = mysql.createConnection({
   database: 'info'
 })
 
+let list = []
+connection.query(`SELECT * FROM tokens;`,(error, results, fields) => {
+  if (error){
+    console.log(error);
+  }
+  for (const item of results) {
+    list.push(item.access_token)
+  }
+})
+
+
 let ids = []
 
-// postFunction(info.postData0,info.AccessToken0)
 start()
 function start() {
   let date = new Date()

@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const connection = mysql.createConnection({
   host: '116.62.122.121',
-  port:'3306',
+  port: '3306',
   user: 'root',
   password: 'jxc123456',
   charset: 'utf8',
@@ -14,6 +14,24 @@ connection.connect(function (err) {
     return console.error(err);
   }
 });
+
+// 修改长度
+// connection.query(`ALTER TABLE tokens MODIFY COLUMN access_token VARCHAR(1000)`,[5], function (error, results, fields) {
+//   if (error) {
+//     return console.error(error);
+//   }
+// })
+
+// 加字段
+// connection.query(`
+// ALTER TABLE tokens
+// ADD COLUMN user VARCHAR(255),
+// ADD COLUMN card_id VARCHAR(255),
+// ADD COLUMN phone VARCHAR(255)
+// `, function (error, results, fields) {
+//   if (error) { console.log(error); }
+//   console.log('success');
+// })
 
 
 function createTable(params) {
