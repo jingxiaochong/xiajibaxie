@@ -5,3 +5,10 @@
 青岛场：https://wap.showstart.com/pages/order/activity/confirm/confirm?sequence=218092&ticketId=08af0377cf0a74d673a845b82e5b0ded&ticketNum=2
 
 重庆场：https://wap.showstart.com/pages/order/activity/confirm/confirm?sequence=218761&ticketId=b063e49d96b7d731e21fdbc8841fb4d3&ticketNum=2
+
+
+
+cd /usr/local/caiyiCode/
+git pull
+npm install
+pm2 start pid2.js

@@ -37,7 +37,10 @@ connection.connect(function (err) {
 function createTable(params) {
   let createTodos = `create table if not exists tokens(
     id int AUTO_INCREMENT PRIMARY KEY,
-    access_token varchar(21840) NOT NULL
+    access_token varchar(1000) NOT NULL,
+    user varchar(255),
+    card_id VARCHAR(255),
+    phone VARCHAR(255)
   );
   `;
 
@@ -51,12 +54,8 @@ function createTable(params) {
 
 
 function deleteTable() {
-  // 定义要删除的表格名称
-  const tableName = 'tokens';
-  // 构建删除表格的SQL语句
-  const dropTableQuery = `DROP TABLE IF EXISTS ${tableName}`;
   // 执行SQL语句删除表格
-  connection.query(dropTableQuery, (err, results, fields) => {
+  connection.query(`DROP TABLE IF EXISTS tokens`, (err, results, fields) => {
     if (err) {
       console.error('Error dropping table: ' + err.message);
       return;
@@ -65,7 +64,7 @@ function deleteTable() {
   });
 }
 // deleteTable()
-// createTable()
+createTable()
 
 // connection.query('INSERT INTO tokens (id, access_token) VALUES (1, "token")', function (err, results, fields) {
 //   if (err) {
@@ -75,6 +74,42 @@ function deleteTable() {
 //   console.log('success');
 // })
 
+// connection.query(`DROP TABLE IF EXISTS succeed`, (err, results, fields) => {
+//   if (err) {
+//     console.error(err);
+//     return;
+//   }
+//   console.log('Table dropped successfully');
+// });
+
+// var values = [
+//   ["index", "www.alibaba.com"],
+//   ["index1", "www.google.com"]
+// ];
+
+// connection.query('INSERT INTO succeed(access_token,succeed_id) VALUES ?', [values], function (err, rows, fields) {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log("INSERT SUCCESS");
+// });
+
+
+// let createTodos = `create table if not exists succeed(
+//   id int AUTO_INCREMENT PRIMARY KEY,
+//   access_token varchar(1000),
+//   succeed_id varchar(255)
+// );
+// `;
+
+// connection.query(createTodos, function (err, results, fields) {
+//   if (err) {
+//     console.log(err.message);
+//   }
+// });
+
+// connection.query('DELETE FROM succeed')
 
 // connection.end(function (err) {
 //   if (err) {

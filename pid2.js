@@ -1,7 +1,6 @@
 // 服务器 0
 const axios = require('axios')
 const public = require('./public.js')
-const fs = require('fs');
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: '116.62.122.121',
@@ -36,8 +35,7 @@ connection.end(function (err) {
 });
 
 setTimeout(() => {
-  console.log(list);
-  // postFunction(list[2].info, list[2].token)
+  postFunction(list[0].info, list[0].token)
 }, 1000);
 let ids = []
 start()
@@ -61,9 +59,25 @@ function postData() {
 
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
-    fs.writeFile('./ids2.md', JSON.stringify(ids), err => {
+    let connectSuccend = mysql.createConnection({
+      host: '116.62.122.121',
+      port: '3306',
+      user: 'root',
+      password: 'jxc123456',
+      charset: 'utf8',
+      database: 'info'
+    })
+
+    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
       if (err) {
-        console.error(err);
+        return console.log(err);
+      }
+      console.log('success')
+    })
+
+    connectSuccend.end(function (err) {
+      if (err) {
+        return console.log(err);
       }
     });
     return
@@ -83,7 +97,7 @@ function postFunction(info, token) {
     "endTime": public.saveTime.endTime,
     "showOrderId": "",
     "showSessionId": "",
-    "reservationAudienceParams": info,
+    "reservationAudienceParams": [info],
     "src": "H5"
   }
   axios.post(public.postUrl, data,
@@ -94,7 +108,7 @@ function postFunction(info, token) {
     }).then((res) => {
       console.log(res.data);
       if (res.data.statusCode == 200 && res.data.data.id) {
-        ids.push(res.data.data.id)
+        ids.push([token, res.data.data.id])
       }
     }).catch((err) => {
       console.log(err);

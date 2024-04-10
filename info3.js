@@ -157,6 +157,46 @@ exports.postData9 = [{
 //     "showOrderTicketItemId": ""
 // }]
 
+// exports.postData5 = [{
+//     "audienceIdentityNumber": "320581200410110445",
+//     "audienceIdentityType": "ID_CARD",
+//     "audienceName": "钱怡楠",
+//     "seatInfo": "",
+//     "showOrderTicketItemId": ""
+// }]
+
+// exports.postData6 = [{
+//     "audienceIdentityNumber": "33022519950908002X",
+//     "audienceIdentityType": "ID_CARD",
+//     "audienceName": "孙倩滢",
+//     "seatInfo": "",
+//     "showOrderTicketItemId": ""
+// }]
+
+// exports.postData7 = [{
+//     "audienceIdentityNumber": "320112200612030828",
+//     "audienceIdentityType": "ID_CARD",
+//     "audienceName": "汤小萱",
+//     "seatInfo": "",
+//     "showOrderTicketItemId": ""
+// }]
+
+// exports.postData8 = [{
+//     "audienceIdentityNumber": "330283199807066019",
+//     "audienceIdentityType": "ID_CARD",
+//     "audienceName": "翁蹿腾",
+//     "seatInfo": "",
+//     "showOrderTicketItemId": ""
+// }]
+
+// exports.postData9 = [{
+//     "audienceIdentityNumber": "330283199811050060",
+//     "audienceIdentityType": "ID_CARD",
+//     "audienceName": "傅钰涵",
+//     "seatInfo": "",
+//     "showOrderTicketItemId": ""
+// }]
+
 
 
 
