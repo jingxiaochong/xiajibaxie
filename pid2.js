@@ -1,6 +1,17 @@
 const axios = require('axios')
 const public = require('./public.js')
 const mysql = require('mysql');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+} else {
+  console.log(`Worker ${process.pid} started`);
+}
+
 const connection = mysql.createConnection({
   host: '116.62.122.121',
   port: '3306',
@@ -37,7 +48,7 @@ connection.end(function (err) {
 //   postFunction(list[0].info, list[0].token)
 // }, 1000);
 let ids = []
-postData()
+start()
 function start() {
   let date = new Date()
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 57) {
@@ -52,19 +63,9 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (let index = 0; index < 100; index++) {
-    for (const item of list) {
-      postFunction(item.info, item.token)
-    }
+  for (const item of list) {
+    postFunction(item.info, item.token)
   }
-// setTimeout(() => {
-//   for (let index = 0; index < 100; index++) {
-//     for (const item of list) {
-//       postFunction(item.info, item.token)
-//     }
-//   }
-// }, 0);
-
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
     let connectSuccend = mysql.createConnection({
@@ -76,7 +77,7 @@ function postData() {
       database: 'info'
     })
 
-    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ ids ], function (err, results, fields) {
+    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
       if (err) {
         return console.log(err);
       }
