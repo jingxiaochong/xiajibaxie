@@ -52,9 +52,18 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (const item of list) {
-    postFunction(item.info, item.token)
+  for (let index = 0; index < 100; index++) {
+    for (const item of list) {
+      postFunction(item.info, item.token)
+    }
   }
+// setTimeout(() => {
+//   for (let index = 0; index < 100; index++) {
+//     for (const item of list) {
+//       postFunction(item.info, item.token)
+//     }
+//   }
+// }, 0);
 
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
