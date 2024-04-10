@@ -24,10 +24,8 @@ connection.connect(function (err) {
 
 // 加字段
 // connection.query(`
-// ALTER TABLE tokens
-// ADD COLUMN user VARCHAR(255),
-// ADD COLUMN card_id VARCHAR(255),
-// ADD COLUMN phone VARCHAR(255)
+// ALTER TABLE active_info
+// ADD COLUMN urlBase VARCHAR(100)
 // `, function (error, results, fields) {
 //   if (error) { console.log(error); }
 //   console.log('success');
@@ -64,7 +62,7 @@ function deleteTable() {
   });
 }
 // deleteTable()
-createTable()
+// createTable()
 
 // connection.query('INSERT INTO tokens (id, access_token) VALUES (1, "token")', function (err, results, fields) {
 //   if (err) {
@@ -96,10 +94,12 @@ createTable()
 // });
 
 
-// let createTodos = `create table if not exists succeed(
+// let createTodos = `create table if not exists active_info(
 //   id int AUTO_INCREMENT PRIMARY KEY,
-//   access_token varchar(1000),
-//   succeed_id varchar(255)
+//   data varchar(100),
+//   startTime varchar(100),
+//   endTime varchar(100),
+//   reservationConfigId varchar(100)
 // );
 // `;
 

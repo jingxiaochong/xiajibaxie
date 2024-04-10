@@ -1,3 +1,23 @@
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: '116.62.122.121',
+  port: '3306',
+  user: 'root',
+  password: 'jxc123456',
+  charset: 'utf8',
+  database: 'info'
+})
+connection.query(`SELECT * FROM active_info;`, (error, results, fields) => {
+  if (error) {
+    console.log(error);
+  }
+
+})
+connection.end(function (err) {
+  if (err) {
+    return console.log(err.message);
+  }
+});
 //活动域名前缀
 exports.urlBase = '6437cab4291ee50001318391'
 // 时间信息

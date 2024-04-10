@@ -1,4 +1,3 @@
-// 服务器 0
 const axios = require('axios')
 const public = require('./public.js')
 const mysql = require('mysql');
