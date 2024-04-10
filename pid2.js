@@ -33,11 +33,11 @@ connection.end(function (err) {
   }
 });
 
-setTimeout(() => {
-  postFunction(list[0].info, list[0].token)
-}, 1000);
+// setTimeout(() => {
+//   postFunction(list[0].info, list[0].token)
+// }, 1000);
 let ids = []
-start()
+postData()
 function start() {
   let date = new Date()
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 57) {
@@ -67,7 +67,7 @@ function postData() {
       database: 'info'
     })
 
-    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ ids ], function (err, results, fields) {
       if (err) {
         return console.log(err);
       }
