@@ -44,9 +44,11 @@ connection.end(function (err) {
   }
 });
 
-// setTimeout(() => {
-//   postFunction(list[0].info, list[0].token)
-// }, 1000);
+setTimeout(() => {
+  postFunction(list[0].info, list[0].token)
+  console.log(public);
+  console.log(list);
+}, 1000);
 let ids = []
 start()
 function start() {
