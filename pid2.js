@@ -73,27 +73,29 @@ function postData() {
   }
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
-    let connectSuccend = mysql.createConnection({
-      host: '116.62.122.121',
-      port: '3306',
-      user: 'root',
-      password: 'jxc123456',
-      charset: 'utf8',
-      database: 'info'
-    })
+    setTimeout(() => {
+      let connectSuccend = mysql.createConnection({
+        host: '116.62.122.121',
+        port: '3306',
+        user: 'root',
+        password: 'jxc123456',
+        charset: 'utf8',
+        database: 'info'
+      })
 
-    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log('success')
-    })
+      connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log('success')
+      })
 
-    connectSuccend.end(function (err) {
-      if (err) {
-        return console.log(err);
-      }
-    });
+      connectSuccend.end(function (err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
+    }, 10000);
     return
   } else {
     setTimeout(() => {
