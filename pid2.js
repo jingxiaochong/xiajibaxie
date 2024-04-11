@@ -63,8 +63,10 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (const item of list) {
-    postFunction(item.info, item.token)
+  for (let index = 0; index < 10; index++) {
+    for (const item of list) {
+      postFunction(item.info, item.token)
+    }
   }
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
