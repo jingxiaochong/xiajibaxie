@@ -12,6 +12,7 @@ if (cluster.isMaster) {
   console.log(`Worker ${process.pid} started`);
 }
 
+console.log(123);
 const connection = mysql.createConnection({
   host: '116.62.122.121',
   port: '3306',
