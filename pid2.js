@@ -53,7 +53,7 @@ let ids = []
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 57) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
     postData()
   } else {
     setTimeout(() => {
