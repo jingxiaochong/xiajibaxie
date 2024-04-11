@@ -49,6 +49,7 @@ setTimeout(() => {
   postFunction(list[0].info, list[0].token)
   console.log(public);
   console.log(list);
+  postData()
 }, 1000);
 let ids = []
 start()
