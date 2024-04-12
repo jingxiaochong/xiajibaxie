@@ -1,6 +1,13 @@
 const axios = require('axios')
 const public = require('./public.js')
 const mysql = require('mysql');
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
+if (cluster.isMaster) {
+  for (let i = 0; i < 4; i++) {
+    cluster.fork();
+  }
+}
 
 let flag = true
 const connection = mysql.createConnection({
@@ -37,14 +44,14 @@ connection.end(function (err) {
 setTimeout(() => {
   console.log(public);
   console.log(list);
-  // search()
+  search()
 }, 1000);
 let ids = []
 
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 22 && date.getMinutes() == 45 && date.getSeconds() == 50) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     searchData()
   } else {
     setTimeout(() => {
