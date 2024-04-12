@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 8; i++) {
     cluster.fork();
   }
 }

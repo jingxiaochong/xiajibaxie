@@ -67,7 +67,7 @@ function postData() {
     postFunction(item.info, item.token)
   }
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 1) {
     if (ids.length != 0) {
       setTimeout(() => {
         let connectSuccend = mysql.createConnection({
@@ -97,7 +97,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 1000);
+    }, 1);
   }
 }
 
