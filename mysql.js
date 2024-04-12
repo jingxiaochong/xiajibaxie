@@ -109,6 +109,15 @@ function deleteTable() {
 //   }
 // });
 
+
+
+// connection.query('SELECT * FROM tokens', function (err, results, fields) {
+//   if (err) {
+//     return res.send(err)
+//   }
+//   console.log(results);
+// })
+
 // connection.query('DELETE FROM succeed')
 
 // connection.end(function (err) {

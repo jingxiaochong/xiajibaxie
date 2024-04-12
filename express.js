@@ -37,6 +37,16 @@ app.get('/clearToken', (req, res) => {
   })
 })
 
+// 获取token
+app.get('/getTokenList', (req, res) => {
+  connection.query('SELECT * FROM tokens', function (err, results, fields) {
+    if (err) {
+      return res.send(err)
+    }
+    res.send(results)
+  })
+})
+
 // 清空列表
 app.get('/clearTable', (req, res) => {
   connection.query('DELETE FROM succeed', function (err, results, fields) {
