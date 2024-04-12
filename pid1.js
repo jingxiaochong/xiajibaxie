@@ -9,6 +9,7 @@ if (cluster.isMaster) {
   }
 }
 
+let str = ''
 let flag = true
 const connection = mysql.createConnection({
   host: '116.62.122.121',
@@ -82,6 +83,8 @@ function search() {
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
       postData()
+      let date = new Date()
+      str = date.getSeconds()
     }
   }).catch(res => {
     console.log(res);
@@ -96,32 +99,33 @@ function postData() {
     postFunction(item.info, item.token)
   }
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 30) {
     if (ids.length != 0) {
-      setTimeout(() => {
-        let connectSuccend = mysql.createConnection({
-          host: '116.62.122.121',
-          port: '3306',
-          user: 'root',
-          password: 'jxc123456',
-          charset: 'utf8',
-          database: 'info'
-        })
+      let connectSuccend = mysql.createConnection({
+        host: '116.62.122.121',
+        port: '3306',
+        user: 'root',
+        password: 'jxc123456',
+        charset: 'utf8',
+        database: 'info'
+      })
 
-        connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-          if (err) {
-            return console.log(err);
-          }
-          console.log('success')
-        })
+      connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log('success')
+      })
 
-        connectSuccend.end(function (err) {
-          if (err) {
-            return console.log(err);
-          }
-        });
-      }, 1);
+      connectSuccend.end(function (err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
     }
+    setTimeout(() => {
+      console.log(str);
+    }, 30);
     return
   } else {
     setTimeout(() => {
