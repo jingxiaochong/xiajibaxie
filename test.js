@@ -53,48 +53,41 @@ function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
         setTimeout(() => {
-            postData()
+            for (const item of list) {
+                postFunction(item.info, item.token)
+            }
+            setTimeout(() => {
+                if (ids.length != 0) {
+                    setTimeout(() => {
+                        let connectSuccend = mysql.createConnection({
+                            host: '116.62.122.121',
+                            port: '3306',
+                            user: 'root',
+                            password: 'jxc123456',
+                            charset: 'utf8',
+                            database: 'info'
+                        })
+
+                        connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+                            if (err) {
+                                return console.log(err);
+                            }
+                            console.log('success')
+                        })
+
+                        connectSuccend.end(function (err) {
+                            if (err) {
+                                return console.log(err);
+                            }
+                        });
+                    }, timeout);
+                }
+            }, 50000);
         }, timeout);
     } else {
         setTimeout(() => {
             start()
         }, 1);
-    }
-}
-
-
-function postData() {
-    for (const item of list) {
-        postFunction(item.info, item.token)
-    }
-    let date = new Date()
-    if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 25) {
-        if (ids.length != 0) {
-            setTimeout(() => {
-                let connectSuccend = mysql.createConnection({
-                    host: '116.62.122.121',
-                    port: '3306',
-                    user: 'root',
-                    password: 'jxc123456',
-                    charset: 'utf8',
-                    database: 'info'
-                })
-
-                connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    console.log('success')
-                })
-
-                connectSuccend.end(function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                });
-            }, timeout);
-        }
-        return
     }
 }
 
