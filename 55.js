@@ -12,6 +12,11 @@ const numCPUs = require('os').cpus().length;
 //   console.log(`Worker ${process.pid} started`);
 // }
 
+axios.get('http://116.62.122.121:4396/getNumbers').then((res) => {
+  // console.log(res.data.data);
+  console.log(123);
+}).catch((err) => {})
+return
 const connection = mysql.createConnection({
   host: '116.62.122.121',
   port: '3306',
