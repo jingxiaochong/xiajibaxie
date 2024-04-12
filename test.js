@@ -80,9 +80,9 @@ function start() {
                                 return console.log(err);
                             }
                         });
-                    }, timeout);
+                    }, num * 50);
                 }
-            }, 50000);
+            }, 30000);
         }, timeout);
     } else {
         setTimeout(() => {
