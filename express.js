@@ -74,8 +74,7 @@ let num = 0
 // 记录访问次数
 app.get('/getNumbers',(req,res) => {
   num += 1
-  res.send('ggg')
-  // res.send(`'${num}'`)
+  res.send(`'${num}'`)
 })
 
 
