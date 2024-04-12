@@ -5,7 +5,9 @@ const public = require('./public.js')
 const fs = require('fs');
 let ids = []
 
-// postFunction(info.postData0,info.AccessToken0)
+setTimeout(() => {
+  postFunction(info.postData0,info.AccessToken0)
+}, 1000);
 start()
 function start() {
   let date = new Date()
@@ -22,7 +24,8 @@ function start() {
 // 往死里递归
 function postData() {
   for (let index = 0; index < 10; index++) {
-    postFunction(info['postData'+index],info['AccessToken'+index])
+    postFunction(info.postData0,info.AccessToken0)
+    // postFunction(info['postData'+index],info['AccessToken'+index])
   }
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
@@ -35,7 +38,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 2);
+    }, 1);
   }
 }
 
