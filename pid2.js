@@ -4,13 +4,13 @@ const mysql = require('mysql');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 
-if (cluster.isMaster) {
-  for (let i = 0; i < numCPUs; i++) {
-    cluster.fork();
-  }
-} else {
-  console.log(`Worker ${process.pid} started`);
-}
+// if (cluster.isMaster) {
+//   for (let i = 0; i < numCPUs; i++) {
+//     cluster.fork();
+//   }
+// } else {
+//   console.log(`Worker ${process.pid} started`);
+// }
 
 const connection = mysql.createConnection({
   host: '116.62.122.121',
@@ -45,9 +45,9 @@ connection.end(function (err) {
 });
 
 setTimeout(() => {
-  postFunction(list[0].info, list[0].token)
-  console.log(public);
-  console.log(list);
+    postFunction(list[0].info, list[0].token)
+  // console.log(public);
+  // console.log(list);
 }, 1000);
 let ids = []
 start()
