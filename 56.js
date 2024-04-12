@@ -51,7 +51,7 @@ let ids = []
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 0 && date.getSeconds() == 0) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 56) {
     postData()
   } else {
     setTimeout(() => {
@@ -91,7 +91,7 @@ function postData() {
             return console.log(err);
           }
         });
-      }, 10000);
+      }, 100);
     }
     return
   } else {

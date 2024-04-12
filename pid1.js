@@ -44,7 +44,7 @@ connection.end(function (err) {
 setTimeout(() => {
   console.log(public);
   console.log(list);
-  search()
+  searchData()
 }, 1000);
 let ids = []
 
