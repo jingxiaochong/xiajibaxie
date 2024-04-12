@@ -12,7 +12,6 @@ if (cluster.isMaster) {
   console.log(`Worker ${process.pid} started`);
 }
 
-console.log(123);
 const connection = mysql.createConnection({
   host: '116.62.122.121',
   port: '3306',
@@ -41,7 +40,7 @@ connection.query(`SELECT * FROM tokens;`, (error, results, fields) => {
 })
 connection.end(function (err) {
   if (err) {
-    return console.log(err.message);
+    return console.log(err);
   }
 });
 
@@ -66,10 +65,8 @@ function start() {
 
 // 往死里递归
 function postData() {
-  for (let index = 0; index < 10; index++) {
-    for (const item of list) {
-      postFunction(item.info, item.token)
-    }
+  for (const item of list) {
+    postFunction(item.info, item.token)
   }
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
