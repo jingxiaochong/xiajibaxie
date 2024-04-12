@@ -44,9 +44,11 @@ connection.end(function (err) {
   }
 });
 setTimeout(() => {
-  for (let index = 0; index < 100; index++) {
+  let index = 0
+  setInterval(() => {
+    index ++
     postFunction(list[0].info, list[0].token,index)
-  }
+  }, 10);
   // for (let index = 0; index < 1000; index++) {
   //   axios.get(public.searchURl, {
   //     "headers": {
@@ -115,7 +117,7 @@ function postData() {
 }
 
 
-function postFunction(info, token,index) {
+function postFunction(info, token,i) {
   let data = {
     "reservationConfigId": public.reservationConfigId,
     "reservationDate": public.saveTime.data,
@@ -133,14 +135,11 @@ function postFunction(info, token,index) {
       }
     }).then((res) => {
       console.log(res.data);
-      if (res.data.statusCode != 202 || !res.data.statusCode) {
-        console.log(index);
-        process.exit()
-      }
       // if (res.data.statusCode == 200 && res.data.data.id) {
       //   ids.push([token, res.data.data.id])
       // }
     }).catch((err) => {
-      console.log(err);
+      console.log(i);
+      process.exit()
     });
 }
