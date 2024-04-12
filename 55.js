@@ -97,7 +97,7 @@ function postData() {
   } else {
     setTimeout(() => {
       postData()
-    }, 1);
+    }, 100);
   }
 }
 

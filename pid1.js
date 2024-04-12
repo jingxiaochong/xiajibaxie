@@ -120,7 +120,7 @@ function postData() {
             return console.log(err);
           }
         });
-      }, 10000);
+      }, 1);
     }
     return
   } else {
