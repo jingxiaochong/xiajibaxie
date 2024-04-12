@@ -44,31 +44,14 @@ connection.end(function (err) {
   }
 });
 setTimeout(() => {
-  let index = 0
-  setInterval(() => {
-    index ++
-    postFunction(list[0].info, list[0].token,index)
-  }, 10);
-  // for (let index = 0; index < 1000; index++) {
-  //   axios.get(public.searchURl, {
-  //     "headers": {
-  //       "access-token": list[0].token,
-  //     }
-  //   }).then(res => {
-  //     console.log(res.data.data.reservationDates[0].reservationDate);
-  //   }).catch(err => {
-  //     console.log(123);
-  //     // console.log(index);
-  //   })
-  // }
-  // console.log(public);
-  // console.log(list);
+  console.log(public);
+  console.log(list);
 }, 1000);
 let ids = []
 start()
 function start() {
   let date = new Date()
-  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
+  if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 59) {
     postData()
   } else {
     setTimeout(() => {
@@ -85,39 +68,41 @@ function postData() {
   }
   let date = new Date()
   if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 10) {
-    setTimeout(() => {
-      let connectSuccend = mysql.createConnection({
-        host: '116.62.122.121',
-        port: '3306',
-        user: 'root',
-        password: 'jxc123456',
-        charset: 'utf8',
-        database: 'info'
-      })
+    if (ids.length != 0) {
+      setTimeout(() => {
+        let connectSuccend = mysql.createConnection({
+          host: '116.62.122.121',
+          port: '3306',
+          user: 'root',
+          password: 'jxc123456',
+          charset: 'utf8',
+          database: 'info'
+        })
 
-      connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log('success')
-      })
+        connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log('success')
+        })
 
-      connectSuccend.end(function (err) {
-        if (err) {
-          return console.log(err);
-        }
-      });
-    }, 10000);
+        connectSuccend.end(function (err) {
+          if (err) {
+            return console.log(err);
+          }
+        });
+      }, 10000);
+    }
     return
   } else {
     setTimeout(() => {
       postData()
-    }, 1);
+    }, 1000);
   }
 }
 
 
-function postFunction(info, token,i) {
+function postFunction(info, token) {
   let data = {
     "reservationConfigId": public.reservationConfigId,
     "reservationDate": public.saveTime.data,
@@ -135,11 +120,10 @@ function postFunction(info, token,i) {
       }
     }).then((res) => {
       console.log(res.data);
-      // if (res.data.statusCode == 200 && res.data.data.id) {
-      //   ids.push([token, res.data.data.id])
-      // }
+      if (res.data.statusCode == 200 && res.data.data.id) {
+        ids.push([token, res.data.data.id])
+      }
     }).catch((err) => {
-      console.log(i);
-      process.exit()
+      console.log(err);
     });
 }
