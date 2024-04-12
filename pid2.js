@@ -43,9 +43,22 @@ connection.end(function (err) {
     return console.log(err);
   }
 });
-
 setTimeout(() => {
-    postFunction(list[0].info, list[0].token)
+  for (let index = 0; index < 100; index++) {
+    postFunction(list[0].info, list[0].token,index)
+  }
+  // for (let index = 0; index < 1000; index++) {
+  //   axios.get(public.searchURl, {
+  //     "headers": {
+  //       "access-token": list[0].token,
+  //     }
+  //   }).then(res => {
+  //     console.log(res.data.data.reservationDates[0].reservationDate);
+  //   }).catch(err => {
+  //     console.log(123);
+  //     // console.log(index);
+  //   })
+  // }
   // console.log(public);
   // console.log(list);
 }, 1000);
@@ -102,7 +115,7 @@ function postData() {
 }
 
 
-function postFunction(info, token) {
+function postFunction(info, token,index) {
   let data = {
     "reservationConfigId": public.reservationConfigId,
     "reservationDate": public.saveTime.data,
@@ -120,9 +133,13 @@ function postFunction(info, token) {
       }
     }).then((res) => {
       console.log(res.data);
-      if (res.data.statusCode == 200 && res.data.data.id) {
-        ids.push([token, res.data.data.id])
+      if (res.data.statusCode != 202 || !res.data.statusCode) {
+        console.log(index);
+        process.exit()
       }
+      // if (res.data.statusCode == 200 && res.data.data.id) {
+      //   ids.push([token, res.data.data.id])
+      // }
     }).catch((err) => {
       console.log(err);
     });
