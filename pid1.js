@@ -44,7 +44,7 @@ connection.end(function (err) {
 setTimeout(() => {
   console.log(public);
   console.log(list);
-  searchData()
+  // searchData()
 }, 1000);
 let ids = []
 
@@ -75,10 +75,10 @@ function search() {
       "access-token": list[0].token,
     }
   }).then(res => {
-    console.log(res.data.data.reservationDates[0].reservationDate);
-    console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime)
-    console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime)
-    console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
+    // console.log(res.data.data.reservationDates[0].reservationDate);
+    // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime)
+    // console.log(res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime)
+    // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
       postData()
