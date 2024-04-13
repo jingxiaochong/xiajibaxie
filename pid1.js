@@ -99,7 +99,7 @@ function postData() {
     postFunction(item.info, item.token)
   }
   let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 30) {
+  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
     if (ids.length != 0) {
       let connectSuccend = mysql.createConnection({
         host: '116.62.122.121',
@@ -125,7 +125,7 @@ function postData() {
     }
     setTimeout(() => {
       console.log(str);
-    }, 30);
+    }, 30000);
     return
   } else {
     setTimeout(() => {
