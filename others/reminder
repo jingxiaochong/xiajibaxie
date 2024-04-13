@@ -11,4 +11,4 @@
 cd /usr/local/xiajibaxie/
 git pull
 npm install
-pm2 start pid2.js
+pm2 start test.js

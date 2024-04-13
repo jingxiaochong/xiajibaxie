@@ -51,31 +51,11 @@ let ids = []
 start()
 function start() {
     let date = new Date()
-    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
+    if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 0) {
         setTimeout(() => {
             for (const item of list) {
                 postFunction(item.info, item.token)
             }
-            setTimeout(() => {
-                for (const item of list) {
-                    postFunction(item.info, item.token)
-                }
-            }, 1000);
-            setTimeout(() => {
-                for (const item of list) {
-                    postFunction(item.info, item.token)
-                }
-            }, 2000);
-            setTimeout(() => {
-                for (const item of list) {
-                    postFunction(item.info, item.token)
-                }
-            }, 3000);
-            setTimeout(() => {
-                for (const item of list) {
-                    postFunction(item.info, item.token)
-                }
-            }, 4000);
             setTimeout(() => {
                 if (ids.length != 0) {
                     setTimeout(() => {

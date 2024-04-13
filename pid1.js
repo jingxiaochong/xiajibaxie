@@ -45,7 +45,7 @@ connection.end(function (err) {
 setTimeout(() => {
   console.log(public);
   console.log(list);
-  // searchData()
+    // searchData()
 }, 1000);
 let ids = []
 
@@ -93,7 +93,6 @@ function search() {
 
 
 
-// 往死里递归
 function postData() {
   for (const item of list) {
     postFunction(item.info, item.token)
@@ -129,7 +128,7 @@ function postData() {
     return
   } else {
     setTimeout(() => {
-      postData()
+      // postData()
     }, 1);
   }
 }
