@@ -3,13 +3,16 @@ const public = require('./public.js')
 const mysql = require('mysql');
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
-if (cluster.isMaster) {
-  for (let i = 0; i < 8; i++) {
-    cluster.fork();
-  }
-}
+// if (cluster.isMaster) {
+//   for (let i = 0; i < 8; i++) {
+//     cluster.fork();
+//   }
+// }
+let num = 0
+axios.get('http://116.62.122.121:4396/getNumbers').then((res) => {
+    num = res.data
+}).catch((err) => { })
 
-let str = ''
 let flag = true
 const connection = mysql.createConnection({
   host: '116.62.122.121',
@@ -45,7 +48,6 @@ connection.end(function (err) {
 setTimeout(() => {
   console.log(public);
   console.log(list);
-    // searchData()
 }, 1000);
 let ids = []
 
@@ -54,6 +56,31 @@ function start() {
   let date = new Date()
   if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
     searchData()
+    setTimeout(() => {
+      if (ids.length != 0) {
+        let connectSuccend = mysql.createConnection({
+          host: '116.62.122.121',
+          port: '3306',
+          user: 'root',
+          password: 'jxc123456',
+          charset: 'utf8',
+          database: 'info'
+        })
+
+        connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+          if (err) {
+            return console.log(err);
+          }
+          console.log('success')
+        })
+
+        connectSuccend.end(function (err) {
+          if (err) {
+            return console.log(err);
+          }
+        });
+      }
+    }, 60000);
   } else {
     setTimeout(() => {
       start()
@@ -82,57 +109,14 @@ function search() {
     // console.log(res.data.data.reservationDates[0].configItems[0].isOnsale);
     if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
       flag = false
-      postData()
-      let date = new Date()
-      str = date.getSeconds()
+      for (const item of list) {
+        postFunction(list[num].info, list[num].token)
+      }
     }
   }).catch(res => {
     console.log(res);
   })
 }
-
-
-
-function postData() {
-  for (const item of list) {
-    postFunction(item.info, item.token)
-  }
-  let date = new Date()
-  if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 20) {
-    if (ids.length != 0) {
-      let connectSuccend = mysql.createConnection({
-        host: '116.62.122.121',
-        port: '3306',
-        user: 'root',
-        password: 'jxc123456',
-        charset: 'utf8',
-        database: 'info'
-      })
-
-      connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log('success')
-      })
-
-      connectSuccend.end(function (err) {
-        if (err) {
-          return console.log(err);
-        }
-      });
-    }
-    setTimeout(() => {
-      console.log(str);
-    }, 30000);
-    return
-  } else {
-    setTimeout(() => {
-      // postData()
-    }, 1);
-  }
-}
-
 
 function postFunction(info, token) {
   let data = {

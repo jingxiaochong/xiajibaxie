@@ -4,11 +4,9 @@ const mysql = require('mysql');
 
 // 第几个服务器
 let num = 0
-let timeout = 0
 axios.get('http://116.62.122.121:4396/getNumbers').then((res) => {
     console.log(res.data);
     num = res.data
-    timeout = num * 9
 }).catch((err) => { })
 
 let list = []  //信息列表
@@ -52,45 +50,40 @@ start()
 function start() {
     let date = new Date()
     if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 0) {
+        postFunction(list[num].info, list[num].token)
         setTimeout(() => {
-            for (const item of list) {
-                postFunction(item.info, item.token)
+            if (ids.length != 0) {
+                setTimeout(() => {
+                    let connectSuccend = mysql.createConnection({
+                        host: '116.62.122.121',
+                        port: '3306',
+                        user: 'root',
+                        password: 'jxc123456',
+                        charset: 'utf8',
+                        database: 'info'
+                    })
+
+                    connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log('success')
+                    })
+
+                    connectSuccend.end(function (err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
+                }, num * 50);
             }
-            setTimeout(() => {
-                if (ids.length != 0) {
-                    setTimeout(() => {
-                        let connectSuccend = mysql.createConnection({
-                            host: '116.62.122.121',
-                            port: '3306',
-                            user: 'root',
-                            password: 'jxc123456',
-                            charset: 'utf8',
-                            database: 'info'
-                        })
-
-                        connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-                            if (err) {
-                                return console.log(err);
-                            }
-                            console.log('success')
-                        })
-
-                        connectSuccend.end(function (err) {
-                            if (err) {
-                                return console.log(err);
-                            }
-                        });
-                    }, num * 50);
-                }
-            }, 30000);
-        }, timeout);
+        }, 30000);
     } else {
         setTimeout(() => {
             start()
         }, 1);
     }
 }
-
 
 function postFunction(info, token) {
     let data = {
