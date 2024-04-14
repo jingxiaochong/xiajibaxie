@@ -47,7 +47,7 @@ connection.end(function (err) {
 });
 setTimeout(() => {
   console.log(public);
-  console.log(list);
+  console.log(list[num]);
 }, 1000);
 let ids = []
 

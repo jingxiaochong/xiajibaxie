@@ -11,4 +11,6 @@
 cd /usr/local/xiajibaxie/
 git pull
 npm install
-pm2 start test.js
+pm2 flush
+pm2 start pid1.js
+pm2 log --lines 100
