@@ -70,7 +70,7 @@ app.post('/editActive', (req, res) => {
   })
 })
 
-let num = 0
+let num = 10
 // 记录访问次数
 app.get('/getNumbers',(req,res) => {
   num += 1
