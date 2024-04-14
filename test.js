@@ -6,7 +6,7 @@ const mysql = require('mysql');
 let num = 0
 axios.get('http://116.62.122.121:4396/getNumbers').then((res) => {
     console.log(res.data);
-    num = res.data
+    num = res.data - 1
 }).catch((err) => { })
 
 let list = []  //信息列表
@@ -44,6 +44,7 @@ connection.end(function (err) {
 setTimeout(() => {
     console.log(public);
     console.log(list);
+    // postFunction(list[num].info, list[num].token)
 }, 1000);
 let ids = []
 start()

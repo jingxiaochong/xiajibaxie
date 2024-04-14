@@ -10,7 +10,7 @@ const numCPUs = require('os').cpus().length;
 // }
 let num = 0
 axios.get('http://116.62.122.121:4396/getNumbers').then((res) => {
-    num = res.data
+    num = res.data - 1
 }).catch((err) => { })
 
 let flag = true
