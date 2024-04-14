@@ -138,6 +138,8 @@ function postFunction(info, token) {
       console.log(res.data);
       if (res.data.statusCode == 200 && res.data.data.id) {
         ids.push([token, res.data.data.id])
+      }else{
+        postFunction(info, token)
       }
     }).catch((err) => {
       console.log(err);

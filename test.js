@@ -44,7 +44,7 @@ connection.end(function (err) {
 setTimeout(() => {
     console.log(public);
     console.log(list);
-    postFunction(list[num].info, list[num].token)
+    // postFunction(list[num].info, list[num].token)
 }, 1000);
 let ids = []
 start()
@@ -106,6 +106,8 @@ function postFunction(info, token) {
             console.log(res.data);
             if (res.data.statusCode == 200 && res.data.data.id) {
                 ids.push([token, res.data.data.id])
+            }else{
+                postFunction(info, token)
             }
         }).catch((err) => {
             console.log(err);
