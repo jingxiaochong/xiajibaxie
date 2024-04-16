@@ -44,13 +44,12 @@ connection.end(function (err) {
 setTimeout(() => {
     console.log(public);
     console.log(list[num]);
-    // postFunction(list[num].info, list[num].token)
 }, 1000);
 let ids = []
 start()
 function start() {
     let date = new Date()
-    if (date.getHours() == 14 && date.getMinutes() == 0 && date.getSeconds() == 0) {
+    if (date.getHours() == 15 && date.getMinutes() == 24 && date.getSeconds() == 0) {
         postFunction(list[num].info, list[num].token)
         setTimeout(() => {
             if (ids.length != 0) {
@@ -107,7 +106,9 @@ function postFunction(info, token) {
             if (res.data.statusCode == 200 && res.data.data.id) {
                 ids.push([token, res.data.data.id])
             }else{
-                postFunction(info, token)
+                setTimeout(() => {
+                    postFunction(info, token)
+                }, 500);
             }
         }).catch((err) => {
             console.log(err);
