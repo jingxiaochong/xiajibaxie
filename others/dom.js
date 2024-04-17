@@ -41,3 +41,24 @@ function reload() {
     }
   });
 }
+
+
+
+
+// function getAccessToken() {
+//   var cookies = document.cookie.split(';');
+//   for (var i = 0; i < cookies.length; i++) {
+//       var cookie = cookies[i].trim();
+//       if (cookie.startsWith('consistent_code=')) {
+//           return cookie.substring('consistent_code='.length, cookie.length);
+//       }
+//   }
+//   return null; // 如果没有找到access_token，则返回null或者你认为合适的值
+// }
+
+// var accessToken = getAccessToken();
+// if (accessToken) {
+//   console.log("Access Token found:", accessToken);
+// } else {
+//   console.log("Access Token not found");
+// }
