@@ -7,15 +7,24 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4396
 
-const connection = mysql.createConnection({
-  host: '116.62.122.121',
-  port: '3306',
-  user: 'root',
-  password: 'jxc123456',
-  charset: 'utf8',
-  database: 'info'
-})
+let connection
 
+function beforeFunction(req, res, next) {
+  // 连接数据库
+  connection = mysql.createConnection({
+    host: '116.62.122.121',
+    port: '3306',
+    user: 'root',
+    password: 'jxc123456',
+    charset: 'utf8',
+    database: 'info'
+  })
+  // 处理请求
+  next()
+  // 断开数据库连接
+  connection.end();
+}
+app.use(beforeFunction)
 // 新增token
 app.post('/addToken', (req, res) => {
   console.log(req.body);

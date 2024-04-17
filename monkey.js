@@ -49,7 +49,7 @@ function searchPerson() {
               document.getElementsByClassName('view_form-input')[2].value = '330283199807066019';
               document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
 
-              document.querySelector('.person-confirm').click()},100)
+              document.querySelector('.person-confirm').click()},0)
 
       }else{
           searchPerson()
