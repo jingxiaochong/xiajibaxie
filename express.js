@@ -7,20 +7,22 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4396
 
-let connection
+connection = mysql.createConnection({
+  host: '116.62.122.121',
+  port: '3306',
+  user: 'root',
+  password: 'jxc123456',
+  charset: 'utf8',
+  database: 'info'
+})
 
 function beforeFunction(req, res, next) {
   // 连接数据库
-  connection = mysql.createConnection({
-    host: '116.62.122.121',
-    port: '3306',
-    user: 'root',
-    password: 'jxc123456',
-    charset: 'utf8',
-    database: 'info'
-  })
+  connection.connect();
+
   // 处理请求
   next()
+
   // 断开数据库连接
   connection.end();
 }
@@ -28,7 +30,7 @@ app.use(beforeFunction)
 // 新增token
 app.post('/addToken', (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO tokens (access_token,user,card_id,phone) VALUES ('${req.body.token}','${req.body.user_name}','${req.body.card_id}','${req.body.phone}')`, function (err, results, fields) {
+  connection.query(`INSERT INTO tokens (access_token,user,card_id,phone,refresh_token) VALUES ('${req.body.token}','${req.body.user_name}','${req.body.card_id}','${req.body.phone}','${req.body.refreshToken}')`, function (err, results, fields) {
     if (err) {
       return res.send(err)
     }
@@ -79,12 +81,24 @@ app.post('/editActive', (req, res) => {
   })
 })
 
-let num = 10
+let num = 0
 // 记录访问次数
 app.get('/getNumbers',(req,res) => {
-  num += 1
   res.send(JSON.stringify(num))
+  num += 1
 })
 
+// 按顺序获取不同用户信息
+app.get('/getInfo',(req,res) => {
+  connection.query('SELECT * FROM tokens', function (err, results, fields) {
+    res.send(results[num])
+    num += 1
+  })
+
+})
+
+app.post('/putUserInfo',(req,res) => {
+  
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

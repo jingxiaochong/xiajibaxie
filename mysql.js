@@ -24,43 +24,44 @@ connection.connect(function (err) {
 
 // 加字段
 // connection.query(`
-// ALTER TABLE active_info
-// ADD COLUMN urlBase VARCHAR(100)
+// ALTER TABLE tokens
+// ADD COLUMN refresh_token VARCHAR(1000)
 // `, function (error, results, fields) {
 //   if (error) { console.log(error); }
 //   console.log('success');
 // })
 
 
-function createTable(params) {
-  let createTodos = `create table if not exists tokens(
-    id int AUTO_INCREMENT PRIMARY KEY,
-    access_token varchar(1000) NOT NULL,
-    user varchar(255),
-    card_id VARCHAR(255),
-    phone VARCHAR(255)
-  );
-  `;
+// function createTable(params) {
+//   let createTodos = `create table if not exists tokens(
+//     id int AUTO_INCREMENT PRIMARY KEY,
+//     access_token varchar(1000) NOT NULL,
+//     user varchar(255),
+//     card_id VARCHAR(255),
+//     phone VARCHAR(255)
+//   );
+//   `;
 
-  connection.query(createTodos, function (err, results, fields) {
-    if (err) {
-      console.log(err.message);
-    }
-  });
-}
+//   connection.query(createTodos, function (err, results, fields) {
+//     if (err) {
+//       console.log(err.message);
+//     }
+//   });
+// }
 
 
 
-function deleteTable() {
-  // 执行SQL语句删除表格
-  connection.query(`DROP TABLE IF EXISTS tokens`, (err, results, fields) => {
-    if (err) {
-      console.error('Error dropping table: ' + err.message);
-      return;
-    }
-    console.log('Table dropped successfully');
-  });
-}
+// function deleteTable() {
+//   // 执行SQL语句删除表格
+//   connection.query(`DROP TABLE IF EXISTS tokens`, (err, results, fields) => {
+//     if (err) {
+//       console.error('Error dropping table: ' + err.message);
+//       return;
+//     }
+//     console.log('Table dropped successfully');
+//   });
+// }
+
 // deleteTable()
 // createTable()
 
@@ -111,20 +112,19 @@ function deleteTable() {
 
 
 
-connection.query('SELECT * FROM tokens', function (err, results, fields) {
-  if (err) {
-    // return res.send(err)
-  }
-  console.log(results);
-})
+// connection.query('SELECT * FROM tokens', function (err, results, fields) {
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
 
 // connection.query('DELETE FROM succeed')
-
-// connection.end(function (err) {
-//   if (err) {
-//     return console.log(err.message);
-//   }
-// });
+connection.end(function (err) {
+  if (err) {
+    return console.log(err.message);
+  }
+});
 
 
 
