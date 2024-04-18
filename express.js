@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4396
 
 connection = mysql.createConnection({
-  host: '116.62.122.121',
+  // host: '116.62.122.121',
+  host: 'localhost',
   port: '3306',
   user: 'root',
   password: 'jxc123456',
