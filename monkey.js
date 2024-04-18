@@ -11,7 +11,7 @@
 window.onload = function () {
     let arr = window.location.href.split('/')
     console.log(arr[arr.length - 1]);
-    if (arr[arr.length - 1]  == 'personinfo') {
+    if (arr[arr.length - 1] == 'personinfo') {
         searchPerson()
     } else {
         searchBtn()
@@ -37,21 +37,26 @@ function searchBtn() {
     }
 };
 function searchPerson() {
-      if(document.querySelector('.add-person')){
+    if (document.querySelector('.add-person')) {
         document.querySelector('.add-person').click()
-          setTimeout(()=>{
-              let evt = document.createEvent('HTMLEvents');
-              evt.initEvent('input', true, true);
+        setTimeout(() => {
+            let evt = document.createEvent('HTMLEvents');
+            evt.initEvent('input', true, true);
 
-              document.getElementsByClassName('view_form-input')[0].value = '翁蹿腾';
-              document.getElementsByClassName('view_form-input')[0].dispatchEvent(evt)
+            document.getElementsByClassName('view_form-input')[0].value = '翁蹿腾';
+            document.getElementsByClassName('view_form-input')[0].dispatchEvent(evt)
 
-              document.getElementsByClassName('view_form-input')[2].value = '330283199807066019';
-              document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
+            document.getElementsByClassName('view_form-input')[2].value = '330283199807066019';
+            document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
+            document.querySelector('.person-confirm').click()
 
-              document.querySelector('.person-confirm').click()},0)
+            setInterval(() => {
+                document.querySelector('.person-confirm').click()
+            }, 500);
 
-      }else{
-          searchPerson()
-      }
+        }, 0)
+
+    } else {
+        searchPerson()
+    }
 }
