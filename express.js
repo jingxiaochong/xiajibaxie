@@ -9,7 +9,6 @@ const port = 4396
 
 connection = mysql.createConnection({
   host: '116.62.122.121',
-  // host: 'localhost',
   port: '3306',
   user: 'root',
   password: 'jxc123456',
@@ -27,7 +26,7 @@ function beforeFunction(req, res, next) {
   // 断开数据库连接
   connection.end();
 }
-app.use(beforeFunction)
+// app.use(beforeFunction)
 // 新增token
 app.post('/addToken', (req, res) => {
   console.log(req.body);
