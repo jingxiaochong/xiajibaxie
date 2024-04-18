@@ -3,11 +3,11 @@ const public = require('./public.js')
 
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
-        token: res.access_token, info: {
-            "audienceIdentityNumber": res.card_id,
+        token: res.data.access_token, info: {
+            "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
-            "audienceName": res.user,
-            "audienceCellphone": res.phone,
+            "audienceName": res.data.user,
+            "audienceCellphone": res.data.phone,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }
