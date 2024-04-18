@@ -44,6 +44,7 @@ function search() {
 }
 
 function postFunction() {
+    userInfo.info.audienceCellphone = null
     let data = {
         "reservationConfigId": public.reservationConfigId,
         "reservationDate": public.saveTime.data,
