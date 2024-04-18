@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = 4396
 
 connection = mysql.createConnection({
-  host: '116.62.122.121',
+  // host: '116.62.122.121',
+  host: 'localhost',
   port: '3306',
   user: 'root',
   password: 'jxc123456',
@@ -88,17 +89,24 @@ app.get('/getNumbers',(req,res) => {
   num += 1
 })
 
+let infoNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo',(req,res) => {
   connection.query('SELECT * FROM tokens', function (err, results, fields) {
-    res.send(results[num])
-    num += 1
+    res.send(results[infoNum])
+    infoNum += 1
   })
 
 })
 
+// 处理请求成功后的数据
 app.post('/putUserInfo',(req,res) => {
-  
+  connection.query('UPDATE tokens SET succeed_id = ? WHERE access_token = ?', [req.body.data.id, req.body.data.token], (error, results, fields) => {
+    if (error){
+      return res.send(error)
+    }
+    return res.send('succeed')
+  });
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

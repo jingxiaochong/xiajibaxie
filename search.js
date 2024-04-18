@@ -1,8 +1,6 @@
 const axios = require('axios')
 const public = require('./public.js')
-const mysql = require('mysql');
 
-let info = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
         token: res.access_token, info: {
@@ -17,42 +15,11 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
 })
 
 
-
-setTimeout(() => {
-    console.log(public);
-}, 1000);
-let ids = []
-
 start()
 function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
         search()
-        setTimeout(() => {
-            if (ids.length != 0) {
-                let connectSuccend = mysql.createConnection({
-                    host: '116.62.122.121',
-                    port: '3306',
-                    user: 'root',
-                    password: 'jxc123456',
-                    charset: 'utf8',
-                    database: 'info'
-                })
-
-                connectSuccend.query(`INSERT INTO succeed (access_token,succeed_id) VALUES ?`, [ids], function (err, results, fields) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                    console.log('success')
-                })
-
-                connectSuccend.end(function (err) {
-                    if (err) {
-                        return console.log(err);
-                    }
-                });
-            }
-        }, 60000);
     } else {
         setTimeout(() => {
             start()
@@ -95,7 +62,10 @@ function postFunction() {
         }).then((res) => {
             console.log(res.data);
             if (res.data.statusCode == 200 && res.data.data.id) {
-                ids.push([userInfo.token, res.data.data.id])
+                axios.post('http://116.62.122.121:4396/putUserInfo', { data: {
+                    token:userInfo.token,
+                    id:res.data.data.id
+                } })
             } else {
                 setTimeout(() => {
                     postFunction()

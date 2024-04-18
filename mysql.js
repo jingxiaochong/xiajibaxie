@@ -25,7 +25,7 @@ connection.connect(function (err) {
 // 加字段
 // connection.query(`
 // ALTER TABLE tokens
-// ADD COLUMN refresh_token VARCHAR(1000)
+// ADD COLUMN orders VARCHAR(255)
 // `, function (error, results, fields) {
 //   if (error) { console.log(error); }
 //   console.log('success');
@@ -120,6 +120,14 @@ connection.connect(function (err) {
 // })
 
 // connection.query('DELETE FROM succeed')
+
+// connection.query('UPDATE tokens SET succeed_id = ? WHERE access_token = ?', ['1234', 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNqEkE-LwjAQxb_LnHtIJv3rUXFZwWVB9OBJ0nRKC20iabrsrvjdTYkVT3qcx_vNmzcXMHJ0zUbXBhZ67LoIxoFsmC9Qtv8rUxEs4ONze_qCCIaxXD7ENBaZkmWMBSdKGGNc8FwU3Ps8uTPdZFoejuudV3qnDtPqagJTXldxglmaIPIJlHWS12UA39kquEZAv-fW0r7taT7ck99nstKZl7TyIcqSdHeYZ1yIFBlDzJkv-Dc46kPBsLcnqxqp3fOTfPpMFsgwgh-yQ2u0F8MHtZwPu94AAAD__w.hVTDXlT-EcKBLuVNcmS9Qc-UgMkqTZyimWRvL5ReCq-YLQkz_m0fYqLf1kQm4zxAOwPifsYPeDNRak7rQjnnYUExebqNS70QuEeQU0Of2uz-vZ9pIXi8gaDIwNHvN9VFdA3kwvsreHxN7KtEOzFsEKOdv6RAcwNesgANZs8QGPI'], (error, results, fields) => {
+//   if (error){
+//     console.log(error);
+//     // return res.send('123')
+//   }
+//   // return res.send('succeed')
+// });
 connection.end(function (err) {
   if (err) {
     return console.log(err.message);
