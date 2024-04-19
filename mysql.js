@@ -128,6 +128,12 @@ connection.connect(function (err) {
 //   }
 //   // return res.send('succeed')
 // });
+// connection.query('UPDATE tokens SET access_token = ? WHERE refresh_token = ?', ['dsadasdasd', 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kDFvwyAUhP_Lmz0YgzHOmKpVKyWqFDVDpwrwQ7FkIAJctY3y34tD22TqyOnuO96dwMs5HZ6c8bBy8zRVMEcM5X0CNX7d-QFhBQ-Pm7ctVBBntf4TOaOdloo1PUFs67omlAjak-zLyZ2fFtN6_3q_y4pNer-ghyXYGmYGrCUXaMQSZLrlfVeCVxtvCFPYMCmJvPAFUcQYOFeAH8cx4MtocwfpiOAsezltxAXxfMQgk_8Xg7lNB5TpSqGsFb-U-BkT2nJpWcZi0Afp0u1a-Ru3_RW8Y4ijd1ksUzppfwDnbwAAAP__.HjkkNrpb2o_tumqii6lPZSPyk-c5iNJlZOoPPL4Bsyo6bc7h6y56aPRH9Su1plkfJCdujLF0B8iIfQpd-3eGdAh4Mc187DwMp8n72RChTByFF7WYAsb-_6Ed_EMiZohaYxrNftwQfYswGwgdqspKcrx8Gg_sm8gwiw3e7fL3OZQ'], (error, results, fields) => {
+//   if (error){
+//     // return res.send(error)
+//   }
+//   // return res.send('succeed')
+// });
 connection.end(function (err) {
   if (err) {
     return console.log(err.message);
