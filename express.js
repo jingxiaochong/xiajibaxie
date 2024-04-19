@@ -93,6 +93,9 @@ let infoNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo',(req,res) => {
   connection.query('SELECT * FROM tokens', function (err, results, fields) {
+    if (results.length <= infoNum) {
+      infoNum = 0
+    }
     res.send(results[infoNum])
     infoNum += 1
   })
