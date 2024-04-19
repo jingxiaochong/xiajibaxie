@@ -111,13 +111,13 @@ app.post('/putUserInfo',(req,res) => {
 
 // 根据refresh_token获取access_token
 app.post('/editToken',(req,res) => {
-  console.log(req.body.data);
-  connection.query('UPDATE tokens SET access_token = ? WHERE refresh_token = ?', [req.body.data.accessToken, req.body.data.refreshToken], (error, results, fields) => {
-    if (error){
-      return res.send(error)
-    }
-    return res.send('succeed')
-  });
+  console.log(req.body);
+  // connection.query('UPDATE tokens SET access_token = ? WHERE refresh_token = ?', [req.body.data.accessToken, req.body.data.refreshToken], (error, results, fields) => {
+  //   if (error){
+  //     return res.send(error)
+  //   }
+  //   return res.send('succeed')
+  // });
   
 })
 
