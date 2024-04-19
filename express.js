@@ -112,6 +112,16 @@ app.post('/putUserInfo',(req,res) => {
   });
 })
 
+app.post('/editOrders',(req,res) => {
+  console.log(req.body);
+  connection.query('UPDATE tokens SET succeed_id = ? , orders = ? WHERE access_token = ?', [req.body.id,req.body.order, req.body.token], (error, results, fields) => {
+    if (error){
+      return res.send(error)
+    }
+    return res.send('succeed')
+  });
+})
+
 // 根据refresh_token获取access_token
 app.post('/editToken',(req,res) => {
   console.log(req.body);
