@@ -1,13 +1,15 @@
 const axios = require('axios')
 const public = require('./public.js')
 
+let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
         token: res.data.access_token, info: {
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            "audienceCellphone": res.data.phone,
+            // "audienceCellphone": res.data.phone,
+            "audienceCellphone":null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }
@@ -44,7 +46,6 @@ function search() {
 }
 
 function postFunction() {
-    userInfo.info.audienceCellphone = null
     let data = {
         "reservationConfigId": public.reservationConfigId,
         "reservationDate": public.saveTime.data,

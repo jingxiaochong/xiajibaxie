@@ -43,10 +43,10 @@ function searchPerson() {
             let evt = document.createEvent('HTMLEvents');
             evt.initEvent('input', true, true);
 
-            document.getElementsByClassName('view_form-input')[0].value = '翁蹿腾';
+            document.getElementsByClassName('view_form-input')[0].value = '井晓冲';
             document.getElementsByClassName('view_form-input')[0].dispatchEvent(evt)
 
-            document.getElementsByClassName('view_form-input')[2].value = '330283199807066019';
+            document.getElementsByClassName('view_form-input')[2].value = '411121199808210015';
             document.getElementsByClassName('view_form-input')[2].dispatchEvent(evt)
             document.querySelector('.person-confirm').click()
 

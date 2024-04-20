@@ -14,3 +14,19 @@ npm install
 pm2 flush
 pm2 start search.js
 pm2 log --lines 1000
+
+
+// 清空 Session Cookie
+document.cookie.split(";").forEach(function(c) {
+  document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+});
+
+// 清空 Local Storage
+localStorage.clear();
+
+
+ACCESS_TOKEN
+
+
+
+localStorage.setItem('ACCESS_TOKEN', '1234');
