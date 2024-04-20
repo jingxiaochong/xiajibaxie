@@ -8,8 +8,8 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            // "audienceCellphone": res.data.phone,
-            "audienceCellphone":null,
+            "audienceCellphone": res.data.phone,
+            // "audienceCellphone":null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }
