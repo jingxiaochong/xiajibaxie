@@ -8,8 +8,8 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            "audienceCellphone": res.data.phone,
-            // "audienceCellphone":null,
+            // "audienceCellphone": res.data.phone,
+            "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }
@@ -38,9 +38,9 @@ function search() {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             postFunction()
         } else {
-            setTimeout(() => {
-                search()
-            }, 500);
+            // setTimeout(() => {
+            search()
+            // }, 500);
         }
     })
 }
@@ -64,10 +64,12 @@ function postFunction() {
         }).then((res) => {
             console.log(res.data);
             if (res.data.statusCode == 200 && res.data.data.id) {
-                axios.post('http://116.62.122.121:4396/putUserInfo', { data: {
-                    token:userInfo.token,
-                    id:res.data.data.id
-                } })
+                axios.post('http://116.62.122.121:4396/putUserInfo', {
+                    data: {
+                        token: userInfo.token,
+                        id: res.data.data.id
+                    }
+                })
             } else {
                 setTimeout(() => {
                     postFunction()
