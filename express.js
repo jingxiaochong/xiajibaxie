@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mysql = require('mysql');
+const fs = require('fs')
 
 const app = express()
 app.use(bodyParser.json())
@@ -72,6 +73,30 @@ app.get('/clearTable', (req, res) => {
 // 修改活动信息
 app.post('/editActive', (req, res) => {
   console.log(req.body);
+  fs.writeFile('./aa.js', `
+  const mysql = require('mysql');
+  exports.urlBase = '${req.body.urlBase}'
+  exports.saveTime = {
+    data: '${req.body.data}',
+    startTime: "${req.body.startTime}",
+    endTime: "${req.body.endTime}"
+}
+exports.reservationConfigId = '${req.body.reservationConfigId}'
+
+// 参数
+exports.Referer = 'https://${req.body.urlBase}.caiyicloud.com/reserve/reserve-detail/personinfo'
+// 查询接口
+exports.searchURl = 'https://${req.body.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${exports.reservationConfigId}/instance'
+// 请求接口
+exports.postUrl = 'https://${req.body.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5'
+
+`, (err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('SUCCESS')
+    }
+  })
   connection.query(`DELETE FROM active_info`, function (err, results, fields) {
     connection.query(`INSERT INTO active_info (data,startTime,endTime,reservationConfigId,urlBase) VALUES ('${req.body.data}','${req.body.startTime}','${req.body.endTime}','${req.body.reservationConfigId}','${req.body.urlBase}')`, function (err, results, fields) {
       if (err) {
@@ -84,14 +109,14 @@ app.post('/editActive', (req, res) => {
 
 let num = 0
 // 记录访问次数
-app.get('/getNumbers',(req,res) => {
+app.get('/getNumbers', (req, res) => {
   res.send(JSON.stringify(num))
   num += 1
 })
 
 let infoNum = 0
 // 按顺序获取不同用户信息
-app.get('/getInfo',(req,res) => {
+app.get('/getInfo', (req, res) => {
   connection.query('SELECT * FROM tokens', function (err, results, fields) {
     if (results.length <= infoNum) {
       infoNum = 0
@@ -103,19 +128,19 @@ app.get('/getInfo',(req,res) => {
 })
 
 // 处理请求成功后的数据
-app.post('/putUserInfo',(req,res) => {
+app.post('/putUserInfo', (req, res) => {
   connection.query('UPDATE tokens SET succeed_id = ? WHERE access_token = ?', [req.body.data.id, req.body.data.token], (error, results, fields) => {
-    if (error){
+    if (error) {
       return res.send(error)
     }
     return res.send('succeed')
   });
 })
 
-app.post('/editOrders',(req,res) => {
+app.post('/editOrders', (req, res) => {
   console.log(req.body);
-  connection.query('UPDATE tokens SET succeed_id = ? , orders = ? WHERE access_token = ?', [req.body.id,req.body.order, req.body.token], (error, results, fields) => {
-    if (error){
+  connection.query('UPDATE tokens SET succeed_id = ? , orders = ? WHERE access_token = ?', [req.body.id, req.body.order, req.body.token], (error, results, fields) => {
+    if (error) {
       return res.send(error)
     }
     return res.send('succeed')
@@ -123,15 +148,15 @@ app.post('/editOrders',(req,res) => {
 })
 
 // 根据refresh_token获取access_token
-app.post('/editToken',(req,res) => {
+app.post('/editToken', (req, res) => {
   console.log(req.body);
   connection.query('UPDATE tokens SET access_token = ? WHERE refresh_token = ?', [req.body.accessToken, req.body.refreshToken], (error, results, fields) => {
-    if (error){
+    if (error) {
       return res.send(error)
     }
     return res.send('succeed')
   });
-  
+
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
