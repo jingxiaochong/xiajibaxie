@@ -70,6 +70,22 @@ function postFunction() {
                         id: res.data.data.id
                     }
                 })
+                setTimeout(() => {
+                    // 根据成功id拿到顺序
+                    axios.get(`/cyy_buyerapi/buyer/cyy/v1/reservation_orders/${res.data.data.id}?src=WEB&channelId=&terminalSrc=WEB`, {
+                        headers: {
+                            "access-token": userInfo.token,
+                        }
+                    }).then((success) => {
+                        // 获取到成功序列号 插入
+                        axios.post('http://116.62.122.121:4396/editOrders', {
+                            id: res.data.data.id,
+                            order: success.data.data.orderItems[0].reservationSequence,
+                            token: userInfo.token
+                        })
+                    })
+                }, 10000);
+
             } else {
                 setTimeout(() => {
                     postFunction()

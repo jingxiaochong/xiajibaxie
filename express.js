@@ -121,8 +121,8 @@ app.get('/getInfo', (req, res) => {
     if (results.length <= infoNum) {
       infoNum = 0
     }
-    // res.send(results[infoNum])
-    res.send(results[19])
+    res.send(results[infoNum])
+    // res.send(results[19])
     infoNum += 1
   })
 
