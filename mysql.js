@@ -119,19 +119,24 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
-connection.query('UPDATE tokens SET succeed_id = NULL;', function (err, results, fields) {
+// connection.query('UPDATE tokens SET succeed_id = NULL;', function (err, results, fields) {
 
-  if (err) {
-    // return res.send(err)
-  }
-  console.log(results);
-})
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
 
-connection.query('DELETE FROM tokens WHERE id = 103;', function (err, results, fields) {
-  if (err) {
-    // return res.send(err)
-  }
-  console.log(results);
+// connection.query('DELETE FROM tokens WHERE id = 103;', function (err, results, fields) {
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
+
+connection.query('SELECT * FROM tokens', function (err, results, fields) {
+  console.log(results[19]);
+
 })
 // connection.query('DELETE FROM succeed')
 
