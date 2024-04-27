@@ -38,9 +38,9 @@ function search() {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             postFunction()
         } else {
-            // setTimeout(() => {
-            search()
-            // }, 500);
+            setTimeout(() => {
+                search()
+            }, 500);
         }
     })
 }
