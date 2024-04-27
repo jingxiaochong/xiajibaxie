@@ -73,7 +73,7 @@ app.get('/clearTable', (req, res) => {
 // 修改活动信息
 app.post('/editActive', (req, res) => {
   console.log(req.body);
-  fs.writeFile('./aa.js', `
+  fs.writeFile('./public.js', `
   const mysql = require('mysql');
   exports.urlBase = '${req.body.urlBase}'
   exports.saveTime = {
