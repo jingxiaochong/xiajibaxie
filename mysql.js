@@ -119,6 +119,20 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
+connection.query('UPDATE tokens SET succeed_id = NULL;', function (err, results, fields) {
+
+  if (err) {
+    // return res.send(err)
+  }
+  console.log(results);
+})
+
+connection.query('DELETE FROM tokens WHERE id = 103;', function (err, results, fields) {
+  if (err) {
+    // return res.send(err)
+  }
+  console.log(results);
+})
 // connection.query('DELETE FROM succeed')
 
 // connection.query('UPDATE tokens SET succeed_id = ? WHERE access_token = ?', ['1234', 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNqEkE-LwjAQxb_LnHtIJv3rUXFZwWVB9OBJ0nRKC20iabrsrvjdTYkVT3qcx_vNmzcXMHJ0zUbXBhZ67LoIxoFsmC9Qtv8rUxEs4ONze_qCCIaxXD7ENBaZkmWMBSdKGGNc8FwU3Ps8uTPdZFoejuudV3qnDtPqagJTXldxglmaIPIJlHWS12UA39kquEZAv-fW0r7taT7ck99nstKZl7TyIcqSdHeYZ1yIFBlDzJkv-Dc46kPBsLcnqxqp3fOTfPpMFsgwgh-yQ2u0F8MHtZwPu94AAAD__w.hVTDXlT-EcKBLuVNcmS9Qc-UgMkqTZyimWRvL5ReCq-YLQkz_m0fYqLf1kQm4zxAOwPifsYPeDNRak7rQjnnYUExebqNS70QuEeQU0Of2uz-vZ9pIXi8gaDIwNHvN9VFdA3kwvsreHxN7KtEOzFsEKOdv6RAcwNesgANZs8QGPI'], (error, results, fields) => {
