@@ -17,6 +17,9 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
 })
 
 
+// setTimeout(() => {
+//     process.exit(0)
+// }, 3000);
 start()
 function start() {
     let date = new Date()
