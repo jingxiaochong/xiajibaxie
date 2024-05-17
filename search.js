@@ -4,7 +4,7 @@ const public = require('./public.js')
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
-        token: res.data.access_token, 
+        token: res.data.access_token,
         info: [{
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
@@ -40,9 +40,7 @@ function search() {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             postFunction()
         } else {
-            setTimeout(() => {
-                search()
-            }, 1);
+            search()
         }
     })
 }
