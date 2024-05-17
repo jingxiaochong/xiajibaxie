@@ -32,6 +32,9 @@ function start() {
     setTimeout(() => {
       postFunction()
     }, userInfo.num);
+    setTimeout(() => {
+      process.exit(0)
+    }, 60000);
   } else {
     setTimeout(() => {
       start()

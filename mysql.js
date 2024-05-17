@@ -119,6 +119,7 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
+// 清空list
 // connection.query('UPDATE tokens SET succeed_id = NULL;', function (err, results, fields) {
 
 //   if (err) {

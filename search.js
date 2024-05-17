@@ -4,27 +4,26 @@ const public = require('./public.js')
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
-        token: res.data.access_token, info: {
+        token: res.data.access_token, 
+        info: [{
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            // "audienceCellphone": res.data.phone,
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
-        }
+        }]
     }
 })
 
-
-// setTimeout(() => {
-//     process.exit(0)
-// }, 3000);
 start()
 function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
         search()
+        setTimeout(() => {
+            process.exit(0)
+        }, 60000);
     } else {
         setTimeout(() => {
             start()
@@ -43,7 +42,7 @@ function search() {
         } else {
             setTimeout(() => {
                 search()
-            }, 500);
+            }, 1);
         }
     })
 }
@@ -56,7 +55,7 @@ function postFunction() {
         "endTime": public.saveTime.endTime,
         "showOrderId": "",
         "showSessionId": "",
-        "reservationAudienceParams": [userInfo.info],
+        "reservationAudienceParams": userInfo.info,
         "src": "H5"
     }
     axios.post(public.postUrl, data,
