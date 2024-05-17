@@ -21,7 +21,7 @@ axios.get('http://116.62.122.121:4396/getInfo?phone=13253717245').then((res) => 
       "showOrderTicketItemId": ""
     }
     ],
-    num: res.data.num
+    num: res.data.num * 10
   }
 })
 
