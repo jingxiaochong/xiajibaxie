@@ -128,7 +128,7 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
-// connection.query('DELETE FROM tokens WHERE id = 104;', function (err, results, fields) {
+// connection.query('DELETE FROM tokens WHERE id = 106;', function (err, results, fields) {
 //   if (err) {
 //     // return res.send(err)
 //   }
