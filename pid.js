@@ -9,7 +9,7 @@ if (cluster.isMaster) {
 }
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?phone=13253717245').then((res) => {
+axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
   userInfo = {
     token: res.data.access_token,
     info: [{
@@ -75,10 +75,6 @@ function postFunction() {
             id: res.data.data.id
           }
         })
-      } else {
-        setTimeout(() => {
-          postFunction()
-        }, 500);
       }
     }).catch((err) => {
       console.log(err);
