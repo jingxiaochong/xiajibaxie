@@ -118,12 +118,16 @@ let infoNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo', (req, res) => {
   if (req && req.query && req.query.phone) {
-    connection.query(`SELECT * FROM tokens WHERE phone = '${req.query.phone}'`, (error, results, fields) => {
+    connection.query(`SELECT * FROM tokens WHERE card_id = '${req.query.phone}'`, (error, results, fields) => {
       if (error) {
         return res.send('error');
       }
-      let obj = Object.assign(results[0],{num:num})
-      res.send(obj)
+      if (results.length <= num) {
+        num = 0
+      }
+      res.send(results[num])
+      // let obj = Object.assign(results[0],{num:num})
+      // res.send(obj)
       num += 1
     });
   } else {
