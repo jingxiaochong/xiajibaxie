@@ -13,7 +13,6 @@ git pull
 npm install
 pm2 flush
 pm2 start search.js
-pm2 log --lines 1000
 
 
 // 清空 Session Cookie
@@ -30,3 +29,8 @@ ACCESS_TOKEN
 
 
 localStorage.setItem('ACCESS_TOKEN', '1234');
+
+
+pid 20台 8*8
+search 200 1 * 1
+search0 无限 2*2

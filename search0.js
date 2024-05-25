@@ -21,9 +21,11 @@ start()
 function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
-        setInterval(() => {
+        let setinters = setInterval(() => {
             if (flag) {
               search()
+            }else {
+                clearInterval(setinters)
             }
         }, 1);
         setTimeout(() => {
