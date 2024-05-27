@@ -6,10 +6,11 @@ function confirm() {
 
 const start = () => {
   let date = new Date();
-  if (date.getHours() == 17 && date.getMinutes() == 59 && date.getSeconds() == 59) {
-    setTimeout(() => {
+  if (date.getHours() == 19 && date.getMinutes() == 0 && date.getSeconds() == 0) {
+    confirm()
+    setInterval(() => {
       confirm()
-    }, 990);
+    }, 2000);
   } else {
     setTimeout(() => {
       start()
