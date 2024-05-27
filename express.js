@@ -117,15 +117,28 @@ app.get('/getNumbers', (req, res) => {
 let infoNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo', (req, res) => {
-  connection.query('SELECT * FROM tokens', function (err, results, fields) {
-    if (results.length <= infoNum) {
-      infoNum = 0
-    }
-    res.send(results[infoNum])
-    // res.send(results[19])
-    infoNum += 1
-  })
-
+  if (req && req.query && req.query.phone) {
+    connection.query(`SELECT * FROM tokens WHERE card_id = '${req.query.phone}'`, (error, results, fields) => {
+      if (error) {
+        return res.send('error');
+      }
+      if (results.length <= num) {
+        num = 0
+      }
+      res.send(results[num])
+      // let obj = Object.assign(results[0],{num:num})
+      // res.send(obj)
+      num += 1
+    });
+  } else {
+    connection.query('SELECT * FROM tokens', function (err, results, fields) {
+      if (results.length <= infoNum) {
+        infoNum = 0
+      }
+      res.send(results[infoNum])
+      infoNum += 1
+    })
+  }
 })
 
 // 处理请求成功后的数据

@@ -2,6 +2,7 @@ const axios = require('axios')
 const public = require('./public.js')
 
 let userInfo = {}
+let flag = true
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
     userInfo = {
         token: res.data.access_token,
@@ -9,7 +10,7 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            "audienceCellphone": Math.random() >= 0.3 ? null : res.data.phone,
+            "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }]
@@ -20,7 +21,13 @@ start()
 function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
-        search()
+        let setinters = setInterval(() => {
+            if (flag) {
+              search()
+            }else {
+                clearInterval(setinters)
+            }
+        }, 1);
         setTimeout(() => {
             process.exit(0)
         }, 60000);
@@ -37,10 +44,9 @@ function search() {
             "access-token": userInfo.token,
         }
     }).then(res => {
-        if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
+        if (res.data.data.reservationDates[0].configItems[0].isOnsale && flag) {
+            flag = false
             postFunction()
-        } else {
-            search()
         }
     })
 }
