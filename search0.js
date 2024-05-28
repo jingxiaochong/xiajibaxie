@@ -98,6 +98,9 @@ function postFunction() {
                 }, 500);
             }
         }).catch((err) => {
+            setTimeout(() => {
+                postFunction()
+            }, 500);
             console.log(err);
         });
 }
