@@ -46,7 +46,9 @@ function search() {
     }).then(res => {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale && flag) {
             flag = false
-            postFunction()
+            setInterval(() => {
+                postFunction()
+            }, 1);
         }
     })
 }
@@ -92,15 +94,6 @@ function postFunction() {
                     })
                 }, 10000);
 
-            } else {
-                setTimeout(() => {
-                    postFunction()
-                }, 500);
             }
-        }).catch((err) => {
-            setTimeout(() => {
-                postFunction()
-            }, 500);
-            console.log(err);
-        });
+        })
 }
