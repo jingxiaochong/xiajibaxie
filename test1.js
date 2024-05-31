@@ -2,7 +2,7 @@ const axios = require('axios')
 const public = require('./public.js')
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo??phone=16524703951').then((res) => {
+axios.get('http://116.62.122.121:4396/getInfo?phone=16540613729').then((res) => {
     userInfo = {
         token: res.data.access_token,
         info: [{
