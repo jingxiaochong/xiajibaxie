@@ -80,7 +80,7 @@ function postFunction() {
                 })
                 setTimeout(() => {
                     // 根据成功id拿到顺序
-                    axios.get(`/cyy_buyerapi/buyer/cyy/v1/reservation_orders/${res.data.data.id}?src=WEB&channelId=&terminalSrc=WEB`, {
+                    axios.get(`https://6437cab4291ee50001318391.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/${res.data.data.id}?src=WEB&channelId=&terminalSrc=WEB`, {
                         headers: {
                             "access-token": userInfo.token,
                         }
