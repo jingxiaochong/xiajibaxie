@@ -14,4 +14,5 @@ exports.Referer = 'https://6437cab4291ee50001318391.caiyicloud.com/reserve/reser
 exports.searchURl = 'https://6437cab4291ee50001318391.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/66580dad816b6d000127d741/instance'
 // 请求接口
 exports.postUrl = 'https://6437cab4291ee50001318391.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5'
-
+// 查询顺序接口
+exports.searchOrder = `https://6437cab4291ee50001318391.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/${res.data.data.id}?src=WEB&channelId=&terminalSrc=WEB`

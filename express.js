@@ -89,6 +89,8 @@ exports.Referer = 'https://${req.body.urlBase}.caiyicloud.com/reserve/reserve-de
 exports.searchURl = 'https://${req.body.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${req.body.reservationConfigId}/instance'
 // 请求接口
 exports.postUrl = 'https://${req.body.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=H5'
+// 查询顺序接口
+exports.searchOrder = 'https://${req.body.urlBase}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id?src=WEB&channelId=&terminalSrc=WEB'
 
 `, (err) => {
     if (err) {
