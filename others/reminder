@@ -23,14 +23,9 @@ document.cookie.split(";").forEach(function(c) {
 // 清空 Local Storage
 localStorage.clear();
 
-
-ACCESS_TOKEN
-
-
-
 localStorage.setItem('ACCESS_TOKEN', '1234');
 
 
-pid 20台 8*8
+pid 100台 8*8
 search 200 1 * 1
 search0 无限 2*2
