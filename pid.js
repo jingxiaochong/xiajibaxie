@@ -9,7 +9,7 @@ if (cluster.isMaster) {
 }
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?phone=411121199808210015').then((res) => {
+axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then((res) => {
   userInfo = {
     token: res.data.access_token,
     info: [{
@@ -75,6 +75,21 @@ function postFunction() {
             id: res.data.data.id
           }
         })
+        setTimeout(() => {
+          // 根据成功id拿到顺序
+          axios.get(public.searchOrder.replace('id', res.data.data.id), {
+              headers: {
+                  "access-token": userInfo.token,
+              }
+          }).then((success) => {
+              // 获取到成功序列号 插入
+              axios.post('http://116.62.122.121:4396/editOrders', {
+                  id: res.data.data.id,
+                  order: success.data.data.orderItems[0].reservationSequence,
+                  token: userInfo.token
+              })
+          })
+      }, 10000);
       }
     }).catch((err) => {
       console.log(err);

@@ -23,7 +23,7 @@ function start() {
         search()
         setTimeout(() => {
             process.exit(0)
-        }, 60000);
+        }, 90000);
     } else {
         setTimeout(() => {
             start()
