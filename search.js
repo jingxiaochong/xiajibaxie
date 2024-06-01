@@ -9,7 +9,7 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
             "audienceIdentityNumber": res.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": res.data.user,
-            "audienceCellphone": Math.random() >= 0.3 ? null : res.data.phone,
+            "audienceCellphone": Math.random() >= 0.2 ? null : res.data.phone,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }]
