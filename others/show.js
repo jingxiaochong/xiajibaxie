@@ -3,6 +3,9 @@ let btn = document.getElementsByClassName('payBtn')[0];
 function confirm() {
   btn.click()
 }
+// setInterval(() => {
+//   confirm()
+// }, 100);
 
 const start = () => {
   let date = new Date();

@@ -154,6 +154,23 @@ connection.connect(function (err) {
 //   }
 //   // return res.send('succeed')
 // });
+
+// // 清空表tokens
+// connection.query('TRUNCATE TABLE tokens;', function (err, results, fields) {
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
+
+// 添加列
+connection.query('ALTER TABLE active_info ADD COLUMN mode INT(3);', function (err, results, fields) {
+  if (err) {
+    // return res.send(err)
+  }
+  console.log(results);
+})
+
 connection.end(function (err) {
   if (err) {
     return console.log(err.message);
