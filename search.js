@@ -1,5 +1,5 @@
 const axios = require('axios')
-const public = require('./public.js')
+let public = {}
 
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
@@ -14,6 +14,21 @@ axios.get('http://116.62.122.121:4396/getInfo').then((res) => {
             "showOrderTicketItemId": ""
         }]
     }
+    public.searchURl = `https://${res.data.active}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${res.data.active_id}/instance`
+    public.postUrl = `https://${res.data.active}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
+    public.searchOrder = `https://${res.data.active}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
+    axios.get(public.searchURl, {
+        "headers": {
+            "access-token": userInfo.token,
+        }
+    }).then(res => {
+        public.saveTime = {
+            date: res.data.data.reservationDates[0].reservationDate,
+            startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
+            endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
+        }
+
+    })
 })
 
 start()
@@ -42,7 +57,7 @@ function search() {
         } else {
             search()
         }
-    }).catch(()=>{
+    }).catch(() => {
         search()
     })
 }
@@ -50,7 +65,7 @@ function search() {
 function postFunction() {
     let data = {
         "reservationConfigId": public.reservationConfigId,
-        "reservationDate": public.saveTime.data,
+        "reservationDate": public.saveTime.date,
         "startTime": public.saveTime.startTime,
         "endTime": public.saveTime.endTime,
         "showOrderId": "",

@@ -164,7 +164,7 @@ connection.connect(function (err) {
 // })
 
 // 添加列
-connection.query('ALTER TABLE active_info ADD COLUMN mode INT(3);', function (err, results, fields) {
+connection.query('ALTER TABLE tokens CHANGE COLUMN active base_url VARCHAR(1000);', function (err, results, fields) {
   if (err) {
     // return res.send(err)
   }

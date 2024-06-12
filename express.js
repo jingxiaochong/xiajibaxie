@@ -32,7 +32,7 @@ function beforeFunction(req, res, next) {
 // 新增token
 app.post('/addToken', (req, res) => {
   console.log(req.body);
-  connection.query(`INSERT INTO tokens (access_token,user,card_id,phone,refresh_token) VALUES ('${req.body.token}','${req.body.user_name}','${req.body.card_id}','${req.body.phone}','${req.body.refreshToken}')`, function (err, results, fields) {
+  connection.query(`INSERT INTO tokens (access_token,user,card_id,phone,refresh_token,base_url,active_id) VALUES ('${req.body.token}','${req.body.user_name}','${req.body.card_id}','${req.body.phone}','${req.body.refreshToken}','${req.body.baseUrl}','${req.body.activeId}')`, function (err, results, fields) {
     if (err) {
       return res.send(err)
     }
@@ -134,8 +134,6 @@ app.get('/getInfo', (req, res) => {
         num = 0
       }
       res.send(results[num])
-      // let obj = Object.assign(results[0],{num:num})
-      // res.send(obj)
       num += 1
     });
   } else {
