@@ -117,6 +117,7 @@ app.get('/getNumbers', (req, res) => {
 })
 
 let infoNum = 0
+let activeNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo', (req, res) => {
   if (req && req.query && req.query.phone) {
@@ -135,6 +136,18 @@ app.get('/getInfo', (req, res) => {
       }
       res.send(results[num])
       num += 1
+    });
+  } else if (req && req.query && req.query.activeId) {
+    // activeId查询
+    connection.query(`SELECT * FROM tokens WHERE active_id = '${req.query.activeId}'`, (error, results, fields) => {
+      if (error) {
+        return res.send('error');
+      }
+      if (results.length <= activeNum) {
+        activeNum = 0
+      }
+      res.send(results[activeNum])
+      activeNum += 1
     });
   } else {
     connection.query('SELECT * FROM tokens', function (err, results, fields) {
