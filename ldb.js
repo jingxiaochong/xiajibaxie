@@ -3,7 +3,7 @@ let public = {}
 const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 if (cluster.isMaster) {
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
 }
@@ -49,7 +49,7 @@ function start() {
     }, 1);
     setTimeout(() => {
       process.exit(0)
-    }, 90000);
+    }, 60000);
   } else {
     setTimeout(() => {
       start()

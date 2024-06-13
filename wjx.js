@@ -49,7 +49,7 @@ function start() {
     }, 1);
     setTimeout(() => {
       process.exit(0)
-    }, 90000);
+    }, 60000);
   } else {
     setTimeout(() => {
       start()
