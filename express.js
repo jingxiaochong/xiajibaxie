@@ -52,12 +52,21 @@ app.get('/clearToken', (req, res) => {
 
 // 获取token
 app.get('/getTokenList', (req, res) => {
-  connection.query('SELECT * FROM tokens', function (err, results, fields) {
-    if (err) {
-      return res.send(err)
-    }
-    res.send(results)
-  })
+  if (req && req.query && req.query.activeId) {
+    connection.query(`SELECT * FROM tokens WHERE active_id = '${req.query.activeId}'`, function (err, results, fields) {
+      if (err) {
+        return res.send(err)
+      }
+      res.send(results)
+    })
+  } else {
+    connection.query('SELECT * FROM tokens', function (err, results, fields) {
+      if (err) {
+        return res.send(err)
+      }
+      res.send(results)
+    })
+  }
 })
 
 // 清空列表
