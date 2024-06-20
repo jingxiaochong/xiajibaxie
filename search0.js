@@ -2,7 +2,6 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
-let flag = true
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
     userInfo = {
         token: infores.data.access_token,
@@ -37,12 +36,8 @@ start()
 function start() {
     let date = new Date()
     if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
-        let setinters = setInterval(() => {
-            if (flag) {
-              search()
-            }else {
-                clearInterval(setinters)
-            }
+        setInterval(() => {
+            search()
         }, 1);
         setTimeout(() => {
             process.exit(0)
@@ -60,11 +55,10 @@ function search() {
             "access-token": userInfo.token,
         }
     }).then(res => {
-        if (res.data.data.reservationDates[0].configItems[0].isOnsale && flag) {
-            flag = false
-            setInterval(() => {
+        if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
+            for (let index = 0; index < 1000; index++) {
                 postFunction()
-            }, 1);
+            }
         }
     })
 }
