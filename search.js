@@ -2,7 +2,7 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
     userInfo = {
         token: infores.data.access_token,
         info: [{

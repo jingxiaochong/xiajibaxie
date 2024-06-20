@@ -12,29 +12,46 @@ let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
   userInfo = {
     token: infores.data.access_token,
-    // info: [{
-    //   "audienceIdentityNumber": '41112119980912651X',
-    //   "audienceIdentityType": "ID_CARD",
-    //   "audienceName": '李一帆',
-    //   "audienceCellphone": null,
-    //   "seatInfo": "",
-    //   "showOrderTicketItemId": ""
-    // }, {
-    //   "audienceIdentityNumber": '411121199808210015',
-    //   "audienceIdentityType": "ID_CARD",
-    //   "audienceName": '井晓冲',
-    //   "audienceCellphone": null,
-    //   "seatInfo": "",
-    //   "showOrderTicketItemId": ""
-    // }],
-    info: [{
-      "audienceIdentityNumber": infores.data.card_id,
-      "audienceIdentityType": "ID_CARD",
-      "audienceName": infores.data.user,
-      "audienceCellphone": null,
-      "seatInfo": "",
-      "showOrderTicketItemId": ""
-  }]
+    info: Math.random() < 0.5 ?
+      [{
+        "audienceIdentityNumber": '41112119980912651X',
+        "audienceIdentityType": "ID_CARD",
+        "audienceName": '李一帆',
+        "audienceCellphone": null,
+        "seatInfo": "",
+        "showOrderTicketItemId": ""
+      }, {
+        "audienceIdentityNumber": '411121200601260029',
+        "audienceIdentityType": "ID_CARD",
+        "audienceName": '李卓雅',
+        "audienceCellphone": null,
+        "seatInfo": "",
+        "showOrderTicketItemId": ""
+      }]
+      :
+      [{
+        "audienceIdentityNumber": '411121199901097010',
+        "audienceIdentityType": "ID_CARD",
+        "audienceName": '周省身',
+        "audienceCellphone": null,
+        "seatInfo": "",
+        "showOrderTicketItemId": ""
+      }, {
+        "audienceIdentityNumber": '411121199808210015',
+        "audienceIdentityType": "ID_CARD",
+        "audienceName": '井晓冲',
+        "audienceCellphone": null,
+        "seatInfo": "",
+        "showOrderTicketItemId": ""
+      }],
+    //   info: [{
+    //     "audienceIdentityNumber": infores.data.card_id,
+    //     "audienceIdentityType": "ID_CARD",
+    //     "audienceName": infores.data.user,
+    //     "audienceCellphone": null,
+    //     "seatInfo": "",
+    //     "showOrderTicketItemId": ""
+    // }]
   }
 
   public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`

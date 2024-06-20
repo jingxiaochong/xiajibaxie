@@ -163,7 +163,7 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
-// 添加列
+// 修改列
 // connection.query('ALTER TABLE tokens CHANGE COLUMN active base_url VARCHAR(1000);', function (err, results, fields) {
 //   if (err) {
 //     // return res.send(err)
@@ -172,12 +172,12 @@ connection.connect(function (err) {
 // })
 
 // 删除行
-connection.query('DELETE FROM tokens WHERE id = 3;', function (err, results, fields) {
-  if (err) {
-    // return res.send(err)
-  }
-  console.log(results);
-})
+// connection.query('DELETE FROM tokens WHERE id = 3;', function (err, results, fields) {
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
 
 connection.end(function (err) {
   if (err) {
