@@ -3,7 +3,7 @@ let public = {}
 let flag = true
 let userInfo = {}
 let userInfos = {}
-axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then((infores) => {
     userInfo = {
         token: infores.data.access_token,
         info: [{
@@ -44,7 +44,7 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
         // }
     })
 })
-axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then((infores) => {
     userInfos = {
         token: infores.data.access_token,
         info: [{
@@ -143,6 +143,8 @@ function postFunction() {
                 }, 10000);
 
             }
+        }).catch(err => {
+            postFunction
         })
 }
 
@@ -189,5 +191,7 @@ function postFunction1() {
                 }, 10000);
 
             }
+        }).catch(err => {
+            postFunction
         })
 }
