@@ -14,7 +14,7 @@ cd /usr/local/xiajibaxie/
 git pull
 npm install
 pm2 flush
-pm2 start search.js
+pm2 start search0.js
 
 
 // 清空 Session Cookie
