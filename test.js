@@ -32,6 +32,8 @@
       "method": "GET"
   })
   .then(response => {
+    console.log(response.ok);
+    console.log(response.statusText);
     console.log(response);
     if (!response.ok) {
       throw new Error('Network response was not ok ' + response.statusText);
