@@ -144,7 +144,7 @@ function postFunction() {
 
             }
         }).catch(err => {
-            postFunction
+            postFunction()
         })
 }
 
@@ -192,6 +192,6 @@ function postFunction1() {
 
             }
         }).catch(err => {
-            postFunction1
+            postFunction1()
         })
 }

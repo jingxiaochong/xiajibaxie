@@ -1,22 +1,30 @@
 const axios = require('axios')
+const HttpsProxyAgent = require('https-proxy-agent');
 let public = {}
 let flag = true
 let userInfo = {}
 let userInfos = {}
-axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then((infores) => {
+
+// 代理服务器的 URL
+const proxyUrl = 'https://172.20.10.2';
+
+// 创建代理代理对象
+const agent = new HttpsProxyAgent(proxyUrl);
+
+axios.get('http://116.62.122.121:4396/getInfo?card_id=41112119980912651X').then((infores) => {
     userInfo = {
-        token: infores.data.access_token,
+        token: infores.data.ref,
         info: [{
-            "audienceIdentityNumber": '411121199901097010',
+            "audienceIdentityNumber": '41112119980912651X',
             "audienceIdentityType": "ID_CARD",
-            "audienceName": '周省身',
+            "audienceName": '李一帆',
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }, {
-            "audienceIdentityNumber": '411121199808210015',
+            "audienceIdentityNumber": '411121200601260029',
             "audienceIdentityType": "ID_CARD",
-            "audienceName": '井晓冲',
+            "audienceName": '李卓雅',
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
@@ -44,20 +52,20 @@ axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then(
         // }
     })
 })
-axios.get('http://116.62.122.121:4396/getInfo?card_id=411121199808210015').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?card_id=41112119980912651X').then((infores) => {
     userInfos = {
         token: infores.data.access_token,
         info: [{
-            "audienceIdentityNumber": '41112119980912651X',
+            "audienceIdentityNumber": '411121199901097010',
             "audienceIdentityType": "ID_CARD",
-            "audienceName": '李一帆',
+            "audienceName": '周省身',
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
         }, {
-            "audienceIdentityNumber": '411121200601260029',
+            "audienceIdentityNumber": '411121199808210015',
             "audienceIdentityType": "ID_CARD",
-            "audienceName": '李卓雅',
+            "audienceName": '井晓冲',
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
@@ -118,33 +126,7 @@ function postFunction() {
                 'Cookie': 'acw_sc__v3=66758b7153f4490a12282ee566d0e249364e06d6' //滑块参数
             }
         }).then((res) => {
-            console.log(res.data);
-            if (res.data.statusCode == 200 && res.data.data.id) {
-                axios.post('http://116.62.122.121:4396/putUserInfo', {
-                    data: {
-                        token: userInfo.token,
-                        id: res.data.data.id
-                    }
-                })
-                setTimeout(() => {
-                    // 根据成功id拿到顺序
-                    axios.get(public.searchOrder.replace('id', res.data.data.id), {
-                        headers: {
-                            "access-token": userInfo.token,
-                        }
-                    }).then((success) => {
-                        // 获取到成功序列号 插入
-                        axios.post('http://116.62.122.121:4396/editOrders', {
-                            id: res.data.data.id,
-                            order: success.data.data.orderItems[0].reservationSequence,
-                            token: userInfo.token
-                        })
-                    })
-                }, 10000);
-
-            }
         }).catch(err => {
-            postFunction()
         })
 }
 
@@ -192,6 +174,6 @@ function postFunction1() {
 
             }
         }).catch(err => {
-            postFunction1()
+            postFunction1
         })
 }

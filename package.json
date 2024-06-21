@@ -12,6 +12,7 @@
     "axios": "^0.21.0",
     "cluster": "^0.7.7",
     "express": "^4.19.2",
+    "https-proxy-agent": "^7.0.4",
     "mysql": "^2.18.1"
   }
 }
