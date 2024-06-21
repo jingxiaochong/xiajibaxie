@@ -15,14 +15,20 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
             "showOrderTicketItemId": ""
         }]
     }
+    // public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/6662ce4bea07ab0001514394/instance`
 
-    public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
+    public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance?src=H5&channelId=&terminalSrc=H5&id=6674fee11884c80001e26be4`
     public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
     public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
-    public.reservationConfigId = infores.data.active_id
+    public.reservationConfigId = '6662ce4bea07ab0001514394'
     axios.get(public.searchURl, {
         "headers": {
+            'Accept':'application/json, text/plain, */*',
             "access-token": userInfo.token,
+            'Content-Type':'application/json;charset=UTF-8',
+            'Referer':'https://6437cab4291ee50001318391.caiyicloud.com/reserve/reserve-detail/6674fee11884c80001e26be4',
+            'Terminal-Src':'H5',
+            'X-Requested-With':'XMLHttpRequest'
         }
     }).then(res => {
         console.log(res.data);
@@ -31,6 +37,7 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
+        // postFunction()
     })
 })
 
@@ -83,29 +90,5 @@ function postFunction() {
             }
         }).then((res) => {
             console.log(res.data);
-            if (res.data.statusCode == 200 && res.data.data.id) {
-                axios.post('http://116.62.122.121:4396/putUserInfo', {
-                    data: {
-                        token: userInfo.token,
-                        id: res.data.data.id
-                    }
-                })
-                setTimeout(() => {
-                    // 根据成功id拿到顺序
-                    axios.get(public.searchOrder.replace('id', res.data.data.id), {
-                        headers: {
-                            "access-token": userInfo.token,
-                        }
-                    }).then((success) => {
-                        // 获取到成功序列号 插入
-                        axios.post('http://116.62.122.121:4396/editOrders', {
-                            id: res.data.data.id,
-                            order: success.data.data.orderItems[0].reservationSequence,
-                            token: userInfo.token
-                        })
-                    })
-                }, 10000);
-
-            }
         })
 }
