@@ -4,7 +4,8 @@ let public = {}
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
     userInfo = {
-        token: infores.data.access_token,
+        // token: infores.data.access_token,
+        token: infores.data.refresh_token,
         info: [{
             "audienceIdentityNumber": infores.data.card_id,
             "audienceIdentityType": "ID_CARD",
@@ -24,14 +25,13 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
             "access-token": userInfo.token,
         }
     }).then(res => {
-        console.log(res.data);
+        console.log(res);
         public.saveTime = {
             date: res.data.data.reservationDates[0].reservationDate,
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        console.log(public);
-        console.log(userInfo);
+        postFunction()
     })
 })
 
