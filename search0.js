@@ -25,13 +25,13 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
             "access-token": userInfo.token,
         }
     }).then(res => {
-        console.log(res);
+        console.log(res.data);
         public.saveTime = {
             date: res.data.data.reservationDates[0].reservationDate,
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        postFunction()
+        // postFunction()
     })
 })
 
