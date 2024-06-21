@@ -2,6 +2,7 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
+let userInfos = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
     userInfo = {
         token: infores.data.access_token,
@@ -43,6 +44,26 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
         // }
     })
 })
+axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+    userInfos = {
+        token: infores.data.access_token,
+        info: [{
+            "audienceIdentityNumber": '41112119980912651X',
+            "audienceIdentityType": "ID_CARD",
+            "audienceName": '李一帆',
+            "audienceCellphone": null,
+            "seatInfo": "",
+            "showOrderTicketItemId": ""
+        }, {
+            "audienceIdentityNumber": '411121200601260029',
+            "audienceIdentityType": "ID_CARD",
+            "audienceName": '李卓雅',
+            "audienceCellphone": null,
+            "seatInfo": "",
+            "showOrderTicketItemId": ""
+        }]
+    }
+})
 
 start()
 function start() {
@@ -70,6 +91,7 @@ function search() {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             // for (let index = 0; index < 1000; index++) {
                 postFunction()
+                postFunction1()
             // }
         }
     })
@@ -113,6 +135,52 @@ function postFunction() {
                             id: res.data.data.id,
                             order: success.data.data.orderItems[0].reservationSequence,
                             token: userInfo.token
+                        })
+                    })
+                }, 10000);
+
+            }
+        })
+}
+
+function postFunction1() {
+    let data = {
+        "reservationConfigId": public.reservationConfigId,
+        "reservationDate": public.saveTime.date,
+        "startTime": public.saveTime.startTime,
+        "endTime": public.saveTime.endTime,
+        "showOrderId": "",
+        "showSessionId": "",
+        "reservationAudienceParams": userInfos.info,
+        "src": "H5"
+    }
+    axios.post(public.postUrl, data,
+        {
+            "headers": {
+                "access-token": userInfos.token,
+                'Cookie': 'acw_sc__v3=66758b7153f4490a12282ee566d0e249364e06d6' //滑块参数
+            }
+        }).then((res) => {
+            console.log(res.data);
+            if (res.data.statusCode == 200 && res.data.data.id) {
+                axios.post('http://116.62.122.121:4396/putUserInfo', {
+                    data: {
+                        token: userInfos.token,
+                        id: res.data.data.id
+                    }
+                })
+                setTimeout(() => {
+                    // 根据成功id拿到顺序
+                    axios.get(public.searchOrder.replace('id', res.data.data.id), {
+                        headers: {
+                            "access-token": userInfos.token,
+                        }
+                    }).then((success) => {
+                        // 获取到成功序列号 插入
+                        axios.post('http://116.62.122.121:4396/editOrders', {
+                            id: res.data.data.id,
+                            order: success.data.data.orderItems[0].reservationSequence,
+                            token: userInfos.token
                         })
                     })
                 }, 10000);
