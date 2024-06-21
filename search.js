@@ -35,7 +35,7 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
 start()
 function start() {
     let date = new Date()
-    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 50) {
+    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
         search()
         setTimeout(() => {
             process.exit(0)

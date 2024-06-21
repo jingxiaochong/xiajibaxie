@@ -47,7 +47,7 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
 start()
 function start() {
     let date = new Date()
-    if (date.getHours() == 14 && date.getMinutes() == 59 && date.getSeconds() == 55) {
+    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 58) {
         setInterval(() => {
             search()
         }, 10);
@@ -69,7 +69,7 @@ function search() {
     }).then(res => {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             // for (let index = 0; index < 1000; index++) {
-            postFunction()
+                postFunction()
             // }
         }
     })

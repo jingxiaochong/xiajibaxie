@@ -4,18 +4,12 @@ let public = {}
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
     userInfo = {
-        token: infores.data.access_token,
+        // token: infores.data.access_token,
+        token: infores.data.refresh_token,
         info: [{
-            "audienceIdentityNumber": '41112119980912651X',
+            "audienceIdentityNumber": infores.data.card_id,
             "audienceIdentityType": "ID_CARD",
-            "audienceName": '李一帆',
-            "audienceCellphone": null,
-            "seatInfo": "",
-            "showOrderTicketItemId": ""
-        }, {
-            "audienceIdentityNumber": '411121200601260029',
-            "audienceIdentityType": "ID_CARD",
-            "audienceName": '李卓雅',
+            "audienceName": infores.data.user,
             "audienceCellphone": null,
             "seatInfo": "",
             "showOrderTicketItemId": ""
@@ -37,20 +31,16 @@ axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        // 打出滑块
-        // for (let index = 0; index < 100; index++) {
-        //     postFunction()
-        // }
     })
 })
 
 start()
 function start() {
     let date = new Date()
-    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 58) {
+    if (date.getHours() == 14 && date.getMinutes() == 59 && date.getSeconds() == 55) {
         setInterval(() => {
             search()
-        }, 10);
+        }, 1);
         setTimeout(() => {
             process.exit(0)
         }, 90000);
@@ -68,9 +58,9 @@ function search() {
         }
     }).then(res => {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
-            // for (let index = 0; index < 1000; index++) {
+            for (let index = 0; index < 1000; index++) {
                 postFunction()
-            // }
+            }
         }
     })
 }
@@ -90,7 +80,6 @@ function postFunction() {
         {
             "headers": {
                 "access-token": userInfo.token,
-                'Cookie': 'acw_sc__v3=66758b7153f4490a12282ee566d0e249364e06d6' //滑块参数
             }
         }).then((res) => {
             console.log(res.data);
