@@ -11,6 +11,22 @@ const proxyUrl = 'https://172.20.10.2';
 // 创建代理代理对象
 const agent = new HttpsProxyAgent(proxyUrl);
 
+axios.get(public.searchURl, {
+  proxy: false, // 禁用 Axios 内置代理处理
+    httpAgent: agent,
+    httpsAgent: agent,
+  "headers": {
+      "access-token": userInfo.token,
+  }
+}).then(res => {
+  console.log(res.data);
+  public.saveTime = {
+      date: res.data.data.reservationDates[0].reservationDate,
+      startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
+      endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
+  }
+})
+
 axios.get('http://116.62.122.121:4396/getInfo?card_id=41112119980912651X').then((infores) => {
     userInfo = {
         token: infores.data.ref,
@@ -46,10 +62,6 @@ axios.get('http://116.62.122.121:4396/getInfo?card_id=41112119980912651X').then(
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        // 打出滑块
-        // for (let index = 0; index < 100; index++) {
-        //     postFunction()
-        // }
     })
 })
 axios.get('http://116.62.122.121:4396/getInfo?card_id=41112119980912651X').then((infores) => {
