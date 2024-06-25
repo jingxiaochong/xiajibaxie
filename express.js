@@ -129,6 +129,7 @@ let infoNum = 0
 let activeNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo', (req, res) => {
+  console.log(1);
   if (req && req.query && req.query.phone) {
     // 手机号
     connection.query(`SELECT * FROM tokens WHERE phone = '${req.query.phone}'`, (error, results, fields) => {
