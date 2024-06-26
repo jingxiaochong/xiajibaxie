@@ -10,9 +10,9 @@ let public = {}
 
 let userInfo = {}
 // let num = 0
-let num =  Math.floor(Math.random() * (5000 + 1))
-axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
   // num = infores.data.num
+let num =  Math.floor(Math.random() * (5000 + 1)) //随机启动时间
+axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
   userInfo = {
     token: infores.data.access_token,
     info: [{
@@ -61,7 +61,7 @@ function start() {
     if (part.type === 'minute') minute = part.value;
     if (part.type === 'second') second = part.value;
   }
-  if (hour == 13 && minute == 59 && second == 58) {
+  if (hour == 13 && minute == 59 && second == 55) {
     setTimeout(() => {
       postFunction()
       setInterval(() => {

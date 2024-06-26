@@ -8,7 +8,12 @@ https://wap.showstart.com/pages/order/activity/confirm/confirm?sequence=231189&t
 https://wap.showstart.com/pages/order/activity/confirm/confirm?sequence=231189&ticketId=2d73c0dcd9a9a36fba872761af34f071&ticketNum=2
 
 
-
+#!/bin/bash
+cd /usr/local/xiajibaxie/
+sudo git pull
+sudo npm install
+sudo pm2 flush
+sudo pm2 start search.js
 
 cd /usr/local/xiajibaxie/
 git pull
