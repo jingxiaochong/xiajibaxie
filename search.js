@@ -50,7 +50,9 @@ function start() {
         if (part.type === 'second') second = part.value;
     }
     if (hour == 13 && minute == 59 && second == 58) {
-        search()
+        setInterval(() => {
+            search()
+        }, 100);
         setTimeout(() => {
             process.exit(0)
         }, 90000);
@@ -69,11 +71,7 @@ function search() {
     }).then(res => {
         if (res.data.data.reservationDates[0].configItems[0].isOnsale) {
             postFunction()
-        } else {
-            search()
         }
-    }).catch(() => {
-        search()
     })
 }
 
