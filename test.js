@@ -95,7 +95,7 @@ function postFunction() {
         {
             "headers": {
                 "access-token": userInfo.token,
-                'Cookie': 'acw_sc__v3=667c22ce9cb5cd5fff80ec8ab190e5f97d8f589c' //滑块参数
+                //'Cookie': 'acw_sc__v3=667c22ce9cb5cd5fff80ec8ab190e5f97d8f589c' //滑块参数
             }
         }).then((res) => {
             // console.log(res.data);
