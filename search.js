@@ -34,8 +34,22 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
 
 start()
 function start() {
-    let date = new Date()
-    if (date.getHours() == 13 && date.getMinutes() == 59 && date.getSeconds() == 55) {
+    const options = {
+        timeZone: 'Asia/Shanghai',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const parts = formatter.formatToParts(date);
+    let hour, minute, second;
+    for (const part of parts) {
+        if (part.type === 'hour') hour = part.value;
+        if (part.type === 'minute') minute = part.value;
+        if (part.type === 'second') second = part.value;
+    }
+    if (hour == 13 && minute == 59 && second == 58) {
         search()
         setTimeout(() => {
             process.exit(0)
@@ -43,7 +57,7 @@ function start() {
     } else {
         setTimeout(() => {
             start()
-        }, 10);
+        }, 1);
     }
 }
 

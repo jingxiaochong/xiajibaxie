@@ -73,7 +73,7 @@ function start() {
             if (flag) {
                 search()
             }
-        }, 10);
+        }, 100);
         setTimeout(() => {
             process.exit(0)
         }, 90000);
