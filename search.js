@@ -34,6 +34,7 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
 
 start()
 function start() {
+    let date = new Date()
     const options = {
         timeZone: 'Asia/Shanghai',
         hour: '2-digit',
