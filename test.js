@@ -32,7 +32,7 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
         }
         setInterval(() => {
             postFunction()    
-        }, 400);
+        }, 300);
     })
 })
 
@@ -79,7 +79,7 @@ function search() {
         }
     })
 }
-
+let num = 0
 function postFunction() {
     let data = {
         "reservationConfigId": public.reservationConfigId,
@@ -100,7 +100,8 @@ function postFunction() {
         }).then((res) => {
             // console.log(res.data);
             if (res.data.statusCode) {
-                console.log(1);
+                num += 1
+                console.log(num);
             }
         }).catch(()=>{})
 }
