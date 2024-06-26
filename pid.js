@@ -8,36 +8,38 @@ let public = {}
 //   }
 // }
 
-// let userInfo = {}
-// axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
-//   userInfo = {
-//     token: infores.data.access_token,
-//       info: [{
-//         "audienceIdentityNumber": infores.data.card_id,
-//         "audienceIdentityType": "ID_CARD",
-//         "audienceName": infores.data.user,
-//         "audienceCellphone": null,
-//         "seatInfo": "",
-//         "showOrderTicketItemId": ""
-//     }]
-//   }
+let userInfo = {}
+let num = 0
+axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+  num = infores.data.num
+  userInfo = {
+    token: infores.data.access_token,
+    info: [{
+      "audienceIdentityNumber": infores.data.card_id,
+      "audienceIdentityType": "ID_CARD",
+      "audienceName": infores.data.user,
+      "audienceCellphone": null,
+      "seatInfo": "",
+      "showOrderTicketItemId": ""
+    }]
+  }
 
-//   public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
-//   public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
-//   public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
-//   public.reservationConfigId = infores.data.active_id
-//   axios.get(public.searchURl, {
-//     "headers": {
-//       "access-token": userInfo.token,
-//     }
-//   }).then(res => {
-//     public.saveTime = {
-//       date: res.data.data.reservationDates[0].reservationDate,
-//       startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
-//       endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
-//     }
-//   })
-// })
+  public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
+  public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
+  public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
+  public.reservationConfigId = infores.data.active_id
+  axios.get(public.searchURl, {
+    "headers": {
+      "access-token": userInfo.token,
+    }
+  }).then(res => {
+    public.saveTime = {
+      date: res.data.data.reservationDates[0].reservationDate,
+      startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
+      endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
+    }
+  })
+})
 
 
 start()
@@ -59,13 +61,15 @@ function start() {
     if (part.type === 'second') second = part.value;
   }
   if (hour == 13 && minute == 59 && second == 58) {
-    postFunction()
-    setInterval(() => {
-      postFunction()
-    }, 500);
     setTimeout(() => {
-      process.exit(0)
-    }, 60000);
+      postFunction()
+      setInterval(() => {
+        postFunction()
+      }, 500);
+      setTimeout(() => {
+        process.exit(0)
+      }, 60000);
+    }, num * 10);
   } else {
     setTimeout(() => {
       start()
