@@ -3,6 +3,7 @@ let public = {}
 
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
+    console.log(infores.data.user);
     userInfo = {
         token: infores.data.refresh_token,
         info: [{
