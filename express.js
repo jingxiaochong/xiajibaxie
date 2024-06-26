@@ -124,12 +124,13 @@ app.get('/getNumbers', (req, res) => {
   res.send(JSON.stringify(num))
   num += 1
 })
-
+let idNum = 0
 let infoNum = 0
 let activeNum = 0
 // 按顺序获取不同用户信息
 app.get('/getInfo', (req, res) => {
-  console.log(1);
+  num += 1
+  console.log(`第${num}次访问`);
   if (req && req.query && req.query.phone) {
     // 手机号
     connection.query(`SELECT * FROM tokens WHERE phone = '${req.query.phone}'`, (error, results, fields) => {
@@ -141,11 +142,11 @@ app.get('/getInfo', (req, res) => {
       if (error) {
         return res.send('error');
       }
-      if (results.length <= num) {
-        num = 0
+      if (results.length <= idNum) {
+        idNum = 0
       }
-      res.send(results[num])
-      num += 1
+      res.send(results[idNum])
+      idNum += 1
     });
   } else if (req && req.query && req.query.activeId) {
     // activeId查询
@@ -164,7 +165,10 @@ app.get('/getInfo', (req, res) => {
       if (results.length <= infoNum) {
         infoNum = 0
       }
-      res.send(results[infoNum])
+      let obj = Object.assign(results[infoNum], {
+        num: num
+      })
+      res.send(obj)
       infoNum += 1
     })
   }
