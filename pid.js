@@ -9,9 +9,10 @@ let public = {}
 // }
 
 let userInfo = {}
-let num = 0
+// let num = 0
+let num =  Math.floor(Math.random() * (5000 + 1))
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
-  num = infores.data.num
+  // num = infores.data.num
   userInfo = {
     token: infores.data.access_token,
     info: [{

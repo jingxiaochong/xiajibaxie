@@ -1,6 +1,13 @@
 const axios = require('axios')
 let public = {}
 
+
+for (let index = 0; index < 10; index++) {
+    console.log(
+        Math.floor(Math.random() * (5000 + 1))
+    );
+}
+
 let userInfo = {}
 // axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
 //     userInfo = {
