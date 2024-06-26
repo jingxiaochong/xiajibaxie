@@ -29,9 +29,9 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        setInterval(() => {
+        // setInterval(() => {
             postFunction()    
-        }, 500);
+        // }, 500);
     })
 })
 
@@ -94,6 +94,7 @@ function postFunction() {
         {
             "headers": {
                 "access-token": userInfo.token,
+                'Cookie': 'acw_sc__v3=667c22ce9cb5cd5fff80ec8ab190e5f97d8f589c' //滑块参数
             }
         }).then((res) => {
             console.log(res.data);
