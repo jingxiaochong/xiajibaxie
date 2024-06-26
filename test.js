@@ -102,5 +102,5 @@ function postFunction() {
             if (res.data.statusCode) {
                 console.log(1);
             }
-        })
+        }).catch(()=>{})
 }
