@@ -10,9 +10,9 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
             "audienceIdentityNumber": infores.data.card_id,
             "audienceIdentityType": "ID_CARD",
             "audienceName": infores.data.user,
-            // "audienceCellphone": Math.random() >= 0.2 ? null : infores.data.phone,
             "seatInfo": "",
-            "showOrderTicketItemId": ""
+            "showOrderTicketItemId": "",
+            audienceCellphone: null,
         }]
     }
 
@@ -94,26 +94,29 @@ function postFunction() {
     axios.post(public.postUrl, data,
         {
             "headers": {
-                "access-token": userInfo.token,
+                // "access-token": userInfo.token,
                 //'Cookie': 'acw_sc__v3=667c22ce9cb5cd5fff80ec8ab190e5f97d8f589c' //滑块参数
-                "accept": "application/json, text/plain, */*",
-                "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-                "channel-id": "",
-                "content-type": "application/json;charset=UTF-8",
-                "sec-ch-ua": "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Android WebView\";v=\"122\"",
-                "sec-ch-ua-mobile": "?1",
-                "sec-ch-ua-platform": "\"Android\"",
-                "sec-fetch-dest": "empty",
-                "sec-fetch-mode": "cors",
-                "sec-fetch-site": "same-origin",
-                "terminal-src": "WEIXIN_H5",
-                "ver": "4.9.0",
-                "x-requested-with": "XMLHttpRequest",
-                "cookie": "Hm_lvt_e2e961d5194c236ca2269b84361558fc=1717687621; shopPriceColor=FB5200; shopNavTextColor=FB5200; shopColor=FB5200; userTheme=FOLLOW_SYSTEM; currentThemeType=LIGHT_MODE; acw_tc=0aef816617194934159286860e004d5b908b4c15d7647b2af5ce970725f307; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22654631bbf6deab0001b38657%22%2C%22%24device_id%22%3A%2218fee2915c385-0f7771c32dbbf7-66305735-364800-18fee2915c5242%22%2C%22props%22%3A%7B%22%24latest_referrer%22%3A%22%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22platform%22%3A%22WX%22%2C%22merchantDomain%22%3A%226437cab4291ee50001318391.caiyicloud.com%22%2C%22product%22%3A%22CYY%22%2C%22merchantId%22%3A%226437cab4291ee50001318391%22%7D%2C%22first_id%22%3A%2218fee2915c385-0f7771c32dbbf7-66305735-364800-18fee2915c5242%22%7D; refresh_token=eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kM1OwzAQhN9lzznEseOfHotAILVCquiBE_I6GzVSEleOg4Cq746DIeqJ445mv9mdC3g7x9PT2HrYjHPfFzBPFPJ8Aey-7nxDsIGHx93bHgqYZtyuohRcOYuiMoyoLsuScaa5YcmXNg--X0zb4-v9ISlDdMcF3SSttqbFFjUJLJ1utSsVQ6FVXlxtshaSM8RWNmRx4SPXslZwLYA-zl2gl25IGUxVQipVV1wI84N4PlOw0f-LkSnNBbJxpTAjDP-jTJ9TpCF_mpsZKLiTHeNtW-mM2_wC3ilMnR-TmKsc7fALuH4DAAD__w.Af7nSQNJy76FqwO3KQBhYB7HXyEwYHiK4JK1h1twpqG-U42lVePNEqlrTGwYjgrf6vbreH-SNDb21bKXVzENzP_xm5qPZJexvlrILHuZJVr6rxXteSkb5EtPnfrpYEIfA4vqGjff8tvMpfnQ5Lih_v9uEAGTwRMUE9hzyLW6KP0; user_cellphone=155****2921; consistent_code=eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNp8kE9Lw0AQxb_LnHPIZv_3WKkoKEKxB0-ys5nQQJItm42opd_dDWuLJ4_zeL838-YMwS3p-Dh1ATbTMgwVLDPFMp8B---70BJs4P7h6f0ZKpgX3N5EJbj2DkVjGZGs65pxZrhl2ZfJfRhW0_bwtttnZUz-sEa3WZPOdtihIYG1N53xtWYojC7gzaakUJwhdqolh2s-cqOkhksF9HnqI732I10Pz-TLiaJL4V9a5SU-kku_MNPMCstlw4WwueDXnGgsBUvuSNEf3ZT-PilvL6TU1ja8gg-Kcx-mLJYPTu562OUHAAD__w.KAKreMqEjfVhM51VwMikqwFdFciNGsBw1kimebV5mst1IupJrSkZzE9Y_ZC5m4L8ud-wGElgu7GOE8GXK6AstmGPbn7yxj-JnuXXJ0apN54DQ7huO6kXrTF-Z_uV-b1T05atGd_zUmx6uAmTh-8ZYcflT00ifU7YzeuSvZjy3qY; Hm_lpvt_e2e961d5194c236ca2269b84361558fc=1719493593; ssxmod_itna=eqAx9QKxgDuBDXYqBDCu728G8FDOjjBGFD02f4GXxbDZDiqAPGhDC4bI0eDKANzsB0qpfh=m0wvfPq/A+GbaZFA8ENmD74i8DCqi1D0qDYD4LQDgDQKQPiQxxiiDYq=GRS4B62DixDaDneDEQK4=A4DrZaOD0I8gxiki/qxflxxiBwIFxhxzfhPrrbYC745Flho8WrIjRqG/l2NsYD==; ssxmod_itna2=eqAx9QKxgDuBDXYqBDCu728G8FDOjjBGFD024GtG9DGxGXWG2Q58=FzkxFgwu8HwNI9aMFUxZ/PCBtNDFqG703BM+tqBnaDgDtWoDLp6QXU0E29NG99+f6nqUt9WLUT8TBwOTI9bYUPREPTQ0jPKBNdS8=xD; tfstk=fhHZcjgUd1iIYmh08yw4zGn-_tRT38LWoxabmmm0fP4gmr4h-q02DtVcsJXqPuz0o-Vg-JqTDGqimFe23cgZC-w_folEo2F_SStTotoqVfagGhUc3moS15DqDtrmmqKTlhdQBceYnUTS3LitXJXc5rkaiWjnvuCcINc22BwYnUTBMHURp-3W1xtD_DxUcojgmqqmxHr8q-XgiOfh-yE0nr00sJ23XlWGsPVmxQLxibCUf5xuuZBw-GQa9zmgSDqEKLNc6mUFntDu35UlFyWcnvrivv1eG9J4rb3ntfDHusUIgyFm82YlNPc-VJ4noN5KxRMig5k2k94mZg-CkkbvCxHvHsPgvkzWYHm-pq32ymhgjsCY6eEUPH4hMsFgvkzWYH5AM5F7Yzt3-",
-                "Referer": "https://6437cab4291ee50001318391.caiyicloud.com/reserve/reserve-detail/personinfo",
-                "Referrer-Policy": "strict-origin-when-cross-origin",
-                'Origin':'https://6437cab4291ee50001318391.caiyicloud.com',
-                'Pragma':'no-cache'
+                'Accept': 'application/json, text/plain, */*',
+'Accept-Encoding': 'gzip, deflate, br, zstd',
+'Accept-Language': 'zh-CN,zh;q=0.9',
+'Cache-Control': 'no-cache',
+'Connection': 'keep-alive',
+'Content-Length': '371',
+'Content-Type': 'application/json;charset=UTF-8',
+'Cookie': 'consistent_code=eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNqEkMFOwzAQRP9lzzlk7U2c9lgEAgmEVNEDJ-QkWzVSbFeOg4Cq_84Go6onOHo088Y7Jwh2TocHvw-w9vM4FjBPHPP7BO3wdRN6hjXc3T--PUEB09xuLmJN2nS2JbVC5qosS9TY6BWKT5LbMC6mze71diuKS91uQfdLsK5tpU2LpJn2SxBtj1WVg__ZDJwL4I_jEPllcNKBRmlSjVJiKX8Qz0eONoU_MbW0dZFtulCwUURkUBPKpZ9TYpcvzcs4jt3B-nS9lnzjur-Ad47TELyIeUpv3S_g_A0AAP__.Jdk0VmlHR6Hx4c7r6lTdTmPmDqE55lYazwEihnZ3OBxpJlkxt5FX5laRyGPPT29Lk_yMJ6FwF1YanmDbkeO4eRuLNr9_b23xfKVRdaQcS6n6xYOEe3FbF3r86hVh4BaLWjAhH5qb40GBXl5wmdIgXXI_6C4JGhtGJAKDsijVsi8; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2219054d23492ee-03501c3f2a40e8-26001f51-3686400-19054d234933024%22%2C%22%24device_id%22%3A%2219054d23492ee-03501c3f2a40e8-26001f51-3686400-19054d234933024%22%2C%22props%22%3A%7B%22%24latest_referrer%22%3A%22%22%2C%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22platform%22%3A%22H5%22%2C%22merchantDomain%22%3A%226437cab4291ee50001318391.caiyicloud.com%22%2C%22product%22%3A%22CYY%22%2C%22merchantId%22%3A%226437cab4291ee50001318391%22%7D%7D; Hm_lvt_e2e961d5194c236ca2269b84361558fc=1718812210,1718975516,1719408520,1719491003; shopPriceColor=FB5200; shopNavTextColor=FB5200; shopColor=FB5200; userTheme=LIGHT_MODE; currentThemeType=LIGHT_MODE; acw_tc=2f624a2f17194971805328515e36209b806d7aa8a929ae7cca4d6d3aefb42d; Hm_lpvt_e2e961d5194c236ca2269b84361558fc=1719497647; ssxmod_itna=euDtDIxjOGCG83DXDnQmq0=t8dLADkAmDIxiKQD/KzmDnqD=GFDK40oEO3eEuwTNtWYw3hplZi2xFWA0n4PaP8AiPuqamDB3DEx0=WIbxYAkDt4DTD34DYDihQGIDieDF8NvzkDbxYQDYqGRDB6XSqDj8ThQef=exG3BtDDltBRqRAeSD0YDbE=SS4DgeeG2DGU=oA=DjqGgDBL5+ZG9DDtOEZDlAkcxlWpuYmiDtqD9ej=DbSdTx0PBnuTsmSebRSmozGpbQ7mq3xes8xmxtOEj3EG4WGhtRAxQIV+qmdLxR/exD===; ssxmod_itna2=euDtDIxjOGCG83DXDnQmq0=t8dLADkAmDIxiKDSD8MDGXWG2tNdKCNDFOGSQVWht89C=7HXsxy=Bp0Q4sA7yEPO3Ij2XAMtnl5hCp8ALm4+KE8WjUKv0ZM0w0=Q/7DfLv+NyBGTWzqAQREGi9Ee23oNPKjiEY7DDFqD284PPCwG43ih+ALDy+ThtNAiNxnDCQATV3AxbEA5aNYTIf6oz+6ATKLEQDfY5Gpv+Q6WWkADxD===; tfstk=fzAtYEDafDmitBvDKFMHovf_0_0nEILw8h87iijghHKdyaN_fckNHw_AWN9i7NTBRZ7Y1NNffX1CvnuwSRvGDqKByIXjb1AvvEK8sdXcoSKpk3FMItb0MBCwtdVcjc5vl3fxq0coZF8N0sioq3wPSeC5o-Z_mS_QdN1GarloZF86DudeQb02Giwfci1fCt6COM7uhss1l2ICkaybfn1jJesFkRNffO_BRa7rs1gOYP_TMKBPoPVsVqP0iBQI2GTOfw7J9NBOE9sLGwAdWOIWWCoMrU_BtBBlKrmAOUJHfwC-MW1OedtOReoYwG9kzUjfQzPDJnddOC98lSTd6MXPRhrtvgOwRQ5CKbgJRB-M7BL0lj_HqMTw1shSz1C1f6QeiDP1Dp9XsO54fcCXJZszPQA8NPZl2Z2sJ2e43O_3IXuWz4fUDSbdqV6_3-Wc8wIoJ2e43O_FJg0_1-yVnw5..',
+'Host': '6437cab4291ee50001318391.caiyicloud.com',
+'Origin': 'https://6437cab4291ee50001318391.caiyicloud.com',
+'Pragma': 'no-cache',
+'Referer': 'https://6437cab4291ee50001318391.caiyicloud.com/reserve/reserve-detail/personinfo',
+'Sec-Fetch-Dest': 'empty',
+'Sec-Fetch-Mode': 'cors',
+'Sec-Fetch-Site': 'same-origin',
+'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
+'X-Requested-With': 'XMLHttpRequest',
+'access-token': 'eyJ0eXAiOiJKV1QiLCJjdHkiOiJKV1QiLCJ6aXAiOiJERUYiLCJhbGciOiJSUzUxMiJ9.eNqEkMFOwzAQRP9lzzlk7U2c9lgEAgmEVNEDJ-QkWzVSbFeOg4Cq_84Go6onOHo088Y7Jwh2TocHvw-w9vM4FjBPHPP7BO3wdRN6hjXc3T--PUEB09xuLmJN2nS2JbVC5qosS9TY6BWKT5LbMC6mze71diuKS91uQfdLsK5tpU2LpJn2SxBtj1WVg__ZDJwL4I_jEPllcNKBRmlSjVJiKX8Qz0eONoU_MbW0dZFtulCwUURkUBPKpZ9TYpcvzcs4jt3B-nS9lnzjur-Ad47TELyIeUpv3S_g_A0AAP__.Jdk0VmlHR6Hx4c7r6lTdTmPmDqE55lYazwEihnZ3OBxpJlkxt5FX5laRyGPPT29Lk_yMJ6FwF1YanmDbkeO4eRuLNr9_b23xfKVRdaQcS6n6xYOEe3FbF3r86hVh4BaLWjAhH5qb40GBXl5wmdIgXXI_6C4JGhtGJAKDsijVsi8',
+'channel-id': '',
+'terminal-src': H5,
+
             }
         }).then((res) => {
             // console.log(res.data);
