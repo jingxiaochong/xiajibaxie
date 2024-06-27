@@ -35,7 +35,7 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
         }
         setInterval(() => {
             postFunction()
-        }, 300);
+        }, 400);
     })
 })
 
