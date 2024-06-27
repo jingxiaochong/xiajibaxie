@@ -17,8 +17,8 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
     }
 
     public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
-    public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders?channelId=&terminalSrc=WEIXIN_H5`
-    public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id?channelId=&terminalSrc=WEIXIN_H5`
+    public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
+    public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
     public.reservationConfigId = infores.data.active_id
     axios.get(public.searchURl, {
         "headers": {
@@ -113,7 +113,6 @@ function postFunction() {
                 'X-Requested-With': 'XMLHttpRequest',
                 'channel-id': '',
                 'terminal-src': 'H5',
-
             }
         }).then((res) => {
             // console.log(res.data);
