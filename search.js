@@ -19,6 +19,9 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
     public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
     public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
     public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
+    public.Host = `${infores.data.base_url}.caiyicloud.com`
+    public.Origin = `https://${infores.data.base_url}.caiyicloud.com`
+    public.Referer = `https://${infores.data.base_url}.caiyicloud.com/reserve/reserve-detail/personinfo`
     public.reservationConfigId = infores.data.active_id
     axios.get(public.searchURl, {
         "headers": {
@@ -92,6 +95,24 @@ function postFunction() {
         {
             "headers": {
                 "access-token": userInfo.token,
+                'Accept': 'application/json, text/plain, */*',
+                'Accept-Encoding': 'gzip, deflate, br, zstd',
+                'Accept-Language': 'zh-CN,zh;q=0.9',
+                'Cache-Control': 'no-cache',
+                'Connection': 'keep-alive',
+                'Content-Length': '371',
+                'Content-Type': 'application/json;charset=UTF-8',
+                'Host': public.Host,
+                'Origin': public.Origin,
+                'Pragma': 'no-cache',
+                'Referer': public.Referer,
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1',
+                'X-Requested-With': 'XMLHttpRequest',
+                'channel-id': '',
+                'terminal-src': 'H5',
             }
         }).then((res) => {
             if (res.data.statusCode) {
@@ -121,14 +142,14 @@ function postFunction() {
                 }, 10000);
 
             } else {
-                setTimeout(() => {
-                    postFunction()
-                }, 500);
+                // setTimeout(() => {
+                //     postFunction()
+                // }, 500);
             }
         }).catch((err) => {
-            setTimeout(() => {
-                postFunction()
-            }, 500);
+            // setTimeout(() => {
+            //     postFunction()
+            // }, 500);
             // console.log(err);
         });
 }

@@ -172,7 +172,7 @@ connection.connect(function (err) {
 // })
 
 // 删除行
-// connection.query('DELETE FROM tokens WHERE id = 3;', function (err, results, fields) {
+// connection.query('DELETE FROM tokens WHERE id = 12;', function (err, results, fields) {
 //   if (err) {
 //     // return res.send(err)
 //   }
