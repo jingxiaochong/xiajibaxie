@@ -19,6 +19,9 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
     public.searchURl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_configs/${infores.data.active_id}/instance`
     public.postUrl = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders`
     public.searchOrder = `https://${infores.data.base_url}.caiyicloud.com/cyy_buyerapi/buyer/cyy/v1/reservation_orders/id`
+    public.Host = `${infores.data.base_url}.caiyicloud.com`
+    public.Origin = `https://${infores.data.base_url}.caiyicloud.com`
+    public.Referer = `https://${infores.data.base_url}.caiyicloud.com/reserve/reserve-detail/personinfo`
     public.reservationConfigId = infores.data.active_id
     axios.get(public.searchURl, {
         "headers": {
@@ -32,7 +35,7 @@ axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
         }
         setInterval(() => {
             postFunction()
-        }, 500);
+        }, 300);
     })
 })
 
@@ -102,10 +105,10 @@ function postFunction() {
                 'Connection': 'keep-alive',
                 'Content-Length': '371',
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Host': '6437cab4291ee50001318391.caiyicloud.com',
-                'Origin': 'https://6437cab4291ee50001318391.caiyicloud.com',
+                'Host': public.Host,
+                'Origin': public.Origin,
                 'Pragma': 'no-cache',
-                'Referer': 'https://6437cab4291ee50001318391.caiyicloud.com/reserve/reserve-detail/personinfo',
+                'Referer': public.Referer,
                 'Sec-Fetch-Dest': 'empty',
                 'Sec-Fetch-Mode': 'cors',
                 'Sec-Fetch-Site': 'same-origin',
