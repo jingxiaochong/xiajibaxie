@@ -3,6 +3,7 @@ let public = {}
 
 let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo?type=1').then((infores) => {
+    console.log(infores.data.user,);
     userInfo = {
         token: infores.data.refresh_token,
         info: [{
@@ -93,7 +94,9 @@ function postFunction() {
                 "access-token": userInfo.token,
             }
         }).then((res) => {
-            console.log(res.data);
+            if (res.data.statusCode) {
+                console.log(res.data.statusCode);
+            }
             if (res.data.statusCode == 200 && res.data.data.id) {
                 axios.post('http://116.62.122.121:4396/putUserInfo', {
                     data: {
@@ -126,6 +129,6 @@ function postFunction() {
             setTimeout(() => {
                 postFunction()
             }, 500);
-            console.log(err);
+            // console.log(err);
         });
 }

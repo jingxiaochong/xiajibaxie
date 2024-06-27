@@ -13,7 +13,7 @@ cd /usr/local/xiajibaxie/
 sudo git pull
 sudo npm install
 sudo pm2 flush
-sudo pm2 start search.js
+sudo pm2 start pid.js
 
 cd /usr/local/xiajibaxie/
 git pull
