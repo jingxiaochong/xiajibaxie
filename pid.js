@@ -13,6 +13,7 @@ let userInfo = {}
   // num = infores.data.num
 let num =  Math.floor(Math.random() * (5000 + 1)) //随机启动时间
 axios.get('http://116.62.122.121:4396/getInfo').then((infores) => {
+  console.log(infores.data.card_id);
   userInfo = {
     token: infores.data.access_token,
     info: [{
@@ -97,6 +98,10 @@ function postFunction() {
       }
     }).then((res) => {
       console.log(res.data);
+      if (res.data.statusCode) {
+        console.log(res.data.statusCode);
+        // process.exit(0)
+      }
       if (res.data.statusCode == 200 && res.data.data.id) {
         axios.post('http://116.62.122.121:4396/putUserInfo', {
           data: {
@@ -121,6 +126,6 @@ function postFunction() {
         }, 10000);
       }
     }).catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 }
