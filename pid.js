@@ -71,7 +71,7 @@ function start() {
       setTimeout(() => {
         process.exit(0)
       }, 60000);
-    }, num * 10);
+    }, num);
   } else {
     setTimeout(() => {
       start()
