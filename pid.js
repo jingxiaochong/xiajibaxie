@@ -11,7 +11,8 @@ let public = {}
 let userInfo = {}
 // let num = 0
   // num = infores.data.num
-let num =  Math.floor(Math.random() * (1000 + 1)) //随机启动时间
+let num =  Math.floor(Math.random() * (1001)) //随机启动时间
+let timer =  Math.floor(Math.random() * 1699) + 300; //随机间隔时间
 axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916').then((infores) => {
   console.log(infores.data.user);
   userInfo = {
@@ -70,7 +71,7 @@ function start() {
       postFunction()
       setInterval(() => {
         postFunction()
-      }, 500);
+      }, timer);
       setTimeout(() => {
         process.exit(0)
       }, 90000);
@@ -128,7 +129,7 @@ function postFunction() {
           data: {
             token: userInfo.token,
             id: res.data.data.id,
-            remark:'0.5'
+            remark:timer
           }
         })
         setTimeout(() => {
