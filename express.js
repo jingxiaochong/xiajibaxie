@@ -205,5 +205,9 @@ app.post('/editToken', (req, res) => {
   });
 
 })
+app.get('/getlog', (req, res) => {
+  console.log('成功');
+  return res.send('succeed')
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
