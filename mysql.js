@@ -25,7 +25,7 @@ connection.connect(function (err) {
 // 加字段
 // connection.query(`
 // ALTER TABLE tokens
-// ADD COLUMN orders VARCHAR(255)
+// ADD COLUMN remark VARCHAR(255)
 // `, function (error, results, fields) {
 //   if (error) { console.log(error); }
 //   console.log('success');

@@ -176,7 +176,7 @@ app.get('/getInfo', (req, res) => {
 
 // 处理请求成功后的数据
 app.post('/putUserInfo', (req, res) => {
-  connection.query('UPDATE tokens SET succeed_id = ? WHERE access_token = ?', [req.body.data.id, req.body.data.token], (error, results, fields) => {
+  connection.query('UPDATE tokens SET succeed_id = ? , remark = ? WHERE access_token = ?', [req.body.data.id, req.body.data.remark, req.body.data.token], (error, results, fields) => {
     if (error) {
       return res.send(error)
     }

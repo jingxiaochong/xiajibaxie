@@ -70,7 +70,7 @@ function start() {
       postFunction()
       setInterval(() => {
         postFunction()
-      }, 500);
+      }, 1000);
       setTimeout(() => {
         process.exit(0)
       }, 90000);
@@ -128,7 +128,7 @@ function postFunction() {
           data: {
             token: userInfo.token,
             id: res.data.data.id,
-            remark:'0.5'
+            remark:'1'
           }
         })
         setTimeout(() => {
