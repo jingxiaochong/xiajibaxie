@@ -5,7 +5,8 @@ let userInfo = {}
 axios.get('http://116.62.122.121:4396/getInfo?activeId=667afa066e635d0001b7a649').then((infores) => {
     console.log(infores.data.user);
     userInfo = {
-        token: infores.data.refresh_token,
+        // token: infores.data.refresh_token,
+        token: infores.data.access_token,
         info: [{
             "audienceIdentityNumber": infores.data.card_id,
             "audienceIdentityType": "ID_CARD",
