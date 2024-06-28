@@ -65,7 +65,7 @@ function start() {
     if (part.type === 'minute') minute = part.value;
     if (part.type === 'second') second = part.value;
   }
-  if (hour == 13 && minute == 59 && second == 55) {
+  if (hour == 13 && minute == 59 && second == 50) {
     setTimeout(() => {
       postFunction()
       setInterval(() => {
