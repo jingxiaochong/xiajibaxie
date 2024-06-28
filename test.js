@@ -2,7 +2,7 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?activeId=6677a318e64c400001114378').then((infores) => {
     console.log(infores.data.user);
     userInfo = {
         // token: infores.data.refresh_token,
@@ -36,7 +36,7 @@ axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916'
         }
         setInterval(() => {
             postFunction()
-        }, 500);
+        }, 100);
     })
 })
 
@@ -119,15 +119,15 @@ function postFunction() {
                 'terminal-src': 'H5',
             }
         }).then((res) => {
-            axios.get('http://116.62.122.121:4396/getlog').then(()=>{}).catch(()=>{})
             // console.log(res.data);
+            axios.get('http://116.62.122.121:4396/getlog').then(()=>{}).catch(()=>{})
             if (res.data.statusCode) {
                 console.log(res.data);
                 num += 1
                 console.log(num);
             }
         }).catch((err) => { 
-            console.log(err);
+            // console.log(err);
             console.log('error');
         })
 }
