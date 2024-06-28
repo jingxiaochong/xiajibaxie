@@ -34,9 +34,9 @@ axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916'
             startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
-        setInterval(() => {
-            postFunction()
-        }, 500);
+        // setInterval(() => {
+        //     postFunction()
+        // }, 500);
     })
 })
 
