@@ -125,5 +125,8 @@ function postFunction() {
                 num += 1
                 console.log(num);
             }
-        }).catch(() => { })
+        }).catch((err) => { 
+            console.log(err);
+            console.log('error');
+        })
 }
