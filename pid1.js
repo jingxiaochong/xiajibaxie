@@ -12,7 +12,7 @@ let userInfo = {}
 // let num = 0
   // num = infores.data.num
 let num =  Math.floor(Math.random() * (1000 + 1)) //随机启动时间
-axios.get('http://116.62.122.121:4396/getInfo?activeId=667afa066e635d0001b7a649').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916').then((infores) => {
   console.log(infores.data.user);
   userInfo = {
     token: infores.data.access_token,

@@ -2,7 +2,7 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?activeId=667afa066e635d0001b7a649').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?activeId=667c1b471884c80001e58916').then((infores) => {
     console.log(infores.data.user);
     userInfo = {
         // token: infores.data.refresh_token,
@@ -122,6 +122,7 @@ function postFunction() {
             axios.get('http://116.62.122.121:4396/getlog').then(()=>{}).catch(()=>{})
             // console.log(res.data);
             if (res.data.statusCode) {
+                console.log(res.data);
                 num += 1
                 console.log(num);
             }
