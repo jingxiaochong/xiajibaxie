@@ -9,10 +9,10 @@ let public = {}
 // }
 
 let userInfo = {}
-let num = 500
+// let num = 500
   // num = infores.data.num
 // let num =  Math.floor(Math.random() * (1001)) //随机启动时间
-let timer =  Math.floor(Math.random() * 1699) + 300; //随机间隔时间
+let timer =  Math.floor(Math.random() * 1500) + 400; //随机间隔时间
 axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010').then((infores) => {
   console.log(infores.data.user);
   userInfo = {
