@@ -57,7 +57,7 @@ function start() {
     if (hour == 13 && minute == 59 && second == 58) {
         setInterval(() => {
             search()
-        }, 100);
+        }, 10);
         setTimeout(() => {
             process.exit(0)
         }, 90000);

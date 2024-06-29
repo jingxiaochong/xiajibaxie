@@ -116,7 +116,7 @@ function postFunction() {
         'terminal-src': 'H5',
       }
     }).then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
       if (res.data.statusCode) {
         console.log(res.data.statusCode);
         // process.exit(0)
