@@ -2,7 +2,7 @@ const axios = require('axios')
 let public = {}
 
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?activeId=6677a318e64c400001114378').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010').then((infores) => {
     console.log(infores.data.user);
     userInfo = {
         // token: infores.data.refresh_token,
