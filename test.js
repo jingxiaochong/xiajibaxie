@@ -35,44 +35,44 @@ axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010'
             endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
         }
         console.log(res.data.data);
-        // setInterval(() => {
-            // postFunction()
-        // }, 500);
+        setInterval(() => {
+            postFunction()
+        }, 500);
     })
 })
 
-start()
-function start() {
-    let date = new Date()
-    const options = {
-        timeZone: 'Asia/Shanghai',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-    };
-    const formatter = new Intl.DateTimeFormat('en-US', options);
-    const parts = formatter.formatToParts(date);
-    let hour, minute, second;
-    for (const part of parts) {
-        if (part.type === 'hour') hour = part.value;
-        if (part.type === 'minute') minute = part.value;
-        if (part.type === 'second') second = part.value;
-    }
-    console.log(hour, minute, second);
-    if (hour == 13 && minute == 59 && second == 58) {
-        setInterval(() => {
-            search()
-        }, 100);
-        setTimeout(() => {
-            process.exit(0)
-        }, 90000);
-    } else {
-        setTimeout(() => {
-            start()
-        }, 1);
-    }
-}
+// start()
+// function start() {
+//     let date = new Date()
+//     const options = {
+//         timeZone: 'Asia/Shanghai',
+//         hour: '2-digit',
+//         minute: '2-digit',
+//         second: '2-digit',
+//         hour12: false
+//     };
+//     const formatter = new Intl.DateTimeFormat('en-US', options);
+//     const parts = formatter.formatToParts(date);
+//     let hour, minute, second;
+//     for (const part of parts) {
+//         if (part.type === 'hour') hour = part.value;
+//         if (part.type === 'minute') minute = part.value;
+//         if (part.type === 'second') second = part.value;
+//     }
+//     console.log(hour, minute, second);
+//     if (hour == 13 && minute == 59 && second == 58) {
+//         setInterval(() => {
+//             search()
+//         }, 100);
+//         setTimeout(() => {
+//             process.exit(0)
+//         }, 90000);
+//     } else {
+//         setTimeout(() => {
+//             start()
+//         }, 1);
+//     }
+// }
 
 // function search() {
 //     axios.get(public.searchURl, {
