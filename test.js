@@ -36,7 +36,7 @@ axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010'
         }
         setInterval(() => {
             postFunction()
-        }, 100);
+        }, 500);
     })
 })
 
