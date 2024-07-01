@@ -1,8 +1,41 @@
 const axios = require('axios')
 let public = {}
 
+// axios.get('https://myip.ipip.net', {
+//   httpsAgent: agent
+// })
+// .then(response => {
+//   console.log(response.data);
+// })
+// .catch(err => {
+//   console.log(err.response.data);
+// });
+
+// axios.get('https://myip.ipip.net', {
+//     proxy: {
+//       host: '107.152.46.223',
+//       port: 34000,
+//       auth: {
+//         username: 'u1532496100958799',
+//         password: 'Ak8L6oaqjbui'
+//       }
+//     }
+//   })
+//   .then(response => {
+//     console.log(response.data);
+//   })
+//   .catch(err => {
+//     if (err.response) {
+//       console.log(err.response.data);
+//     } else {
+//       console.log(err.message);
+//     }
+//   });
+// return
+
+
 let userInfo = {}
-axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010').then((infores) => {
+axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010',).then((infores) => {
     console.log(infores.data.user);
     userInfo = {
         // token: infores.data.refresh_token,
@@ -29,15 +62,21 @@ axios.get('http://116.62.122.121:4396/getInfo?activeId=667acbcb62bcc30001138010'
             "access-token": userInfo.token,
         }
     }).then(res => {
-        public.saveTime = {
-            date: res.data.data.reservationDates[0].reservationDate,
-            startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
-            endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
-        }
         console.log(res.data.data);
+        // public.saveTime = {
+        //     date: res.data.data.reservationDates[0].reservationDate,
+        //     startTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].startTime,
+        //     endTime: res.data.data.reservationDates[0].configItems[0].configTimeItems[0].endTime,
+        // }
+        public.saveTime = {
+            date: '',
+            startTime:'',
+            endTime: '',
+        }
         setInterval(() => {
             postFunction()
-        }, 500);
+        }, 100);
+    }).catch((err)=>{
     })
 })
 
@@ -119,7 +158,15 @@ function postFunction() {
                 'X-Requested-With': 'XMLHttpRequest',
                 'channel-id': '',
                 'terminal-src': 'H5',
-            }
+            },
+            proxy: {
+                host: '85.239.53.78',
+                port: 33000,
+                auth: {
+                  username: 'u1532496100958799',
+                  password: 'Ak8L6oaqjbui'
+                }
+              }
         }).then((res) => {
             // console.log(res.data);
             axios.get('http://116.62.122.121:4396/getlog').then(()=>{}).catch(()=>{})

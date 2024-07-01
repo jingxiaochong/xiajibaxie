@@ -119,8 +119,8 @@ connection.connect(function (err) {
 //   console.log(results);
 // })
 
-// 清空list
-// connection.query('UPDATE tokens SET succeed_id = NULL;', function (err, results, fields) {
+// 清空预约信息
+// connection.query('UPDATE tokens SET orders = NULL;', function (err, results, fields) {
 
 //   if (err) {
 //     // return res.send(err)
@@ -172,12 +172,12 @@ connection.connect(function (err) {
 // })
 
 // 删除行
-connection.query('DELETE FROM tokens WHERE id = 16;', function (err, results, fields) {
-  if (err) {
-    // return res.send(err)
-  }
-  console.log(results);
-})
+// connection.query('DELETE FROM tokens WHERE id = 2;', function (err, results, fields) {
+//   if (err) {
+//     // return res.send(err)
+//   }
+//   console.log(results);
+// })
 
 connection.end(function (err) {
   if (err) {
